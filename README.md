@@ -1,4 +1,4 @@
-# ProImpact — RUPEETRACE (Mumbai Road Civic Accountability)
+# ProImpact — PROTRACE (Mumbai Road Civic Accountability)
 
 > **Follow the Rupee. Verify the Repair. Fund What Matters.**  
 > A civic-finance intelligence and lifecycle accountability platform for Mumbai's monsoon road repairs.

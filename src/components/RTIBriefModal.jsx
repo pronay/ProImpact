@@ -147,7 +147,7 @@ export default function RTIBriefModal({ workOrder, onClose }) {
           {/* Declaration */}
           <div className="pt-3 border-t-2 border-black flex justify-between items-end text-[11px] font-mono">
             <div>
-              <span>Generated via: <strong>RupeeTrace v2.1 Evidence Standard</strong></span>
+              <span>Generated via: <strong>ProTrace v2.1 Evidence Standard</strong></span>
               <div className="text-gray-500 text-[10px]">Independent Assurance & Open Contracting Standards (CoST & IDB Framework)</div>
             </div>
             <div className="text-right">

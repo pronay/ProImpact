@@ -12,7 +12,7 @@ export default function GuidedStoryBanner({ currentStep, setTourStep, activeRole
               GUIDED WALKTHROUGH
             </span>
             <span className="font-medium text-slate-200">
-              New to RupeeTrace? Experience the complete 4-minute Mumbai road repair investigation:
+              New to ProTrace? Experience the complete 4-minute Mumbai road repair investigation:
             </span>
           </div>
 
