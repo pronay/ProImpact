@@ -70,29 +70,29 @@ export default function WardOfficerPortalView({
 
   return (
     <div className="space-y-6">
-      {/* Officer Header Banner with Ward Scoping Selector for Vinod Patil */}
-      <div className="nb-card p-5 bg-[#FFE600] border-4 border-[#121316]">
+      {/* Officer Header Banner with Ward Scoping Selector (Cupertino Glass Style) */}
+      <div className="bg-gradient-to-br from-white/95 via-slate-50 to-white/95 backdrop-blur-xl border border-slate-200/80 p-5 rounded-2xl shadow-sm space-y-4">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="nb-badge nb-badge-black text-xs">MUNICIPAL COMMAND</span>
-              <span className="nb-badge nb-badge-cyan text-black">ADMINISTRATIVE AUDIT ROLE</span>
+              <span className="nb-badge nb-badge-cyan text-xs">MUNICIPAL COMMAND</span>
+              <span className="nb-badge nb-badge-black text-xs">ADMINISTRATIVE AUDIT CONSOLE</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mt-1">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 font-display mt-1">
               BMC Executive Audit & Escalation Center
             </h2>
-            <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
-              Assistant Commissioner & Executive Engineer console for rate auditing, DLP recoveries, and debarment oversight.
+            <p className="text-xs sm:text-sm text-slate-600 font-medium mt-0.5">
+              Assistant Commissioner & Executive Engineer console for rate auditing, DLP warranty recoveries, and contractor accountability.
             </p>
           </div>
 
           {/* REFINEMENT 3: Ward Scoping Selector */}
-          <div className="flex items-center gap-2 bg-white border-2 border-black p-2 rounded shadow-nb-sm">
-            <span className="text-xs font-mono font-bold text-gray-700">Scope Ward Console:</span>
+          <div className="flex items-center gap-2 bg-white/90 border border-slate-200/90 px-3 py-1.5 rounded-xl shadow-sm">
+            <span className="text-xs font-semibold text-slate-600">Scope Ward:</span>
             <select
               value={scopedWard}
               onChange={(e) => setScopedWard(e.target.value)}
-              className="nb-input text-xs py-1 font-bold"
+              className="nb-input text-xs py-1 font-bold bg-slate-50 border-slate-200"
             >
               <option value="ALL">All City Wards (City-Wide)</option>
               {db.wards.map(w => (
@@ -104,51 +104,51 @@ export default function WardOfficerPortalView({
           </div>
         </div>
 
-        {/* Dynamic Scoped KPIs based on Vinod's Selected Ward */}
-        <div className="mt-4 pt-3 border-t-2 border-black grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
-          <div className="bg-white border-2 border-black p-2.5 rounded shadow-nb-sm">
-            <span className="text-[10px] font-bold text-gray-500 uppercase block">Monsoon Budget</span>
-            <strong className="text-sm font-black text-black">{formatLakh(displayedBudget)}</strong>
-            <span className="text-[10px] text-gray-600 block">Spent: {formatLakh(displayedSpend)}</span>
+        {/* Dynamic Scoped KPIs based on Vinod's Selected Ward (Stripe Style) */}
+        <div className="mt-4 pt-3 border-t border-slate-200/80 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
+          <div className="bg-white/90 border border-slate-200/80 p-3 rounded-xl shadow-sm">
+            <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">Monsoon Budget</span>
+            <strong className="text-sm font-bold text-slate-900">{formatLakh(displayedBudget)}</strong>
+            <span className="text-[10px] text-slate-500 block">Spent: {formatLakh(displayedSpend)}</span>
           </div>
 
-          <div className="bg-white border-2 border-black p-2.5 rounded shadow-nb-sm">
-            <span className="text-[10px] font-bold text-[#FF4757] uppercase block">DLP Recoverable Leak</span>
-            <strong className="text-sm font-black text-[#FF4757]">{formatLakh(displayedDlp)}</strong>
-            <span className="text-[10px] text-gray-600 block">Billed on Warranty Roads</span>
+          <div className="bg-rose-50/80 border border-rose-200/80 p-3 rounded-xl shadow-sm">
+            <span className="text-[10px] font-semibold text-rose-600 uppercase tracking-wider block">DLP Warranty Leak</span>
+            <strong className="text-sm font-bold text-rose-700">{formatLakh(displayedDlp)}</strong>
+            <span className="text-[10px] text-rose-600/80 block">Billed on Warranty Roads</span>
           </div>
 
-          <div className="bg-white border-2 border-black p-2.5 rounded shadow-nb-sm">
-            <span className="text-[10px] font-bold text-gray-500 uppercase block">Wasted in Relapses</span>
-            <strong className="text-sm font-black text-black">{formatLakh(displayedWasted)}</strong>
-            <span className="text-[10px] text-gray-600 block">Failed in &lt;30 days</span>
+          <div className="bg-white/90 border border-slate-200/80 p-3 rounded-xl shadow-sm">
+            <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">Wasted in Relapses</span>
+            <strong className="text-sm font-bold text-slate-900">{formatLakh(displayedWasted)}</strong>
+            <span className="text-[10px] text-slate-500 block">Failed in &lt;30 days</span>
           </div>
 
-          <div className="bg-white border-2 border-black p-2.5 rounded shadow-nb-sm">
-            <span className="text-[10px] font-bold text-gray-500 uppercase block">Watchlist Agencies</span>
-            <strong className="text-sm font-black text-[#FF8800]">{watchlistContractors.length} Empanelled</strong>
-            <span className="text-[10px] text-gray-600 block">Under Formal Review</span>
+          <div className="bg-amber-50/80 border border-amber-200/80 p-3 rounded-xl shadow-sm">
+            <span className="text-[10px] font-semibold text-amber-700 uppercase tracking-wider block">Watchlist Agencies</span>
+            <strong className="text-sm font-bold text-amber-800">{watchlistContractors.length} Empanelled</strong>
+            <span className="text-[10px] text-amber-700/80 block">Under Formal Review</span>
           </div>
         </div>
 
         {/* 3-Tier Escalation Ladder Overview */}
-        <div className="mt-3 pt-3 border-t-2 border-black grid grid-cols-1 md:grid-cols-3 gap-2 text-xs font-mono">
-          <div className="bg-white/90 border-2 border-black p-2 rounded">
-            <span className="font-black text-black block">LEVEL 1: WARD JUNIOR ENGINEER</span>
-            <span className="text-[10px] text-gray-700">Physical site verification, measurement sheet validation.</span>
+        <div className="mt-3 pt-3 border-t border-slate-200/80 grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
+          <div className="bg-slate-50/80 border border-slate-200 p-2.5 rounded-xl">
+            <span className="font-bold text-slate-900 block text-[11px]">LEVEL 1: WARD JUNIOR ENGINEER</span>
+            <span className="text-[10px] text-slate-600">Physical site verification, measurement sheet validation.</span>
           </div>
-          <div className="bg-white/90 border-2 border-black p-2 rounded">
-            <span className="font-black text-blue-900 block">LEVEL 2: ASST. COMMISSIONER (WARD)</span>
-            <span className="text-[10px] text-gray-700">Payment sanction, 20% DLP penalty deduction, rate approval.</span>
+          <div className="bg-sky-50/80 border border-sky-200 p-2.5 rounded-xl">
+            <span className="font-bold text-sky-900 block text-[11px]">LEVEL 2: ASST. COMMISSIONER (WARD)</span>
+            <span className="text-[10px] text-sky-700">Payment sanction, 20% DLP penalty deduction, rate approval.</span>
           </div>
-          <div className="bg-white/90 border-2 border-black p-2 rounded">
-            <span className="font-black text-[#FF4757] block">LEVEL 3: CENTRAL VIGILANCE / CHIEF ENGINEER</span>
-            <span className="text-[10px] text-gray-700">Formal debarment hearing, MMC Act legal notice.</span>
+          <div className="bg-rose-50/80 border border-rose-200 p-2.5 rounded-xl">
+            <span className="font-bold text-rose-900 block text-[11px]">LEVEL 3: CENTRAL VIGILANCE COMMITTEE</span>
+            <span className="text-[10px] text-rose-700">Formal debarment hearing, MMC Act legal notice.</span>
           </div>
         </div>
 
-        {/* Navigation Tabs for Officer */}
-        <div className="mt-4 pt-3 border-t-2 border-black flex gap-2 overflow-x-auto">
+        {/* Navigation Tabs for Officer (Apple Segmented Bar) */}
+        <div className="pt-2 border-t border-slate-200/70 flex gap-1.5 overflow-x-auto bg-slate-100/60 p-1 rounded-xl">
           {[
             { id: 'audit-queue', label: '🚨 Forensic Audit Queue', badge: `${displayedJobsCount} Orders` },
             { id: 'gis-command', label: '🗺️ GIS Command Map' },
@@ -159,10 +159,10 @@ export default function WardOfficerPortalView({
             <button
               key={t.id}
               onClick={() => setOfficerTab(t.id)}
-              className={`nb-btn text-xs font-mono font-bold py-1.5 px-3 flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
                 officerTab === t.id 
-                  ? 'bg-black text-white shadow-none translate-y-0.5' 
-                  : 'bg-white text-black hover:bg-gray-100'
+                  ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80' 
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/40'
               }`}
             >
               <span>{t.label}</span>
@@ -178,7 +178,7 @@ export default function WardOfficerPortalView({
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="nb-badge nb-badge-coral text-white font-mono text-[10px]">🚨 INCOMING CITIZEN DISPATCH</span>
-              <h4 className="font-mono font-black text-xs uppercase text-red-900">
+              <h4 className="font-mono font-bold text-xs uppercase text-red-900">
                 {liveRelapses.length} Citizen-Reported Pothole Relapse(s) Awaiting Engineering Triage
               </h4>
             </div>
@@ -187,7 +187,7 @@ export default function WardOfficerPortalView({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1">
             {liveRelapses.map((relapse, idx) => (
-              <div key={idx} className="bg-white border-2 border-black p-2.5 rounded text-xs flex justify-between items-start gap-2">
+              <div key={idx} className="bg-white border border-slate-200/80 p-2.5 rounded text-xs flex justify-between items-start gap-2">
                 <div>
                   <div className="font-bold text-black flex items-center gap-1.5">
                     <span>{relapse.locality_text}</span>
@@ -213,11 +213,11 @@ export default function WardOfficerPortalView({
 
       {/* Live Contractor Force Majeure Disputes */}
       {Object.keys(liveDisputes).length > 0 && (
-        <div className="nb-card p-4 bg-[#FFFDF0] border-3 border-[#FFE600] shadow-nb-sm space-y-2">
+        <div className="nb-card p-4 bg-[#F8FAFC] border-3 border-[#F59E0B] shadow-nb-sm space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="nb-badge nb-badge-orange text-white font-mono text-[10px]">⚠️ CONTRACTOR DISPUTE FILED</span>
-              <h4 className="font-mono font-black text-xs uppercase text-black">
+              <h4 className="font-mono font-bold text-xs uppercase text-black">
                 {Object.keys(liveDisputes).length} Formal Force Majeure Defense(s) Submitted with IMD Weather Logs
               </h4>
             </div>
@@ -226,7 +226,7 @@ export default function WardOfficerPortalView({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1">
             {Object.entries(liveDisputes).map(([woId, disp]) => (
-              <div key={woId} className="bg-white border-2 border-black p-2.5 rounded text-xs flex justify-between items-center gap-2">
+              <div key={woId} className="bg-white border border-slate-200/80 p-2.5 rounded text-xs flex justify-between items-center gap-2">
                 <div>
                   <span className="font-mono font-bold text-black">{woId} — {disp.category?.toUpperCase()} CLAIM</span>
                   <span className="text-[10px] text-gray-600 block">Ref: {disp.refId} • Attached IMD 112mm Deluge Proof</span>
@@ -249,10 +249,10 @@ export default function WardOfficerPortalView({
       {/* TAB 1: FORENSIC AUDIT QUEUE WITH REFINEMENT 4 ESCALATION STATUS BADGES */}
       {officerTab === 'audit-queue' && (
         <div className="space-y-4">
-          <div className="nb-card p-4 bg-white border-3 border-black">
+          <div className="nb-card p-4 bg-white border border-slate-200/90">
             <div className="flex justify-between items-center mb-3">
               <div>
-                <h3 className="text-base font-black font-mono uppercase">
+                <h3 className="text-base font-bold font-mono uppercase">
                   Pending Work Order Audit Decisions {scopedWard !== 'ALL' ? `(Ward ${scopedWard})` : '(City-Wide)'}
                 </h3>
                 <p className="text-xs font-bold text-gray-600">
@@ -299,10 +299,10 @@ export default function WardOfficerPortalView({
       {officerTab === 'budget-allocator' && (
         <div className="space-y-4">
           {/* Sanction Banner */}
-          <div className="nb-card p-4 bg-white border-3 border-black flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="nb-card p-4 bg-white border border-slate-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span className="nb-badge nb-badge-mint text-black font-mono text-[10px]">MUNICIPAL SANCTION AUTHORITY</span>
-              <h4 className="font-black text-sm uppercase text-black mt-0.5">
+              <h4 className="font-bold text-sm uppercase text-black mt-0.5">
                 Execute Administrative Sanction for Next Monsoon Sprint
               </h4>
               <p className="text-xs text-gray-600 font-bold">
@@ -335,9 +335,9 @@ export default function WardOfficerPortalView({
 
       {/* TAB 5: CONTRACTOR DEBARMENT WATCHLIST */}
       {officerTab === 'watchlist' && (
-        <div className="nb-card p-5 bg-white border-3 border-black space-y-4">
+        <div className="nb-card p-5 bg-white border border-slate-200/90 space-y-4">
           <div className="border-b-2 border-black pb-3">
-            <h3 className="text-lg font-black font-mono uppercase flex items-center gap-2">
+            <h3 className="text-lg font-bold font-mono uppercase flex items-center gap-2">
               <Scale className="w-5 h-5 text-[#FF4757]" />
               Threshold-Based Contractor Debarment Watchlist
             </h3>
@@ -352,16 +352,16 @@ export default function WardOfficerPortalView({
                 <div className="flex justify-between items-start">
                   <div>
                     <span className="nb-badge nb-badge-coral text-[10px] font-mono">FORMAL REVIEW TRIGGERED</span>
-                    <h4 className="font-black text-lg text-black mt-1">{c.contractor_name}</h4>
+                    <h4 className="font-bold text-lg text-black mt-1">{c.contractor_name}</h4>
                     <span className="text-xs font-mono text-gray-600">Empanelled: {c.empanelled_since} • {c.active_wards.length} Wards</span>
                   </div>
-                  <div className="w-12 h-12 rounded border-2 border-black bg-white flex flex-col items-center justify-center font-mono">
-                    <span className="font-black text-base">{c.grade}</span>
+                  <div className="w-12 h-12 rounded border border-slate-200/80 bg-white flex flex-col items-center justify-center font-mono">
+                    <span className="font-bold text-base">{c.grade}</span>
                     <span className="text-[9px]">{c.composite_score}/100</span>
                   </div>
                 </div>
 
-                <div className="bg-white border-2 border-black p-2.5 rounded text-xs space-y-1 font-mono">
+                <div className="bg-white border border-slate-200/80 p-2.5 rounded text-xs space-y-1 font-mono">
                   <div className="font-bold text-red-900 uppercase text-[10px]">Threshold Violation Reasons:</div>
                   {c.watchlist_reasons.map((r, i) => (
                     <div key={i} className="text-gray-800 flex items-center gap-1">
@@ -393,16 +393,16 @@ export default function WardOfficerPortalView({
       {/* Escalation Action Modal */}
       {escalationModalWO && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="nb-card w-full max-w-lg bg-white p-5 border-4 border-black shadow-nb-xl space-y-4">
+          <div className="nb-card w-full max-w-lg bg-white p-5 border border-slate-200/90 shadow-nb-xl space-y-4">
             <div className="flex justify-between items-center border-b-2 border-black pb-2">
-              <h3 className="font-mono font-black text-base uppercase">Administrative Escalation Memo</h3>
+              <h3 className="font-mono font-bold text-base uppercase">Administrative Escalation Memo</h3>
               <button onClick={() => setEscalationModalWO(null)} className="font-mono font-bold">✕</button>
             </div>
 
             {escalationSuccess ? (
               <div className="bg-green-50 border-2 border-green-500 p-4 rounded text-center space-y-2">
                 <CheckCircle2 className="w-8 h-8 text-green-600 mx-auto" />
-                <h4 className="font-black text-sm text-green-900">Escalation Order Logged to Municipal Dispatch!</h4>
+                <h4 className="font-bold text-sm text-green-900">Escalation Order Logged to Municipal Dispatch!</h4>
                 <p className="text-xs text-green-800">
                   Case reference <strong>ESC-2025-{escalationModalWO.work_order_id}</strong> forwarded to {escalationTier} authority. Status badge updated in audit records.
                 </p>
@@ -412,7 +412,7 @@ export default function WardOfficerPortalView({
               </div>
             ) : (
               <div className="space-y-3 text-xs">
-                <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded font-mono">
+                <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded font-mono">
                   <span className="text-[10px] text-gray-500 block uppercase font-bold">Work Order Under Review</span>
                   <strong className="text-sm text-black">{escalationModalWO.work_order_id} — {escalationModalWO.road_name}</strong>
                   <div className="text-[11px] text-gray-600 mt-1">Contractor: {escalationModalWO.contractor_name} • Billed: {formatINR(escalationModalWO.cost_inr)}</div>

@@ -20,22 +20,22 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto animate-fade-in">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto animate-fade-in">
         <div 
-          className="nb-card w-full max-w-2xl bg-white shadow-nb-xl my-8 relative max-h-[90vh] flex flex-col overflow-hidden"
+          className="w-full max-w-2xl bg-white/95 backdrop-blur-2xl rounded-3xl border border-slate-200/90 shadow-2xl my-8 relative max-h-[90vh] flex flex-col overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Modal Header */}
-          <div className="bg-[#FFE600] border-b-3 border-[#121316] p-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded bg-[#121316] text-[#FFE600] flex items-center justify-center font-mono font-bold text-sm">
+          {/* Modal Header (Cupertino Style) */}
+          <div className="bg-slate-900 text-white p-5 flex items-center justify-between border-b border-slate-800">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-sky-500 text-white flex items-center justify-center font-mono font-bold text-xs shadow-md">
                 WO
               </div>
               <div>
-                <h3 className="font-extrabold text-lg sm:text-xl font-mono leading-none">
+                <h3 className="font-bold text-lg sm:text-xl font-mono leading-none text-white">
                   {workOrder.work_order_id}
                 </h3>
-                <p className="text-xs font-bold text-gray-800 mt-0.5">
+                <p className="text-xs text-slate-400 mt-1 font-medium">
                   Ward {workOrder.ward_code} • {workOrder.road_name} ({workOrder.road_id})
                 </p>
               </div>
@@ -45,18 +45,18 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
               {/* 1-Click RTI Button */}
               <button
                 onClick={() => setShowRtiModal(true)}
-                className="nb-btn nb-btn-white text-xs font-mono font-bold py-1 px-2.5 flex items-center gap-1 hover:bg-[#121316] hover:text-white"
+                className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 flex items-center gap-1.5 transition-all shadow-sm"
                 title="Generate 1-Click RTI Information Application Brief"
               >
-                <Scale className="w-3.5 h-3.5 text-[#FF4757]" />
+                <Scale className="w-3.5 h-3.5 text-sky-400" />
                 <span className="hidden sm:inline">1-Click RTI Brief</span>
               </button>
 
               <button 
                 onClick={onClose}
-                className="w-8 h-8 nb-btn nb-btn-white p-0 flex items-center justify-center hover:bg-[#FF4757] hover:text-white"
+                className="w-8 h-8 rounded-xl bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 flex items-center justify-center transition-all"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -64,13 +64,13 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
           {/* Modal Body */}
           <div className="p-4 sm:p-6 overflow-y-auto space-y-5">
             {/* World Bank GEMS 3-Citizen Consensus Verification Banner */}
-            <div className="bg-[#FAF8F5] border-2 border-black p-3 rounded-md flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded-md flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
               <div>
                 <div className="flex items-center gap-1.5">
                   <span className="nb-badge nb-badge-black text-[9px]">WORLD BANK GEMS MODEL</span>
                   <span className="font-mono font-bold text-gray-600">3-Citizen Consensus Field Check</span>
                 </div>
-                <div className="font-black text-sm text-black mt-1 flex items-center gap-1.5">
+                <div className="font-bold text-sm text-black mt-1 flex items-center gap-1.5">
                   {citizenVotes >= 3 ? (
                     <span className="text-green-700 flex items-center gap-1">
                       <CheckCircle2 className="w-4 h-4" /> Community Certified ({citizenVotes}/3 Citizens Verified)
@@ -110,7 +110,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
                 </div>
                 <div className="space-y-2">
                   {workOrder.flags.map((flag, idx) => (
-                    <div key={idx} className="bg-white border-2 border-[#121316] p-2.5 rounded text-xs">
+                    <div key={idx} className="bg-white border border-slate-200/80 p-2.5 rounded text-xs">
                       <div className="flex items-center justify-between mb-1">
                         <span className={`nb-badge ${
                           flag.severity === 'CRITICAL' ? 'nb-badge-coral' :
@@ -141,15 +141,15 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
 
             {/* Quick Metrics Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-              <div className="bg-[#F8F5EE] border-2 border-[#121316] p-2.5 rounded">
+              <div className="bg-[#F8F5EE] border border-slate-200/80 p-2.5 rounded">
                 <span className="text-[10px] uppercase font-bold text-gray-500 font-mono">Billed Cost</span>
-                <p className="text-base font-extrabold font-mono text-[#121316]">{formatINR(workOrder.cost_inr)}</p>
+                <p className="text-base font-extrabold font-mono text-[#0F172A]">{formatINR(workOrder.cost_inr)}</p>
               </div>
-              <div className="bg-[#F8F5EE] border-2 border-[#121316] p-2.5 rounded">
+              <div className="bg-[#F8F5EE] border border-slate-200/80 p-2.5 rounded">
                 <span className="text-[10px] uppercase font-bold text-gray-500 font-mono">Rate Card Benchmark</span>
                 <p className="text-base font-extrabold font-mono text-gray-700">{formatINR(workOrder.expected_cost)}</p>
               </div>
-              <div className="bg-[#F8F5EE] border-2 border-[#121316] p-2.5 rounded">
+              <div className="bg-[#F8F5EE] border border-slate-200/80 p-2.5 rounded">
                 <span className="text-[10px] uppercase font-bold text-gray-500 font-mono">SLA Target</span>
                 <p className="text-base font-extrabold font-mono flex items-center gap-1">
                   {workOrder.sla_hours}h
@@ -160,7 +160,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
                   )}
                 </p>
               </div>
-              <div className="bg-[#F8F5EE] border-2 border-[#121316] p-2.5 rounded">
+              <div className="bg-[#F8F5EE] border border-slate-200/80 p-2.5 rounded">
                 <span className="text-[10px] uppercase font-bold text-gray-500 font-mono">30-Day Durability</span>
                 <p className="text-base font-extrabold font-mono">
                   {workOrder.reopened_within_30d === 'Y' ? (
@@ -173,7 +173,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
             </div>
 
             {/* Technical Specs */}
-            <div className="border-2 border-[#121316] rounded-md p-3.5 space-y-2 text-xs">
+            <div className="border border-slate-200/80 rounded-md p-3.5 space-y-2 text-xs">
               <h4 className="font-extrabold uppercase font-mono tracking-wider text-gray-600 mb-2">Repair Specifications</h4>
               <div className="grid grid-cols-2 gap-y-2">
                 <div>
@@ -206,7 +206,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
             </div>
 
             {/* Engineer Remark */}
-            <div className="bg-[#FFFDF0] border-2 border-[#121316] p-3 rounded-md text-xs">
+            <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded-md text-xs">
               <span className="font-bold text-gray-500 uppercase font-mono block mb-1">Site Engineer Log / Remark</span>
               <p className="italic text-gray-800 font-medium">"{workOrder.engineer_remark}"</p>
             </div>
@@ -222,7 +222,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
                     <button
                       key={cid}
                       onClick={() => onInspectComplaint && onInspectComplaint(cid)}
-                      className="nb-badge nb-badge-cyan hover:bg-[#FFE600] cursor-pointer"
+                      className="nb-badge nb-badge-cyan hover:bg-[#F59E0B] cursor-pointer"
                     >
                       <span>{cid}</span>
                       <span className="text-[10px] ml-1">→ Inspect</span>
@@ -238,7 +238,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
           </div>
 
           {/* Modal Footer */}
-          <div className="bg-[#F8F5EE] border-t-2 border-[#121316] p-3 flex justify-between items-center text-xs font-mono">
+          <div className="bg-[#F8F5EE] border-t-2 border-[#0F172A] p-3 flex justify-between items-center text-xs font-mono">
             <button
               onClick={() => setShowRtiModal(true)}
               className="nb-btn nb-btn-primary text-xs py-1 px-3 flex items-center gap-1"

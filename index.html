@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23FFE600'/><text y='.9em' font-size='70' x='15'>₹</text></svg>" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%230F172A'/><text y='.78em' font-size='66' x='24' fill='%2338BDF8' font-weight='900' font-family='sans-serif'>₹</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RUPEETRACE v2.1 — Follow the Rupee. Verify the Repair. Fund What Matters.</title>
+    <title>RupeeTrace — Civic-Finance & Monsoon Infrastructure Intelligence</title>
     
-    <!-- Google Fonts: Space Grotesk & JetBrains Mono -->
+    <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Leaflet CSS for GIS Command Center -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -23,36 +23,40 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['"Space Grotesk"', 'sans-serif'],
-              mono: ['"JetBrains Mono"', 'monospace'],
+              sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Plus Jakarta Sans"', 'sans-serif'],
+              display: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
             },
             colors: {
-              nb: {
-                bg: '#FDFBF7',
-                dark: '#121316',
-                yellow: '#FFE600',
-                coral: '#FF4757',
-                mint: '#00E599',
-                cyan: '#00F0FF',
-                purple: '#B794F4',
-                orange: '#FF8800',
-                cream: '#FFF9E6',
-                gray: '#F0EFEA'
+              slate: {
+                850: '#151E2E',
+                950: '#070B14'
+              },
+              brand: {
+                50: '#F0F9FF',
+                100: '#E0F2FE',
+                500: '#0284C7',
+                600: '#0369A1',
+                900: '#0C4A6E'
               }
             },
             boxShadow: {
-              'nb-sm': '2px 2px 0px #121316',
-              'nb': '4px 4px 0px #121316',
-              'nb-md': '5px 5px 0px #121316',
-              'nb-lg': '7px 7px 0px #121316',
-              'nb-xl': '10px 10px 0px #121316',
+              'glass': '0 8px 32px 0 rgba(15, 23, 42, 0.06)',
+              'glass-hover': '0 12px 40px -4px rgba(15, 23, 42, 0.1)',
+              'glass-sm': '0 2px 10px 0 rgba(15, 23, 42, 0.04)',
+              'glass-lg': '0 24px 60px -12px rgba(15, 23, 42, 0.14)',
+              'nb-sm': '0 1px 3px rgba(15, 23, 42, 0.06)',
+              'nb': '0 4px 16px -2px rgba(15, 23, 42, 0.06)',
+              'nb-md': '0 8px 24px -4px rgba(15, 23, 42, 0.08)',
+              'nb-lg': '0 16px 36px -6px rgba(15, 23, 42, 0.10)',
+              'nb-xl': '0 24px 50px -10px rgba(15, 23, 42, 0.14)',
             }
           }
         }
       }
     </script>
   </head>
-  <body class="bg-[#FDFBF7] text-[#121316] font-sans antialiased selection:bg-[#FFE600] selection:text-black min-h-screen">
+  <body class="bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-sky-500 selection:text-white min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

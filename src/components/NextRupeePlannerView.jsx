@@ -75,14 +75,14 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="nb-card p-5 bg-[#FFE600] border-4 border-[#121316]">
+      <div className="nb-card p-5 bg-[#F59E0B] border border-slate-200/90">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
               <span className="nb-badge nb-badge-black text-xs">PREDICTIVE BUDGET ALLOCATION</span>
-              <span className="nb-badge nb-badge-mint text-black font-black">GATES FOUNDATION H-ROI MODEL</span>
+              <span className="nb-badge nb-badge-mint text-black font-bold">GATES FOUNDATION H-ROI MODEL</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold uppercase mt-1">
               Next Rupee Civic Planner
             </h2>
             <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
@@ -92,7 +92,7 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
 
           {/* Controls */}
           <div className="flex items-center gap-2 flex-wrap">
-            <div className="flex items-center gap-1 bg-white border-2 border-black p-1.5 rounded shadow-nb-sm text-xs font-mono">
+            <div className="flex items-center gap-1 bg-white border border-slate-200/80 p-1.5 rounded shadow-nb-sm text-xs font-mono">
               <span className="text-gray-500 font-bold">Sort:</span>
               <select
                 value={sortBy}
@@ -105,7 +105,7 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
               </select>
             </div>
 
-            <div className="flex items-center gap-1 bg-white border-2 border-black p-1.5 rounded shadow-nb-sm text-xs font-mono">
+            <div className="flex items-center gap-1 bg-white border border-slate-200/80 p-1.5 rounded shadow-nb-sm text-xs font-mono">
               <span className="text-gray-500 font-bold">Ward:</span>
               <select
                 value={selectedWard}
@@ -125,11 +125,11 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
       </div>
 
       {/* Interactive Budget Simulator Bar */}
-      <div className="nb-card p-5 bg-white border-3 border-[#121316]">
+      <div className="nb-card p-5 bg-white border border-slate-200/90">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b-2 border-gray-200">
           <div>
-            <h3 className="text-lg font-black font-mono uppercase flex items-center gap-2">
-              <Sliders className="w-5 h-5 text-[#FFE600] fill-black" />
+            <h3 className="text-lg font-bold font-mono uppercase flex items-center gap-2">
+              <Sliders className="w-5 h-5 text-[#F59E0B] fill-black" />
               Interactive Budget Allocation Simulator
             </h3>
             <p className="text-xs font-bold text-gray-600">
@@ -143,7 +143,7 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
               id="facOnly"
               checked={filterFacilityOnly}
               onChange={(e) => setFilterFacilityOnly(e.target.checked)}
-              className="w-4 h-4 border-2 border-black rounded accent-[#FFE600]"
+              className="w-4 h-4 border border-slate-200/80 rounded accent-[#F59E0B]"
             />
             <label htmlFor="facOnly" className="text-xs font-bold cursor-pointer font-mono">
               Hospital & School Lifelines Only
@@ -157,7 +157,7 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
           <div className="lg:col-span-5 space-y-2">
             <div className="flex justify-between items-center text-xs font-mono font-bold">
               <span>Sprint Budget Released:</span>
-              <span className="text-lg font-black text-[#121316] bg-[#FFE600] px-2 py-0.5 rounded border border-black">
+              <span className="text-lg font-bold text-[#0F172A] bg-[#F59E0B] px-2 py-0.5 rounded border border-black">
                 ₹{budgetCapLakhs} Lakhs
               </span>
             </div>
@@ -168,7 +168,7 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
               step="1"
               value={budgetCapLakhs}
               onChange={(e) => setBudgetCapLakhs(Number(e.target.value))}
-              className="w-full h-3 bg-gray-200 border-2 border-black rounded-lg appearance-none cursor-pointer accent-[#121316]"
+              className="w-full h-3 bg-gray-200 border border-slate-200/80 rounded-lg appearance-none cursor-pointer accent-[#0F172A]"
             />
             <div className="flex justify-between text-[10px] font-mono text-gray-500 font-bold">
               <span>₹2L (Emergency Patch)</span>
@@ -179,27 +179,27 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
 
           {/* Allocation Result Counters */}
           <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-2">
-            <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded text-center">
+            <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded text-center">
               <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Roads Funded</span>
-              <span className="font-mono font-black text-lg text-green-700">
+              <span className="font-mono font-bold text-lg text-green-700">
                 {simulation.funded.length} <span className="text-xs font-normal text-gray-500">of {scoredRecommendations.length}</span>
               </span>
             </div>
-            <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded text-center">
+            <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded text-center">
               <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Budget Deployed</span>
-              <span className="font-mono font-black text-lg text-[#121316]">
+              <span className="font-mono font-bold text-lg text-[#0F172A]">
                 {formatLakh(simulation.allocatedCost)}
               </span>
             </div>
-            <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded text-center">
+            <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded text-center">
               <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Hospitals Secured</span>
-              <span className="font-mono font-black text-lg text-[#00F0FF] text-blue-900">
+              <span className="font-mono font-bold text-lg text-[#00F0FF] text-blue-900">
                 {simulation.hospitalRoutesFunded} Entries
               </span>
             </div>
-            <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded text-center">
+            <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded text-center">
               <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Accidents Mitigated</span>
-              <span className="font-mono font-black text-lg text-[#FF4757]">
+              <span className="font-mono font-bold text-lg text-[#FF4757]">
                 {simulation.accidentsCovered} Past Sites
               </span>
             </div>
@@ -225,7 +225,7 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
                 key={road.road_id}
                 className={`nb-card p-4 transition-all ${
                   isFunded 
-                    ? 'bg-white border-3 border-black shadow-nb' 
+                    ? 'bg-white border border-slate-200/90 shadow-nb' 
                     : 'bg-[#F9F9F9] border-2 border-gray-400 opacity-75'
                 }`}
               >
@@ -234,10 +234,10 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
                   <div className="flex items-start gap-3">
                     {/* Rank & H-ROI */}
                     <div className="flex flex-col items-center">
-                      <div className="w-10 h-10 rounded-md border-2 border-black bg-[#121316] text-[#FFE600] flex items-center justify-center font-mono font-black text-sm">
+                      <div className="w-10 h-10 rounded-md border border-slate-200/80 bg-[#0F172A] text-[#F59E0B] flex items-center justify-center font-mono font-bold text-sm">
                         #{idx + 1}
                       </div>
-                      <span className="text-[9px] font-mono font-black text-green-700 mt-1 bg-green-100 px-1 rounded border border-green-400">
+                      <span className="text-[9px] font-mono font-bold text-green-700 mt-1 bg-green-100 px-1 rounded border border-green-400">
                         H-ROI {road.hroi_score}
                       </span>
                     </div>
@@ -260,7 +260,7 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
                       </div>
 
                       {/* Human Return on Investment Impact Statement */}
-                      <div className="mt-2 text-xs text-gray-800 font-medium bg-[#FAF8F5] border border-gray-300 p-2 rounded">
+                      <div className="mt-2 text-xs text-gray-800 font-medium bg-[#F8FAFC] border border-gray-300 p-2 rounded">
                         <strong>Gates Foundation Human Impact:</strong> Investing {formatINR(road.estimated_cost_inr)} safeguards{' '}
                         {road.hospital_count > 0 && <span className="text-blue-900 font-bold">{road.hospital_count} Hospital Ambulance Gates, </span>}
                         {road.school_count > 0 && <span className="text-purple-900 font-bold">{road.school_count} Municipal Schools, </span>}
@@ -271,10 +271,10 @@ export default function NextRupeePlannerView({ recommendations, wards }) {
                   </div>
 
                   {/* Right: Method Recommendation & Cost */}
-                  <div className="lg:w-80 flex-shrink-0 bg-[#FFFDF0] border-2 border-black p-3 rounded-md text-xs space-y-1">
+                  <div className="lg:w-80 flex-shrink-0 bg-[#F8FAFC] border border-slate-200/80 p-3 rounded-md text-xs space-y-1">
                     <div className="flex justify-between items-center font-mono">
                       <span className="text-gray-500 font-bold uppercase text-[10px]">Recommended Method:</span>
-                      <span className="font-black text-sm text-[#121316]">{formatINR(road.estimated_cost_inr)}</span>
+                      <span className="font-bold text-sm text-[#0F172A]">{formatINR(road.estimated_cost_inr)}</span>
                     </div>
                     <div className="font-extrabold text-sm text-gray-900">
                       {road.recommended_method}

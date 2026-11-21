@@ -1,46 +1,45 @@
 import React from 'react';
-import { User, Shield, HardHat, AlertCircle, PhoneCall, Mail, FileCheck } from 'lucide-react';
+import { User, Shield, HardHat, Sparkles } from 'lucide-react';
 
 export default function RolePortalSwitcher({ activeRole, setActiveRole }) {
   const roles = [
     {
       id: 'citizen',
-      label: 'Public (Citizen)',
+      label: 'Citizen & Public',
       icon: User,
       badge: 'Public View',
-      color: 'bg-white text-black',
-      activeColor: 'bg-[#FFE600] text-black border-black',
-      desc: 'Scan Road Passports, inspect plain-language rupee trails, submit inquiries.'
+      activeClass: 'bg-white text-slate-900 shadow-sm border border-slate-200/80',
+      dotColor: 'bg-emerald-500'
     },
     {
       id: 'officer',
-      label: 'Government (Ward Officer)',
+      label: 'Ward Officer (BMC)',
       icon: Shield,
-      badge: 'Admin / Audit',
-      color: 'bg-white text-black',
-      activeColor: 'bg-[#00F0FF] text-black border-black',
-      desc: 'Audit flagged work orders, inspect contractor watchlist, trigger 3-tier escalation.'
+      badge: 'Admin Console',
+      activeClass: 'bg-white text-slate-900 shadow-sm border border-slate-200/80',
+      dotColor: 'bg-sky-500'
     },
     {
       id: 'contractor',
-      label: 'Private (Contractor)',
+      label: 'Empanelled Agency',
       icon: HardHat,
-      badge: 'Right of Response',
-      color: 'bg-white text-black',
-      activeColor: 'bg-[#FF8800] text-white border-black',
-      desc: 'View context-adjusted scorecards, submit weather/traffic delay counter-evidence.'
+      badge: 'Extranet',
+      activeClass: 'bg-white text-slate-900 shadow-sm border border-slate-200/80',
+      dotColor: 'bg-amber-500'
     }
   ];
 
   return (
-    <div className="bg-[#121316] border-b-2 border-black py-2 px-4 text-xs font-mono">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <span className="text-gray-400 font-bold uppercase text-[10px] tracking-wider flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-[#00E599] animate-pulse"></span>
-            Accountability Perspective:
+    <div className="bg-slate-900/95 backdrop-blur-md text-white py-1.5 px-4 text-xs border-b border-slate-800">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="flex items-center gap-2.5">
+          <span className="text-slate-400 font-semibold text-[11px] tracking-wide flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            Perspective:
           </span>
-          <div className="flex rounded-md border-2 border-black overflow-hidden bg-gray-800">
+
+          {/* Apple Segmented Control Pill Container */}
+          <div className="flex items-center bg-slate-800/80 p-0.5 rounded-xl border border-slate-700/60 shadow-inner">
             {roles.map((r) => {
               const Icon = r.icon;
               const isActive = activeRole === r.id;
@@ -48,10 +47,13 @@ export default function RolePortalSwitcher({ activeRole, setActiveRole }) {
                 <button
                   key={r.id}
                   onClick={() => setActiveRole(r.id)}
-                  className={`px-3 py-1 flex items-center gap-1.5 font-bold transition-all ${
-                    isActive ? r.activeColor : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                  className={`px-3 py-1 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-150 ${
+                    isActive
+                      ? r.activeClass
+                      : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
                   }`}
                 >
+                  <span className={`w-1.5 h-1.5 rounded-full ${r.dotColor} ${isActive ? 'opacity-100 ring-2 ring-slate-200/40' : 'opacity-40'}`}></span>
                   <Icon className="w-3.5 h-3.5" />
                   <span>{r.label}</span>
                 </button>
@@ -61,20 +63,26 @@ export default function RolePortalSwitcher({ activeRole, setActiveRole }) {
         </div>
 
         {/* Dynamic Context Banner based on Role */}
-        <div className="flex items-center gap-2 text-[11px] text-gray-300 font-bold">
+        <div className="flex items-center gap-2 text-[11px] text-slate-300 font-medium">
           {activeRole === 'citizen' && (
-            <span className="text-[#FFE600] flex items-center gap-1">
-              👁️ Complainant PII anonymized • Public transparency standard active
+            <span className="text-emerald-300 flex items-center gap-1.5">
+              <span>🔒 Citizen PII Anonymized</span>
+              <span className="text-slate-500">•</span>
+              <span>Public Civic Transparency Active</span>
             </span>
           )}
           {activeRole === 'officer' && (
-            <span className="text-[#00F0FF] flex items-center gap-1">
-              ⚖️ Municipal Escalation Ladder Active: L1 Ward JE → L2 Asst. Comm. → L3 Central Vigilance
+            <span className="text-sky-300 flex items-center gap-1.5">
+              <span>⚖️ Municipal Escalation Console</span>
+              <span className="text-slate-500">•</span>
+              <span>L1 JE → L2 Asst. Commissioner → L3 Central Vigilance</span>
             </span>
           )}
           {activeRole === 'contractor' && (
-            <span className="text-[#FF8800] flex items-center gap-1">
-              📋 Right-of-Response Enabled: Delay justifications linked to IMD rainfall logs
+            <span className="text-amber-300 flex items-center gap-1.5">
+              <span>📋 Empanelled Right-of-Response</span>
+              <span className="text-slate-500">•</span>
+              <span>IMD Weather Deluge Counter-Evidence Sync</span>
             </span>
           )}
         </div>

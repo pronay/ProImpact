@@ -18,14 +18,14 @@ export default function ContractorScorecardView({ contractors, onFilterAuditsByC
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="nb-card p-5 bg-[#FFE600] border-4 border-[#121316]">
+      <div className="nb-card p-5 bg-[#F59E0B] border border-slate-200/90">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
               <span className="nb-badge nb-badge-black text-xs">CIVIC ACCOUNTABILITY</span>
               <span className="nb-badge nb-badge-mint">TERRAIN-NORMALIZED FAIR AUDIT</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold uppercase mt-1">
               Contractor Performance Scorecards
             </h2>
             <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
@@ -50,7 +50,7 @@ export default function ContractorScorecardView({ contractors, onFilterAuditsByC
         </div>
 
         {/* Fairness Guarantee Notice */}
-        <div className="mt-4 bg-white/90 border-2 border-black p-3 rounded text-xs font-bold text-gray-800 flex items-start gap-2">
+        <div className="mt-4 bg-white/90 border border-slate-200/80 p-3 rounded text-xs font-bold text-gray-800 flex items-start gap-2">
           <ShieldCheck className="w-4 h-4 text-green-700 flex-shrink-0 mt-0.5" />
           <span>
             <strong>Fair Accountability Standard:</strong> Contractors working in chronic low-lying flood wards (e.g. F/N, F/S, G/N) receive an environmental stress correction factor. We do not punish contractors simply for operating in waterlogged terrain or taking on heavy job volume.
@@ -67,7 +67,7 @@ export default function ContractorScorecardView({ contractors, onFilterAuditsByC
           return (
             <div 
               key={c.contractor_id}
-              className="nb-card p-5 bg-white border-3 border-[#121316] shadow-nb flex flex-col justify-between relative overflow-hidden"
+              className="nb-card p-5 bg-white border border-slate-200/90 shadow-nb flex flex-col justify-between relative overflow-hidden"
             >
               {/* Top Row: Name, ID, Grade */}
               <div>
@@ -79,20 +79,20 @@ export default function ContractorScorecardView({ contractors, onFilterAuditsByC
                         Empanelled {c.empanelled_since}
                       </span>
                     </div>
-                    <h3 className="text-xl font-extrabold text-[#121316] mt-1">
+                    <h3 className="text-xl font-extrabold text-[#0F172A] mt-1">
                       {c.contractor_name}
                     </h3>
                   </div>
 
                   {/* Big Grade Badge */}
                   <div className="flex flex-col items-center">
-                    <div className={`w-14 h-14 rounded-lg border-3 border-black shadow-nb-sm flex flex-col items-center justify-center font-mono ${
+                    <div className={`w-14 h-14 rounded-lg border border-slate-200/90 shadow-nb-sm flex flex-col items-center justify-center font-mono ${
                       c.grade === 'A' ? 'bg-[#00E599] text-black' :
-                      c.grade === 'B+' ? 'bg-[#FFE600] text-black' :
+                      c.grade === 'B+' ? 'bg-[#F59E0B] text-black' :
                       c.grade === 'B' ? 'bg-[#00F0FF] text-black' :
                       c.grade === 'C' ? 'bg-[#FF8800] text-white' : 'bg-[#FF4757] text-white'
                     }`}>
-                      <span className="text-xl font-black leading-none">{c.grade}</span>
+                      <span className="text-xl font-bold leading-none">{c.grade}</span>
                       <span className="text-[9px] font-bold mt-0.5">{c.composite_score}/100</span>
                     </div>
                   </div>
@@ -101,34 +101,34 @@ export default function ContractorScorecardView({ contractors, onFilterAuditsByC
                 {/* 4 Performance Metric Meters */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 my-4">
                   {/* Total Billed */}
-                  <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded">
+                  <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded">
                     <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Total Billed</span>
-                    <span className="font-mono font-black text-sm text-gray-900">{formatCr(c.total_billed_inr)}</span>
+                    <span className="font-mono font-bold text-sm text-gray-900">{formatCr(c.total_billed_inr)}</span>
                     <span className="text-[10px] text-gray-500 block">{c.jobs_count} Jobs</span>
                   </div>
 
                   {/* SLA Speed */}
-                  <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded">
+                  <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded">
                     <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">SLA Met</span>
-                    <span className={`font-mono font-black text-sm ${c.sla_compliance_pct >= 55 ? 'text-green-700' : 'text-[#FF4757]'}`}>
+                    <span className={`font-mono font-bold text-sm ${c.sla_compliance_pct >= 55 ? 'text-green-700' : 'text-[#FF4757]'}`}>
                       {c.sla_compliance_pct}%
                     </span>
                     <span className="text-[10px] text-gray-500 block">Turnaround</span>
                   </div>
 
                   {/* Durability / Failure Rate */}
-                  <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded">
+                  <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded">
                     <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">30d Failure</span>
-                    <span className={`font-mono font-black text-sm ${c.reopen_rate_pct > 25 ? 'text-[#FF4757]' : 'text-green-700'}`}>
+                    <span className={`font-mono font-bold text-sm ${c.reopen_rate_pct > 25 ? 'text-[#FF4757]' : 'text-green-700'}`}>
                       {c.reopen_rate_pct}%
                     </span>
                     <span className="text-[10px] text-gray-500 block">Relapse</span>
                   </div>
 
                   {/* Terrain Factor */}
-                  <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded">
+                  <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded">
                     <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Terrain Stress</span>
-                    <span className="font-mono font-black text-sm text-gray-900">
+                    <span className="font-mono font-bold text-sm text-gray-900">
                       {(c.avg_terrain_difficulty * 100).toFixed(0)}%
                     </span>
                     <span className="text-[10px] text-gray-500 block">Flood Index</span>
@@ -150,7 +150,7 @@ export default function ContractorScorecardView({ contractors, onFilterAuditsByC
                 </div>
 
                 {/* Plain-Language Citizen Scorecard */}
-                <div className="bg-[#FFFDF0] border-2 border-[#121316] p-3 rounded-md text-xs">
+                <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded-md text-xs">
                   <div className="flex items-center gap-1.5 font-mono font-extrabold text-[10px] uppercase text-gray-600 mb-1">
                     <Award className="w-3.5 h-3.5 text-[#FF8800]" />
                     <span>Plain-Language Audit Verdict (Citizen & Corporator)</span>
@@ -182,7 +182,7 @@ export default function ContractorScorecardView({ contractors, onFilterAuditsByC
 
                 <button
                   onClick={() => onFilterAuditsByContractor && onFilterAuditsByContractor(c.contractor_id)}
-                  className="nb-btn nb-btn-white text-xs py-1 px-3 hover:bg-[#FFE600] flex items-center gap-1"
+                  className="nb-btn nb-btn-white text-xs py-1 px-3 hover:bg-[#F59E0B] flex items-center gap-1"
                 >
                   <span>View All Jobs</span>
                   <ExternalLink className="w-3.5 h-3.5" />

@@ -68,14 +68,14 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
   return (
     <div className="space-y-6">
       {/* Top Audit Banner */}
-      <div className="nb-card p-5 bg-[#FFE600] border-4 border-[#121316]">
+      <div className="nb-card p-5 bg-[#F59E0B] border border-slate-200/90">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
               <span className="nb-badge nb-badge-black text-xs">FORENSIC ENGINE</span>
               <span className="nb-badge nb-badge-coral">AUTOMATED SLA & RATE AUDIT</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold uppercase mt-1">
               Monsoon Repair Auditor
             </h2>
             <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
@@ -85,17 +85,17 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
 
           {/* Quick Counter Chips */}
           <div className="flex flex-wrap gap-2">
-            <div className="bg-white border-2 border-black px-3 py-1.5 rounded shadow-nb-sm">
+            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded shadow-nb-sm">
               <span className="text-[10px] font-mono font-bold uppercase text-gray-600 block">DLP Road Breaches</span>
-              <span className="font-mono font-black text-base text-[#FF4757]">{flagCounts.dlp} Jobs</span>
+              <span className="font-mono font-bold text-base text-[#FF4757]">{flagCounts.dlp} Jobs</span>
             </div>
-            <div className="bg-white border-2 border-black px-3 py-1.5 rounded shadow-nb-sm">
+            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded shadow-nb-sm">
               <span className="text-[10px] font-mono font-bold uppercase text-gray-600 block">Rate Card Overcharges</span>
-              <span className="font-mono font-black text-base text-[#FF8800]">{flagCounts.overcharge} Jobs</span>
+              <span className="font-mono font-bold text-base text-[#FF8800]">{flagCounts.overcharge} Jobs</span>
             </div>
-            <div className="bg-white border-2 border-black px-3 py-1.5 rounded shadow-nb-sm">
+            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded shadow-nb-sm">
               <span className="text-[10px] font-mono font-bold uppercase text-gray-600 block">Failed in &lt;30 Days</span>
-              <span className="font-mono font-black text-base text-[#121316]">{flagCounts.failed} Jobs</span>
+              <span className="font-mono font-bold text-base text-[#0F172A]">{flagCounts.failed} Jobs</span>
             </div>
           </div>
         </div>
@@ -209,7 +209,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="bg-[#121316] text-white font-mono uppercase font-extrabold text-[11px]">
+              <tr className="bg-[#0F172A] text-white font-mono uppercase font-extrabold text-[11px]">
                 <th className="p-3 border-r border-gray-700">Order ID</th>
                 <th className="p-3 border-r border-gray-700">Ward & Road</th>
                 <th className="p-3 border-r border-gray-700">Method & Area</th>
@@ -235,7 +235,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
                   return (
                     <tr 
                       key={wo.work_order_id}
-                      className={`hover:bg-[#FFFDF0] transition-colors cursor-pointer ${
+                      className={`hover:bg-[#F8FAFC] transition-colors cursor-pointer ${
                         hasCritical ? 'bg-[#FFF5F6]' : ''
                       }`}
                       onClick={() => onInspectWorkOrder(wo)}
@@ -243,7 +243,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
                       {/* ID */}
                       <td className="p-3 border-r border-gray-200 font-mono font-bold whitespace-nowrap">
                         <div className="flex items-center gap-1.5">
-                          <span className="text-[#121316]">{wo.work_order_id}</span>
+                          <span className="text-[#0F172A]">{wo.work_order_id}</span>
                           {wo.under_dlp === 'Y' && (
                             <span className="nb-badge nb-badge-coral text-[9px] px-1 py-0">DLP</span>
                           )}
@@ -274,7 +274,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
 
                       {/* Billed / Expected Rate */}
                       <td className="p-3 border-r border-gray-200 text-right whitespace-nowrap">
-                        <div className="font-mono font-black text-gray-900">{formatINR(wo.cost_inr)}</div>
+                        <div className="font-mono font-bold text-gray-900">{formatINR(wo.cost_inr)}</div>
                         <div className="text-[10px] font-mono text-gray-500">
                           std: {formatINR(wo.expected_cost)}
                           {wo.variance_pct > 20 && (
@@ -330,7 +330,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
 
                           <button
                             onClick={(e) => { e.stopPropagation(); onInspectWorkOrder(wo); }}
-                            className="nb-btn nb-btn-white text-[10px] font-mono py-1 px-2 hover:bg-[#FFE600]"
+                            className="nb-btn nb-btn-white text-[10px] font-mono py-1 px-2 hover:bg-[#F59E0B]"
                           >
                             Dossier
                           </button>
@@ -345,7 +345,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
         </div>
 
         {/* Pagination */}
-        <div className="p-3 bg-[#F8F5EE] border-t-2 border-[#121316] flex items-center justify-between">
+        <div className="p-3 bg-[#F8F5EE] border-t-2 border-[#0F172A] flex items-center justify-between">
           <div className="text-xs font-mono font-bold text-gray-600">
             Page {currentPage} of {totalPages}
           </div>

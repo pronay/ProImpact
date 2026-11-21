@@ -76,14 +76,14 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
       const wardsLayer = L.geoJSON(geojson.wards, {
         style: (feature) => {
           const props = feature.properties;
-          let fillColor = '#FFE600';
+          let fillColor = '#F59E0B';
           let fillOpacity = 0.25;
 
           if (wardMetric === 'wasted') {
             const wasted = props.wasted_spend_inr || 0;
             if (wasted > 2000000) { fillColor = '#FF4757'; fillOpacity = 0.45; }
             else if (wasted > 1000000) { fillColor = '#FF8800'; fillOpacity = 0.35; }
-            else { fillColor = '#FFE600'; fillOpacity = 0.2; }
+            else { fillColor = '#F59E0B'; fillOpacity = 0.2; }
           } else if (wardMetric === 'low_lying') {
             const index = props.low_lying_index || 0;
             if (index > 0.75) { fillColor = '#FF4757'; fillOpacity = 0.5; }
@@ -96,7 +96,7 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
           }
 
           return {
-            color: '#121316',
+            color: '#0F172A',
             weight: 2,
             fillColor: fillColor,
             fillOpacity: fillOpacity,
@@ -127,7 +127,7 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
       const roadsLayer = L.geoJSON(geojson.roads, {
         style: (feature) => {
           const props = feature.properties;
-          let strokeColor = '#121316';
+          let strokeColor = '#0F172A';
           let weight = 3.5;
 
           if (props.under_dlp === 'Y') {
@@ -153,7 +153,7 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
         onEachFeature: (feature, layer) => {
           layer.on({
             mouseover: () => {
-              layer.setStyle({ weight: 7, color: '#FFE600' });
+              layer.setStyle({ weight: 7, color: '#F59E0B' });
             },
             mouseout: () => {
               roadsLayer.resetStyle(layer);
@@ -176,7 +176,7 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
         const marker = L.circleMarker([h.lat, h.lon], {
           radius: 9,
           fillColor: '#00F0FF',
-          color: '#121316',
+          color: '#0F172A',
           weight: 2.5,
           opacity: 1,
           fillOpacity: 0.85
@@ -244,19 +244,19 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
 
   return (
     <div className="space-y-4">
-      {/* Top Map Control HUD */}
-      <div className="nb-card p-4 bg-[#FFE600] border-4 border-[#121316]">
+      {/* Top Map Control HUD (Cupertino Style) */}
+      <div className="bg-gradient-to-br from-white/95 via-sky-50/30 to-white/95 backdrop-blur-xl border border-slate-200/80 p-5 rounded-2xl shadow-sm space-y-3">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="nb-badge nb-badge-black text-xs">CYBER-NEOBRUTAL GIS</span>
-              <span className="nb-badge nb-badge-coral">GEOSPATIAL ANOMALY RADAR</span>
+              <span className="nb-badge nb-badge-cyan text-xs">CIVIC GIS COMMAND</span>
+              <span className="nb-badge nb-badge-coral text-xs">GEOSPATIAL ANOMALY RADAR</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mt-1">
-              Mumbai Civic GIS Command Center
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 font-display mt-1">
+              Mumbai Infrastructure & Lifeline GIS Radar
             </h2>
-            <p className="text-xs font-bold text-gray-900 mt-0.5">
-              Geospatial correlation of 24 ward polygons, 291 road segments, chronic flood lock-points, and emergency hospital lifelines.
+            <p className="text-xs text-slate-600 font-medium mt-0.5">
+              Geospatial correlation of 24 ward polygons, 291 road segments, chronic flood lock-points, and emergency hospital gates.
             </p>
           </div>
 
@@ -264,31 +264,41 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setShowWards(!showWards)}
-              className={`nb-btn text-xs py-1 px-2.5 font-mono ${showWards ? 'bg-black text-white' : 'bg-white text-black'}`}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5 ${
+                showWards ? 'bg-slate-900 text-white' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
+              }`}
             >
               🏛️ Wards Polygons
             </button>
             <button
               onClick={() => setShowRoads(!showRoads)}
-              className={`nb-btn text-xs py-1 px-2.5 font-mono ${showRoads ? 'bg-black text-white' : 'bg-white text-black'}`}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5 ${
+                showRoads ? 'bg-slate-900 text-white' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
+              }`}
             >
               🛣️ Road Arterials ({roads.length})
             </button>
             <button
               onClick={() => setShowHotspots(!showHotspots)}
-              className={`nb-btn text-xs py-1 px-2.5 font-mono ${showHotspots ? 'bg-[#00F0FF] text-black' : 'bg-white text-black'}`}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5 ${
+                showHotspots ? 'bg-sky-600 text-white' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
+              }`}
             >
               🌊 Flood Hotspots (28)
             </button>
             <button
               onClick={() => setShowHospitals(!showHospitals)}
-              className={`nb-btn text-xs py-1 px-2.5 font-mono ${showHospitals ? 'bg-[#FF4757] text-white' : 'bg-white text-black'}`}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5 ${
+                showHospitals ? 'bg-rose-600 text-white' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
+              }`}
             >
               🏥 Hospitals (160)
             </button>
             <button
               onClick={() => setShowAccidents(!showAccidents)}
-              className={`nb-btn text-xs py-1 px-2.5 font-mono ${showAccidents ? 'bg-[#FF8800] text-black' : 'bg-white text-black'}`}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5 ${
+                showAccidents ? 'bg-amber-600 text-white' : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50'
+              }`}
             >
               ⚠️ Accidents
             </button>
@@ -296,9 +306,9 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
         </div>
 
         {/* Heatmap Metric Selector */}
-        <div className="mt-3 pt-3 border-t-2 border-black flex flex-wrap items-center justify-between text-xs font-mono font-bold">
+        <div className="mt-2 pt-3 border-t border-slate-200/80 flex flex-wrap items-center justify-between text-xs font-mono">
           <div className="flex items-center gap-2">
-            <span>Ward Polygon Heatmap Metric:</span>
+            <span className="font-semibold text-slate-500">Ward Heatmap Metric:</span>
             {[
               { id: 'wasted', label: 'Wasted Spend (₹)' },
               { id: 'low_lying', label: 'Flood-Prone Index' },
@@ -307,17 +317,19 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
               <button
                 key={m.id}
                 onClick={() => setWardMetric(m.id)}
-                className={`nb-badge text-[11px] cursor-pointer ${wardMetric === m.id ? 'nb-badge-black text-white' : 'nb-badge-gray hover:bg-white'}`}
+                className={`px-2.5 py-0.5 rounded-full text-xs font-semibold transition-all ${
+                  wardMetric === m.id ? 'bg-slate-900 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
               >
                 {m.label}
               </button>
             ))}
           </div>
 
-          <div className="flex items-center gap-3 text-[11px]">
-            <span className="flex items-center gap-1"><span className="w-3 h-3 bg-[#FF4757] border border-black inline-block"></span> DLP Breach / High Risk</span>
-            <span className="flex items-center gap-1"><span className="w-3 h-3 bg-[#FF8800] border border-black inline-block"></span> Repeat Repair</span>
-            <span className="flex items-center gap-1"><span className="w-3 h-3 bg-[#059669] border border-black inline-block"></span> Resurfaced</span>
+          <div className="flex items-center gap-3 text-[11px] font-sans">
+            <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span> DLP Breach / High Risk</span>
+            <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Repeat Repair</span>
+            <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Resurfaced</span>
           </div>
         </div>
       </div>
@@ -325,34 +337,34 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
       {/* Main Map Canvas & Side Inspector Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         {/* Map Container */}
-        <div className="lg:col-span-8 nb-card overflow-hidden border-4 border-[#121316] relative bg-gray-100 shadow-nb-lg h-[620px]">
+        <div className="lg:col-span-8 backdrop-blur-xl bg-white/80 border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm relative h-[620px]">
           <div ref={mapContainerRef} className="w-full h-full z-10" />
 
           {/* Quick HUD Telemetry Box overlay */}
-          <div className="absolute bottom-4 left-4 z-20 bg-white/95 border-3 border-black p-3 rounded-md shadow-nb-md max-w-xs text-xs font-mono">
-            <div className="flex items-center justify-between mb-1">
-              <span className="font-extrabold uppercase text-[10px] text-gray-600">GIS Telemetry</span>
+          <div className="absolute bottom-4 left-4 z-20 backdrop-blur-xl bg-white/90 border border-slate-200/80 p-3.5 rounded-xl shadow-lg max-w-xs text-xs font-mono">
+            <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-200/60">
+              <span className="font-bold uppercase text-[10px] text-slate-500">GIS Telemetry</span>
               <span className="nb-badge nb-badge-mint text-[9px]">LIVE VECTOR</span>
             </div>
             <div className="space-y-1">
               <div className="flex justify-between">
-                <span>Active Road Assets:</span>
-                <strong className="text-black">{roads.length} Segments</strong>
+                <span className="text-slate-600">Active Road Assets:</span>
+                <strong className="text-slate-900">{roads.length} Segments</strong>
               </div>
               <div className="flex justify-between">
-                <span>DLP Warranty Breaches:</span>
-                <strong className="text-[#FF4757]">{roads.filter(r => r.under_dlp === 'Y').length} Roads</strong>
+                <span className="text-slate-600">DLP Warranty Breaches:</span>
+                <strong className="text-rose-600">{roads.filter(r => r.under_dlp === 'Y').length} Roads</strong>
               </div>
               <div className="flex justify-between">
-                <span>Hospital Lifelines:</span>
-                <strong className="text-blue-900">{facilities.filter(f => f.type === 'Hospital').length} Gates</strong>
+                <span className="text-slate-600">Hospital Lifelines:</span>
+                <strong className="text-sky-700">{facilities.filter(f => f.type === 'Hospital').length} Gates</strong>
               </div>
             </div>
           </div>
         </div>
 
         {/* Selected Feature Inspector Panel */}
-        <div className="lg:col-span-4 nb-card p-4 bg-white border-4 border-[#121316] shadow-nb-lg flex flex-col justify-between h-[620px] overflow-y-auto">
+        <div className="lg:col-span-4 backdrop-blur-xl bg-white/85 border border-slate-200/80 rounded-2xl p-5 shadow-sm flex flex-col justify-between h-[620px] overflow-y-auto">
           {selectedFeature ? (
             <div className="space-y-4">
               {/* Type Badge */}
@@ -377,7 +389,7 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
                 <div className="space-y-3">
                   <div>
                     <span className="font-mono text-xs font-bold text-gray-500">{selectedFeature.data.road_id} • Ward {selectedFeature.data.ward_code}</span>
-                    <h3 className="text-xl font-black uppercase text-gray-900 mt-0.5">
+                    <h3 className="text-xl font-bold uppercase text-gray-900 mt-0.5">
                       {selectedFeature.data.road_name}
                     </h3>
                   </div>
@@ -389,25 +401,25 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
                   )}
 
                   <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded">
+                    <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded">
                       <span className="text-[10px] text-gray-500 font-mono block">Total Spent</span>
                       <strong className="font-mono text-sm text-black">{formatINR(selectedFeature.data.total_spent_inr)}</strong>
                     </div>
-                    <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded">
+                    <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded">
                       <span className="text-[10px] text-gray-500 font-mono block">Rework Drain</span>
                       <strong className="font-mono text-sm text-[#FF4757]">{formatINR(selectedFeature.data.direct_rework_spend_inr)}</strong>
                     </div>
-                    <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded">
+                    <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded">
                       <span className="text-[10px] text-gray-500 font-mono block">Repair Count</span>
                       <strong className="font-mono text-sm text-black">{selectedFeature.data.total_repairs_count} Jobs</strong>
                     </div>
-                    <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded">
+                    <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded">
                       <span className="text-[10px] text-gray-500 font-mono block">Durability Proxy</span>
                       <strong className="font-mono text-sm text-blue-900">{selectedFeature.data.durability_proxy_days} Days</strong>
                     </div>
                   </div>
 
-                  <div className="border-2 border-black p-3 rounded bg-[#FFFDF0] text-xs space-y-1">
+                  <div className="border border-slate-200/80 p-3 rounded bg-[#F8FAFC] text-xs space-y-1">
                     <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Engineering Recommendation</span>
                     <strong className="font-extrabold text-sm block text-black">{selectedFeature.data.recommended_method}</strong>
                     <p className="text-gray-700 leading-relaxed font-medium">"{selectedFeature.data.recommendation_reason}"</p>
@@ -428,18 +440,18 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
                 <div className="space-y-3">
                   <div>
                     <span className="font-mono text-xs font-bold text-gray-500">Zone {selectedFeature.data.zone || '1'}</span>
-                    <h3 className="text-2xl font-black uppercase text-gray-900 mt-0.5">
+                    <h3 className="text-2xl font-bold uppercase text-gray-900 mt-0.5">
                       Ward {selectedFeature.data.ward_code}
                     </h3>
                     <p className="text-xs text-gray-700 font-bold">{selectedFeature.data.ward_name}</p>
                   </div>
 
                   <div className="space-y-2 text-xs">
-                    <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded flex justify-between">
+                    <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded flex justify-between">
                       <span className="text-gray-600 font-bold">Monsoon Budget:</span>
                       <strong className="font-mono">{formatLakh(selectedFeature.data.budget_inr)}</strong>
                     </div>
-                    <div className="bg-[#FAF8F5] border-2 border-black p-2 rounded flex justify-between">
+                    <div className="bg-[#F8FAFC] border border-slate-200/80 p-2 rounded flex justify-between">
                       <span className="text-gray-600 font-bold">Actual Spend:</span>
                       <strong className="font-mono">{formatLakh(selectedFeature.data.total_spend_inr)}</strong>
                     </div>
@@ -447,7 +459,7 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
                       <span className="font-bold">Wasted on Relapses:</span>
                       <strong className="font-mono">{formatLakh(selectedFeature.data.wasted_spend_inr)}</strong>
                     </div>
-                    <div className="bg-white border-2 border-black p-2 rounded flex justify-between">
+                    <div className="bg-white border border-slate-200/80 p-2 rounded flex justify-between">
                       <span className="text-gray-600 font-bold">Flood Prone Index:</span>
                       <strong className="font-mono">{((selectedFeature.data.low_lying_index || 0) * 100).toFixed(0)}%</strong>
                     </div>
@@ -460,13 +472,13 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
                 <div className="space-y-3">
                   <div>
                     <span className="nb-badge nb-badge-coral text-[10px]">CHRONIC FLOOD SPOT</span>
-                    <h3 className="text-lg font-black uppercase text-gray-900 mt-1">
+                    <h3 className="text-lg font-bold uppercase text-gray-900 mt-1">
                       {selectedFeature.data.name}
                     </h3>
                     <span className="text-xs font-mono font-bold text-gray-600">Ward {selectedFeature.data.ward_code}</span>
                   </div>
 
-                  <div className="bg-[#FAF8F5] border-2 border-black p-3 rounded text-xs space-y-2">
+                  <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded text-xs space-y-2">
                     <div className="flex justify-between">
                       <span className="text-gray-600 font-bold">Flood Threshold Rain:</span>
                       <strong className="font-mono">{selectedFeature.data.flood_threshold_mm_per_day} mm/day</strong>
@@ -492,7 +504,7 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
                 <div className="space-y-3">
                   <div>
                     <span className="nb-badge nb-badge-coral text-[10px]">CRITICAL EMERGENCY LIFELINE</span>
-                    <h3 className="text-lg font-black uppercase text-gray-900 mt-1">
+                    <h3 className="text-lg font-bold uppercase text-gray-900 mt-1">
                       {selectedFeature.data.name}
                     </h3>
                     <span className="text-xs font-mono font-bold text-gray-600">Ward {selectedFeature.data.ward_code} • {selectedFeature.data.beds_or_students} Beds</span>
@@ -513,7 +525,7 @@ export default function FuturisticMapView({ geojson, wards, roads, floodHotspots
             </div>
           ) : (
             <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-3 text-gray-500">
-              <MapPin className="w-12 h-12 text-[#121316] stroke-1" />
+              <MapPin className="w-12 h-12 text-[#0F172A] stroke-1" />
               <div>
                 <h4 className="font-extrabold text-sm uppercase text-gray-800">No Asset Selected</h4>
                 <p className="text-xs font-bold text-gray-600 mt-1 max-w-xs">

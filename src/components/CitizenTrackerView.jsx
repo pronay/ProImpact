@@ -46,14 +46,14 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="nb-card p-5 bg-[#FFE600] border-4 border-[#121316]">
+      <div className="nb-card p-5 bg-[#F59E0B] border border-slate-200/90">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
               <span className="nb-badge nb-badge-black text-xs">CITIZEN FIRST</span>
               <span className="nb-badge nb-badge-cyan">MULTILINGUAL RESOLUTION ENGINE</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold uppercase mt-1">
               Citizen Complaint & Repair Tracker
             </h2>
             <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
@@ -61,9 +61,9 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
             </p>
           </div>
 
-          <div className="bg-white border-2 border-black px-3 py-1.5 rounded shadow-nb-sm text-center">
+          <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded shadow-nb-sm text-center">
             <span className="text-[10px] font-mono font-bold uppercase text-gray-600 block">Sample Batch</span>
-            <span className="font-mono font-black text-base text-[#121316]">200 Monsoon Peak Logs</span>
+            <span className="font-mono font-bold text-base text-[#0F172A]">200 Monsoon Peak Logs</span>
           </div>
         </div>
       </div>
@@ -126,7 +126,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
               className={`nb-badge text-[11px] cursor-pointer transition-all ${
                 selectedLanguage === l.id 
                   ? 'nb-badge-black text-white' 
-                  : 'nb-badge-gray hover:bg-[#FFE600]'
+                  : 'nb-badge-gray hover:bg-[#F59E0B]'
               }`}
             >
               {l.label}
@@ -150,7 +150,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
           paginatedComplaints.map((c) => (
             <div 
               key={c.complaint_id}
-              className="nb-card p-4 sm:p-5 bg-white border-3 border-black shadow-nb hover:shadow-nb-lg transition-all"
+              className="nb-card p-4 sm:p-5 bg-white border border-slate-200/90 shadow-nb hover:shadow-nb-lg transition-all"
             >
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
                 {/* Left: Citizen Issue */}
@@ -170,11 +170,11 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
                   </div>
 
                   {/* Citizen Text */}
-                  <div className="bg-[#FAF8F5] border-2 border-black p-3 rounded-md">
+                  <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded-md">
                     <div className="text-xs font-bold text-gray-500 uppercase font-mono mb-1">
                       Reported Issue: <span className="text-black">{c.category_reported}</span> • Locality: <span className="text-black">{c.locality_text}</span>
                     </div>
-                    <p className="text-sm font-extrabold text-[#121316] leading-relaxed">
+                    <p className="text-sm font-extrabold text-[#0F172A] leading-relaxed">
                       "{c.description}"
                     </p>
                   </div>
@@ -191,7 +191,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
                 </div>
 
                 {/* Right: The Rupee Trail (Linked Work Order) */}
-                <div className="lg:w-80 flex-shrink-0 bg-[#FFFDF0] border-2 border-black p-3.5 rounded-md text-xs space-y-2">
+                <div className="lg:w-80 flex-shrink-0 bg-[#F8FAFC] border border-slate-200/80 p-3.5 rounded-md text-xs space-y-2">
                   <div className="flex items-center justify-between border-b border-gray-300 pb-1">
                     <span className="font-extrabold uppercase font-mono text-[10px] text-gray-600">The Rupee Trail</span>
                     <span className={`nb-badge text-[10px] ${
@@ -206,7 +206,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
                       <div className="space-y-1">
                         <div className="flex justify-between">
                           <span className="text-gray-600 font-bold">Linked Work Order:</span>
-                          <span className="font-mono font-black text-black">{c.linked_work_order_id}</span>
+                          <span className="font-mono font-bold text-black">{c.linked_work_order_id}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600 font-bold">Contractor:</span>
@@ -214,7 +214,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600 font-bold">Repair Cost:</span>
-                          <span className="font-mono font-black text-black">{formatINR(c.cost_inr)}</span>
+                          <span className="font-mono font-bold text-black">{formatINR(c.cost_inr)}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600 font-bold">SLA Turnaround:</span>
@@ -232,7 +232,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
 
                       <button
                         onClick={() => onInspectWorkOrderById(c.linked_work_order_id)}
-                        className="nb-btn nb-btn-white w-full text-xs py-1.5 mt-2 hover:bg-[#FFE600] flex items-center justify-center gap-1 font-bold"
+                        className="nb-btn nb-btn-white w-full text-xs py-1.5 mt-2 hover:bg-[#F59E0B] flex items-center justify-center gap-1 font-bold"
                       >
                         <span>Audit Work Order</span>
                         <ArrowRight className="w-3.5 h-3.5" />

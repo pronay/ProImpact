@@ -25,7 +25,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3">
           <div>
             <h2 className="text-xl font-extrabold uppercase font-mono tracking-tight flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-[#FFE600] fill-black" />
+              <Building2 className="w-5 h-5 text-[#F59E0B] fill-black" />
               Ward Money Trail Explorer
             </h2>
             <p className="text-xs font-bold text-gray-600">
@@ -45,7 +45,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
                 className={`nb-badge text-[11px] cursor-pointer transition-all ${
                   selectedZone === z 
                     ? 'nb-badge-black text-white' 
-                    : 'nb-badge-gray hover:bg-[#FFE600]'
+                    : 'nb-badge-gray hover:bg-[#F59E0B]'
                 }`}
               >
                 {z}
@@ -66,12 +66,12 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
                 onClick={() => setSelectedWardCode(w.ward_code)}
                 className={`p-2 rounded border-2 text-left transition-all relative ${
                   isSelected
-                    ? 'bg-[#FFE600] border-[#121316] shadow-nb-sm -translate-y-1'
+                    ? 'bg-[#F59E0B] border-[#0F172A] shadow-nb-sm -translate-y-1'
                     : 'bg-[#F8F5EE] border-gray-400 hover:border-black hover:bg-white'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono font-black text-base leading-none">{w.ward_code}</span>
+                  <span className="font-mono font-bold text-base leading-none">{w.ward_code}</span>
                   {hasHighWaste && (
                     <span className="w-2 h-2 rounded-full bg-[#FF4757]" title="High 30-day failure rate" />
                   )}
@@ -89,8 +89,8 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
       </div>
 
       {/* Selected Ward Profile Header */}
-      <div className="nb-card p-5 bg-[#FFFDF7] border-4 border-[#121316]">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b-2 border-[#121316]">
+      <div className="nb-card p-5 bg-[#FFFDF7] border border-slate-200/90">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b-2 border-[#0F172A]">
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <span className="nb-badge nb-badge-black text-sm px-2 py-0.5">WARD {selectedWard.ward_code}</span>
@@ -99,7 +99,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
                 {selectedWard.assistant_commissioner_office}
               </span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black uppercase mt-1">
+            <h3 className="text-2xl sm:text-3xl font-bold uppercase mt-1">
               {selectedWard.ward_name}
             </h3>
             <p className="text-xs font-bold text-gray-600 mt-0.5">
@@ -109,17 +109,17 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
 
           {/* Terrain & Vulnerability Badges */}
           <div className="flex flex-wrap items-center gap-2">
-            <div className="bg-white border-2 border-[#121316] px-3 py-1.5 rounded text-center">
+            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded text-center">
               <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Flood Prone Index</span>
               <span className={`font-mono font-extrabold text-sm ${selectedWard.low_lying_index > 0.6 ? 'text-[#FF4757]' : 'text-gray-800'}`}>
                 {(selectedWard.low_lying_index * 100).toFixed(0)}% Vulnerable
               </span>
             </div>
-            <div className="bg-white border-2 border-[#121316] px-3 py-1.5 rounded text-center">
+            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded text-center">
               <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Hotspots</span>
               <span className="font-mono font-extrabold text-sm text-gray-800">{selectedWard.chronic_hotspots_count} Chronic</span>
             </div>
-            <div className="bg-white border-2 border-[#121316] px-3 py-1.5 rounded text-center">
+            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded text-center">
               <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Crews / Day</span>
               <span className="font-mono font-extrabold text-sm text-gray-800">{selectedWard.engineering_crews} Teams</span>
             </div>
@@ -134,12 +134,12 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
               <span className="text-xs font-bold uppercase font-mono text-gray-600">Monsoon Budget</span>
               <span className="nb-badge nb-badge-gray">{selectedWard.utilization_pct}% Used</span>
             </div>
-            <div className="text-2xl font-black font-mono">{formatLakh(selectedWard.budget_inr)}</div>
+            <div className="text-2xl font-bold font-mono">{formatLakh(selectedWard.budget_inr)}</div>
             <div className="text-xs font-bold text-gray-600 mt-1">
               Spent: <span className="font-mono font-extrabold text-black">{formatLakh(selectedWard.total_spend_inr)}</span>
             </div>
             {/* Progress bar */}
-            <div className="w-full bg-gray-200 h-3 border-2 border-black rounded-full overflow-hidden mt-3">
+            <div className="w-full bg-gray-200 h-3 border border-slate-200/80 rounded-full overflow-hidden mt-3">
               <div 
                 className={`h-full ${selectedWard.utilization_pct > 100 ? 'bg-[#FF4757]' : 'bg-[#00E599]'}`}
                 style={{ width: `${Math.min(100, selectedWard.utilization_pct)}%` }}
@@ -159,7 +159,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
               </span>
               <span className="nb-badge nb-badge-coral">{selectedWard.failure_rate_pct}% Failed</span>
             </div>
-            <div className="text-2xl font-black font-mono text-[#FF4757]">
+            <div className="text-2xl font-bold font-mono text-[#FF4757]">
               {formatLakh(selectedWard.wasted_spend_inr)}
             </div>
             <div className="text-xs font-bold text-gray-700 mt-1">
@@ -178,7 +178,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
               </span>
               <span className="nb-badge nb-badge-orange">Warranty</span>
             </div>
-            <div className="text-2xl font-black font-mono text-[#FF8800]">
+            <div className="text-2xl font-bold font-mono text-[#FF8800]">
               {formatLakh(selectedWard.dlp_violation_spend_inr)}
             </div>
             <div className="text-xs font-bold text-gray-600 mt-1">
@@ -197,7 +197,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
                 {selectedWard.sla_compliance_pct}% Met
               </span>
             </div>
-            <div className="text-2xl font-black font-mono text-gray-900">
+            <div className="text-2xl font-bold font-mono text-gray-900">
               {selectedWard.total_work_orders}
             </div>
             <div className="text-xs font-bold text-gray-600 mt-1">
@@ -211,12 +211,12 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
         </div>
 
         {/* AI Plain-Language Audit Verdict */}
-        <div className="mt-5 bg-[#FFE600] border-3 border-[#121316] p-4 rounded-md shadow-nb-sm">
+        <div className="mt-5 bg-[#F59E0B] border border-slate-200/90 p-4 rounded-md shadow-nb-sm">
           <div className="flex items-center gap-2 mb-1.5">
             <span className="nb-badge nb-badge-black text-[10px]">CLAUDE CIVIC AUDIT VERDICT</span>
             <span className="text-xs font-extrabold uppercase tracking-wide">PLAIN-LANGUAGE EXECUTIVE BRIEF</span>
           </div>
-          <p className="text-sm font-bold text-[#121316] leading-relaxed">
+          <p className="text-sm font-bold text-[#0F172A] leading-relaxed">
             "{selectedWard.audit_verdict}"
           </p>
         </div>
@@ -246,7 +246,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
             {selectedWard.spend_by_method.map((item, idx) => {
               const pct = ((item.amount / selectedWard.total_spend_inr) * 100).toFixed(1);
               return (
-                <div key={idx} className="border-2 border-black p-2.5 rounded bg-[#FAF8F5]">
+                <div key={idx} className="border border-slate-200/80 p-2.5 rounded bg-[#F8FAFC]">
                   <div className="flex justify-between text-xs font-bold mb-1">
                     <span className="truncate pr-2">{item.method}</span>
                     <span className="font-mono text-right">{formatLakh(item.amount)} ({pct}%)</span>
@@ -277,14 +277,14 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
             {selectedWard.spend_by_contractor.map((item, idx) => {
               const pct = ((item.amount / selectedWard.total_spend_inr) * 100).toFixed(1);
               return (
-                <div key={idx} className="border-2 border-black p-2.5 rounded bg-[#FAF8F5]">
+                <div key={idx} className="border border-slate-200/80 p-2.5 rounded bg-[#F8FAFC]">
                   <div className="flex justify-between text-xs font-bold mb-1">
                     <span className="truncate pr-2">{item.contractor}</span>
                     <span className="font-mono text-right">{formatLakh(item.amount)} ({pct}%)</span>
                   </div>
                   <div className="w-full bg-gray-200 h-2.5 border border-black rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-[#FFE600]"
+                      className="h-full bg-[#F59E0B]"
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -298,7 +298,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
       {/* Ward Action Footer */}
       <div className="nb-card p-4 bg-[#F8F5EE] flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="text-xs font-bold text-gray-700">
-          Want to inspect flagged work orders for Ward <span className="font-mono font-black">{selectedWard.ward_code}</span>?
+          Want to inspect flagged work orders for Ward <span className="font-mono font-bold">{selectedWard.ward_code}</span>?
         </div>
         <button
           onClick={() => onNavigateToAuditor && onNavigateToAuditor(selectedWard.ward_code)}

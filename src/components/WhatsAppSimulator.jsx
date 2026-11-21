@@ -48,7 +48,7 @@ export default function WhatsAppSimulator({ roadId = 'RD0058', roadName = 'Sion-
   };
 
   return (
-    <div className="nb-card p-4 bg-white border-3 border-black space-y-3">
+    <div className="nb-card p-4 bg-white border border-slate-200/90 space-y-3">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b-2 border-black">
         <div className="flex items-center gap-2">
@@ -88,13 +88,13 @@ export default function WhatsAppSimulator({ roadId = 'RD0058', roadName = 'Sion-
       </div>
 
       {/* Simulated WhatsApp Phone Bubble */}
-      <div className="bg-[#EFEAE2] border-2 border-black p-3 rounded-lg shadow-nb-sm max-w-md mx-auto space-y-2.5 font-sans">
+      <div className="bg-[#EFEAE2] border border-slate-200/80 p-3 rounded-lg shadow-nb-sm max-w-md mx-auto space-y-2.5 font-sans">
         {/* Incoming Bot Message */}
         <div className="bg-white p-3 rounded-lg shadow-sm border border-gray-300 space-y-1.5 text-xs text-gray-800">
           <div className="font-bold text-[#075E54] flex items-center gap-1 text-[11px]">
             <span>{content.header}</span>
           </div>
-          <div className="font-black text-sm text-black">{content.roadText}</div>
+          <div className="font-bold text-sm text-black">{content.roadText}</div>
           <div className="text-gray-700 font-medium">{content.wardText}</div>
           <div className="text-red-700 font-bold text-[11px] bg-red-50 p-1.5 rounded border border-red-200">{content.warrantyText}</div>
           <div className="pt-1 text-gray-900 font-extrabold border-t border-gray-200">{content.questionText}</div>
@@ -105,13 +105,13 @@ export default function WhatsAppSimulator({ roadId = 'RD0058', roadName = 'Sion-
           <div className="grid grid-cols-2 gap-2 text-xs">
             <button
               onClick={() => handleVote('broken')}
-              className="bg-white border-2 border-black hover:bg-[#FF4757] hover:text-white p-2 rounded-lg font-bold text-center transition-all text-xs shadow-sm"
+              className="bg-white border border-slate-200/80 hover:bg-[#FF4757] hover:text-white p-2 rounded-lg font-bold text-center transition-all text-xs shadow-sm"
             >
               🚨 {content.yesBtn}
             </button>
             <button
               onClick={() => handleVote('smooth')}
-              className="bg-white border-2 border-black hover:bg-[#00E599] hover:text-black p-2 rounded-lg font-bold text-center transition-all text-xs shadow-sm"
+              className="bg-white border border-slate-200/80 hover:bg-[#00E599] hover:text-black p-2 rounded-lg font-bold text-center transition-all text-xs shadow-sm"
             >
               ✓ {content.noBtn}
             </button>

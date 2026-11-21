@@ -11,23 +11,23 @@ export default function RTIBriefModal({ workOrder, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm overflow-y-auto animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto animate-fade-in">
       <div 
-        className="nb-card w-full max-w-3xl bg-white shadow-nb-xl my-6 relative max-h-[92vh] flex flex-col overflow-hidden"
+        className="w-full max-w-3xl bg-white rounded-3xl border border-slate-200/90 shadow-2xl my-6 relative max-h-[92vh] flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="bg-[#121316] text-white border-b-4 border-black p-4 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded bg-[#FFE600] text-black border-2 border-white flex items-center justify-center font-mono font-black text-lg">
-              <Scale className="w-6 h-6" />
+        {/* Header (Cupertino Style) */}
+        <div className="bg-slate-900 text-white p-5 flex items-center justify-between border-b border-slate-800">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-sky-500 text-white flex items-center justify-center font-bold text-lg shadow-md">
+              <Scale className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="nb-badge nb-badge-yellow text-black font-mono text-[10px]">SECTION 6 RTI ACT 2005</span>
-                <span className="nb-badge nb-badge-coral text-white font-mono text-[10px]">MMC ACT SEC 69</span>
+                <span className="px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono text-[10px] border border-slate-700">SECTION 6 RTI ACT 2005</span>
+                <span className="px-2 py-0.5 rounded-full bg-rose-900/60 text-rose-300 font-mono text-[10px] border border-rose-700/50">MMC ACT SEC 69</span>
               </div>
-              <h3 className="text-lg sm:text-xl font-black uppercase text-white mt-0.5">
+              <h3 className="text-base sm:text-lg font-bold text-white mt-0.5">
                 Statutory Civic Audit & RTI Information Request Brief
               </h3>
             </div>
@@ -36,16 +36,16 @@ export default function RTIBriefModal({ workOrder, onClose }) {
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="nb-btn nb-btn-white text-xs font-mono font-bold py-1 px-3 flex items-center gap-1 hover:bg-[#FFE600]"
+              className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 flex items-center gap-1.5 transition-all shadow-sm"
             >
-              <Printer className="w-4 h-4" />
+              <Printer className="w-4 h-4 text-sky-400" />
               <span>Print / PDF</span>
             </button>
             <button 
               onClick={onClose}
-              className="w-8 h-8 nb-btn nb-btn-white p-0 flex items-center justify-center hover:bg-[#FF4757] hover:text-white"
+              className="w-8 h-8 rounded-xl bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 flex items-center justify-center transition-all"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function RTIBriefModal({ workOrder, onClose }) {
         <div className="p-6 overflow-y-auto space-y-5 text-xs text-gray-900 font-sans leading-relaxed">
           {/* Official Letterhead */}
           <div className="text-center border-b-2 border-black pb-4 space-y-1">
-            <h4 className="text-sm font-black uppercase tracking-wider">
+            <h4 className="text-sm font-bold uppercase tracking-wider">
               FORM A — APPLICATION FOR OBTAINING INFORMATION UNDER THE RIGHT TO INFORMATION ACT, 2005
             </h4>
             <p className="text-[11px] font-mono text-gray-600 font-bold">
@@ -63,7 +63,7 @@ export default function RTIBriefModal({ workOrder, onClose }) {
           </div>
 
           {/* Applicant & Subject Reference */}
-          <div className="bg-[#FAF8F5] border-2 border-black p-3 rounded font-mono space-y-1">
+          <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded font-mono space-y-1">
             <div><strong>SUBJECT:</strong> Information regarding public expenditure, rate card benchmark deviation, and warranty status for monsoon road repair order <strong>{workOrder.work_order_id}</strong> on <strong>{workOrder.road_name} ({workOrder.road_id})</strong>.</div>
             <div><strong>COMPLAINT LINKAGE:</strong> {workOrder.linked_complaint_ids?.length > 0 ? workOrder.linked_complaint_ids.join(', ') : 'Unsolicited Order (No public complaint ticket)'}.</div>
           </div>
@@ -73,12 +73,12 @@ export default function RTIBriefModal({ workOrder, onClose }) {
             <h5 className="font-extrabold uppercase font-mono text-xs text-black mb-2">
               SCHEDULE OF RECORDED AUDIT EVIDENCE & DISCREPANCIES
             </h5>
-            <div className="border-2 border-black rounded overflow-hidden">
+            <div className="border border-slate-200/80 rounded overflow-hidden">
               <table className="w-full text-left border-collapse text-xs font-mono">
                 <tbody>
                   <tr className="border-b border-black bg-gray-100">
                     <td className="p-2 font-bold w-1/3 border-r border-black">Work Order ID</td>
-                    <td className="p-2 font-black">{workOrder.work_order_id}</td>
+                    <td className="p-2 font-bold">{workOrder.work_order_id}</td>
                   </tr>
                   <tr className="border-b border-black">
                     <td className="p-2 font-bold border-r border-black">Asset Location</td>
@@ -94,7 +94,7 @@ export default function RTIBriefModal({ workOrder, onClose }) {
                   </tr>
                   <tr className="border-b border-black bg-gray-50">
                     <td className="p-2 font-bold border-r border-black">Billed Cost (Recorded)</td>
-                    <td className="p-2 font-black text-[#FF4757]">{formatINR(workOrder.cost_inr)}</td>
+                    <td className="p-2 font-bold text-[#FF4757]">{formatINR(workOrder.cost_inr)}</td>
                   </tr>
                   <tr className="border-b border-black">
                     <td className="p-2 font-bold border-r border-black">Standard Rate Card Benchmark</td>
@@ -102,7 +102,7 @@ export default function RTIBriefModal({ workOrder, onClose }) {
                   </tr>
                   <tr className="border-b border-black bg-gray-50">
                     <td className="p-2 font-bold border-r border-black">Variance / Potential Overcharge</td>
-                    <td className="p-2 font-black text-red-700">
+                    <td className="p-2 font-bold text-red-700">
                       +{workOrder.variance_pct}% ({formatINR(Math.max(0, workOrder.cost_inr - workOrder.expected_cost))})
                     </td>
                   </tr>
@@ -158,7 +158,7 @@ export default function RTIBriefModal({ workOrder, onClose }) {
         </div>
 
         {/* Modal Footer */}
-        <div className="bg-[#FAF8F5] border-t-2 border-black p-3 flex justify-between items-center text-xs font-mono">
+        <div className="bg-[#F8FAFC] border-t-2 border-black p-3 flex justify-between items-center text-xs font-mono">
           <span className="text-gray-600 font-bold">Statutory Brief Ready for Legal Filing</span>
           <button 
             onClick={onClose}

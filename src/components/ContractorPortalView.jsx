@@ -58,29 +58,29 @@ export default function ContractorPortalView({
 
   return (
     <div className="space-y-6">
-      {/* Contractor Header Banner */}
-      <div className="nb-card p-5 bg-[#FFE600] border-4 border-[#121316]">
+      {/* Contractor Header Banner (Cupertino Style) */}
+      <div className="bg-gradient-to-br from-white/95 via-amber-50/30 to-white/95 backdrop-blur-xl border border-slate-200/80 p-5 rounded-2xl shadow-sm space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="nb-badge nb-badge-black text-xs">CONTRACTOR EXTRANET</span>
-              <span className="nb-badge nb-badge-orange text-white">RIGHT OF RESPONSE ACTIVE</span>
+              <span className="nb-badge nb-badge-orange text-xs">CONTRACTOR EXTRANET</span>
+              <span className="nb-badge nb-badge-cyan text-xs">RIGHT OF RESPONSE ACTIVE</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mt-1">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 font-display mt-1">
               Empanelled Agency Performance & Dispute Portal
             </h2>
-            <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
+            <p className="text-xs sm:text-sm text-slate-600 font-medium mt-0.5">
               Review your context-adjusted scorecard, inspect flagged audits, and submit formal weather/traffic delay justifications.
             </p>
           </div>
 
           {/* Company Selector Switcher */}
-          <div className="flex items-center gap-2 bg-white border-2 border-black p-2 rounded shadow-nb-sm">
-            <span className="text-xs font-mono font-bold text-gray-700">Contractor Login:</span>
+          <div className="flex items-center gap-2 bg-white/90 border border-slate-200/90 px-3 py-1.5 rounded-xl shadow-sm">
+            <span className="text-xs font-semibold text-slate-600">Agency:</span>
             <select
               value={selectedContractorId}
               onChange={(e) => setSelectedContractorId(e.target.value)}
-              className="nb-input text-xs py-1"
+              className="nb-input text-xs py-1 font-bold bg-slate-50 border-slate-200"
             >
               {contractors.map(c => (
                 <option key={c.contractor_id} value={c.contractor_id}>
@@ -93,22 +93,22 @@ export default function ContractorPortalView({
       </div>
 
       {/* Company Scorecard & Telemetry with Download Certificate Action */}
-      <div className="nb-card p-5 bg-white border-3 border-black space-y-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b-2 border-black">
+      <div className="bg-white/85 backdrop-blur-md border border-slate-200/80 rounded-2xl p-5 shadow-sm space-y-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
           <div>
             <div className="flex items-center gap-2">
               <span className="nb-badge nb-badge-black font-mono">{currentContractor.contractor_id}</span>
-              <span className="text-xs font-mono font-bold text-gray-600">Empanelled Since {currentContractor.empanelled_since}</span>
+              <span className="text-xs font-medium text-slate-500">Empanelled Since {currentContractor.empanelled_since}</span>
               {currentContractor.on_watchlist ? (
-                <span className="nb-badge nb-badge-coral text-white">UNDER WATCHLIST REVIEW</span>
+                <span className="nb-badge nb-badge-coral">UNDER WATCHLIST REVIEW</span>
               ) : (
-                <span className="nb-badge nb-badge-mint text-black">GOOD STANDING</span>
+                <span className="nb-badge nb-badge-mint">GOOD STANDING</span>
               )}
             </div>
-            <h3 className="text-2xl font-black uppercase text-black mt-1">
+            <h3 className="text-xl font-bold text-slate-900 mt-1">
               {currentContractor.contractor_name}
             </h3>
-            <p className="text-xs font-bold text-gray-600">
+            <p className="text-xs text-slate-500 font-medium">
               Active Municipal Wards: {currentContractor.active_wards.join(', ')}
             </p>
           </div>
@@ -116,17 +116,17 @@ export default function ContractorPortalView({
           <div className="flex items-center gap-3">
             <button
               onClick={() => alert(`Official Empanelled Performance Certificate generated for ${currentContractor.contractor_name} (Composite Grade: ${currentContractor.grade}, Score: ${currentContractor.composite_score}/100 with ${(currentContractor.avg_terrain_difficulty*100).toFixed(0)}% Flood Stress adjustment).`)}
-              className="nb-btn nb-btn-white text-xs font-mono font-bold py-1.5 px-3 flex items-center gap-1.5 hover:bg-[#FFE600]"
+              className="nb-btn text-xs font-semibold py-1.5 px-3 flex items-center gap-1.5 hover:bg-slate-50 shadow-sm"
             >
-              <Download className="w-3.5 h-3.5" />
+              <Download className="w-3.5 h-3.5 text-slate-600" />
               <span>Download Scorecard Certificate</span>
             </button>
 
-            <div className={`w-14 h-14 rounded-lg border-3 border-black shadow-nb-sm flex items-center justify-center font-mono font-black text-2xl ${
-              currentContractor.grade === 'A' ? 'bg-[#00E599] text-black' :
-              currentContractor.grade === 'B+' ? 'bg-[#FFE600] text-black' :
-              currentContractor.grade === 'B' ? 'bg-[#00F0FF] text-black' :
-              currentContractor.grade === 'C' ? 'bg-[#FF8800] text-white' : 'bg-[#FF4757] text-white'
+            <div className={`w-14 h-14 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center font-bold text-2xl ${
+              currentContractor.grade === 'A' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+              currentContractor.grade === 'B+' ? 'bg-amber-50 text-amber-700 border-amber-200' :
+              currentContractor.grade === 'B' ? 'bg-sky-50 text-sky-700 border-sky-200' :
+              'bg-rose-50 text-rose-700 border-rose-200'
             }`}>
               {currentContractor.grade}
             </div>
@@ -135,28 +135,28 @@ export default function ContractorPortalView({
 
         {/* 4 Performance Indicators */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
-          <div className="bg-[#FAF8F5] border-2 border-black p-3 rounded">
+          <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded">
             <span className="text-[10px] text-gray-500 font-bold uppercase block">Total Billed</span>
-            <strong className="text-base font-black text-black">{formatCr(currentContractor.total_billed_inr)}</strong>
+            <strong className="text-base font-bold text-black">{formatCr(currentContractor.total_billed_inr)}</strong>
             <span className="text-[10px] text-gray-600 block">{currentContractor.jobs_count} Jobs Executed</span>
           </div>
-          <div className="bg-[#FAF8F5] border-2 border-black p-3 rounded">
+          <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded">
             <span className="text-[10px] text-gray-500 font-bold uppercase block">SLA Turnaround</span>
-            <strong className={`text-base font-black ${currentContractor.sla_compliance_pct >= 55 ? 'text-green-700' : 'text-[#FF4757]'}`}>
+            <strong className={`text-base font-bold ${currentContractor.sla_compliance_pct >= 55 ? 'text-green-700' : 'text-[#FF4757]'}`}>
               {currentContractor.sla_compliance_pct}% Met
             </strong>
             <span className="text-[10px] text-gray-600 block">Contractual SLA</span>
           </div>
-          <div className="bg-[#FAF8F5] border-2 border-black p-3 rounded">
+          <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded">
             <span className="text-[10px] text-gray-500 font-bold uppercase block">30d Failure Rate</span>
-            <strong className={`text-base font-black ${currentContractor.reopen_rate_pct > 25 ? 'text-[#FF4757]' : 'text-green-700'}`}>
+            <strong className={`text-base font-bold ${currentContractor.reopen_rate_pct > 25 ? 'text-[#FF4757]' : 'text-green-700'}`}>
               {currentContractor.reopen_rate_pct}% Relapsed
             </strong>
             <span className="text-[10px] text-gray-600 block">Durability Benchmark</span>
           </div>
-          <div className="bg-[#FAF8F5] border-2 border-black p-3 rounded">
+          <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded">
             <span className="text-[10px] text-gray-500 font-bold uppercase block">Terrain Stress Defense</span>
-            <strong className="text-base font-black text-blue-900">
+            <strong className="text-base font-bold text-blue-900">
               {(currentContractor.avg_terrain_difficulty * 100).toFixed(0)}%
             </strong>
             <span className="text-[10px] text-gray-600 block">Operating Flood Index</span>
@@ -165,10 +165,10 @@ export default function ContractorPortalView({
       </div>
 
       {/* Flagged Work Orders & Right of Response Desk */}
-      <div className="nb-card p-5 bg-white border-3 border-black space-y-4">
+      <div className="nb-card p-5 bg-white border border-slate-200/90 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-black pb-3">
           <div>
-            <h3 className="text-lg font-black font-mono uppercase flex items-center gap-2">
+            <h3 className="text-lg font-bold font-mono uppercase flex items-center gap-2">
               <ShieldAlert className="w-5 h-5 text-[#FF8800]" />
               Audit Flag & Dispute Response Desk
             </h3>
@@ -189,7 +189,7 @@ export default function ContractorPortalView({
             const officerEscalation = escalatedOrders[wo.work_order_id];
 
             return (
-              <div key={wo.work_order_id} className="border-3 border-black p-3.5 rounded-lg bg-[#FAF8F5] flex flex-col md:flex-row md:items-center justify-between gap-3">
+              <div key={wo.work_order_id} className="border border-slate-200/90 p-3.5 rounded-lg bg-[#F8FAFC] flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="nb-badge nb-badge-black font-mono text-[10px]">{wo.work_order_id}</span>
@@ -201,7 +201,7 @@ export default function ContractorPortalView({
 
                     {/* Officer Escalation Badge */}
                     {officerEscalation && (
-                      <span className="nb-badge nb-badge-black text-[#FFE600] text-[9px] font-bold">
+                      <span className="nb-badge nb-badge-black text-[#F59E0B] text-[9px] font-bold">
                         ⚖️ BMC SANCTION: {officerEscalation.action?.toUpperCase()} ({officerEscalation.tier})
                       </span>
                     )}
@@ -259,16 +259,16 @@ export default function ContractorPortalView({
       {/* Dispute Modal */}
       {disputeModalWO && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="nb-card w-full max-w-lg bg-white p-5 border-4 border-black shadow-nb-xl space-y-4">
+          <div className="nb-card w-full max-w-lg bg-white p-5 border border-slate-200/90 shadow-nb-xl space-y-4">
             <div className="flex justify-between items-center border-b-2 border-black pb-2">
-              <h3 className="font-mono font-black text-base uppercase">Submit Audit Dispute</h3>
+              <h3 className="font-mono font-bold text-base uppercase">Submit Audit Dispute</h3>
               <button onClick={() => setDisputeModalWO(null)} className="font-mono font-bold">✕</button>
             </div>
 
             {disputeSuccess ? (
               <div className="bg-green-50 border-2 border-green-500 p-4 rounded text-center space-y-2">
                 <CheckCircle2 className="w-8 h-8 text-green-600 mx-auto" />
-                <h4 className="font-black text-sm text-green-900">Dispute Submitted to Ward Executive Engineer!</h4>
+                <h4 className="font-bold text-sm text-green-900">Dispute Submitted to Ward Executive Engineer!</h4>
                 <p className="text-xs text-green-800">
                   Case reference <strong>DISP-2025-{disputeModalWO.work_order_id}</strong> registered. Official IMD rainfall & tidal logs attached to dispute package.
                 </p>
@@ -278,7 +278,7 @@ export default function ContractorPortalView({
               </div>
             ) : (
               <div className="space-y-3 text-xs">
-                <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded font-mono">
+                <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded font-mono">
                   <span className="text-[10px] text-gray-500 block uppercase font-bold">Work Order Contested</span>
                   <strong className="text-sm text-black">{disputeModalWO.work_order_id} — {disputeModalWO.road_name}</strong>
                   <div className="text-[11px] text-gray-600 mt-1">Billed: {formatINR(disputeModalWO.cost_inr)} • Completed: {disputeModalWO.completed_at}</div>

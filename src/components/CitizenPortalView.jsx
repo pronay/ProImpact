@@ -69,18 +69,18 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
 
   return (
     <div className="space-y-6">
-      {/* Citizen Welcome Banner */}
-      <div className="nb-card p-5 bg-[#FFE600] border-4 border-[#121316]">
+      {/* Citizen Welcome Banner (Cupertino Liquid Glass Style) */}
+      <div className="bg-gradient-to-br from-white/95 via-sky-50/40 to-white/95 backdrop-blur-xl border border-slate-200/80 p-5 rounded-2xl shadow-sm space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="nb-badge nb-badge-black text-xs">CITIZEN FIRST</span>
-              <span className="nb-badge nb-badge-mint">PUBLIC TRANSPARENCY STANDARD</span>
+              <span className="nb-badge nb-badge-cyan text-xs">CITIZEN FIRST</span>
+              <span className="nb-badge nb-badge-mint text-xs">PUBLIC AUDIT STANDARD</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mt-1">
-              Mumbai Public Road & Pothole Portal
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 font-display mt-1">
+              Mumbai Public Road & Pothole Transparency
             </h2>
-            <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
+            <p className="text-xs sm:text-sm text-slate-600 font-medium mt-0.5">
               Check what happened to your complaint, scan your street's Road Passport, and verify if repairs actually held up.
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
                 setReportedSuccess(false);
                 setReportModalOpen(true);
               }}
-              className="nb-btn nb-btn-danger text-xs font-mono font-bold py-2 px-3.5 flex items-center gap-1.5"
+              className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-rose-600 hover:bg-rose-500 text-white shadow-sm flex items-center gap-1.5 transition-all"
             >
               <AlertCircle className="w-4 h-4" />
               <span>Report Pothole / Repeat Failure</span>
@@ -105,21 +105,21 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
           </div>
         </div>
 
-        {/* Citizen Navigation Sub-Tabs */}
-        <div className="mt-4 pt-3 border-t-2 border-black flex gap-2 overflow-x-auto">
+        {/* Citizen Navigation Sub-Tabs (Apple Segmented Bar) */}
+        <div className="pt-2 border-t border-slate-200/70 flex gap-1.5 overflow-x-auto bg-slate-100/60 p-1 rounded-xl">
           {[
-            { id: 'track', label: '🔍 Track My Locality & Complaints' },
-            { id: 'whatsapp', label: '💬 WhatsApp / SMS Signboard Scanner', badge: 'UNESCO Olavula' },
-            { id: 'passport', label: '🪪 Search Street Road Passports' },
-            { id: 'transparency', label: '💰 Where Did My Ward Tax Go?' }
+            { id: 'track', label: '🔍 Track Locality & Grievances' },
+            { id: 'whatsapp', label: '💬 WhatsApp Signboard Scanner', badge: 'UNESCO Olavula' },
+            { id: 'passport', label: '🪪 Search Road Passports' },
+            { id: 'transparency', label: '💰 Ward Tax Expenditure' }
           ].map(t => (
             <button
               key={t.id}
               onClick={() => setActiveSubTab(t.id)}
-              className={`nb-btn text-xs font-mono font-bold py-1.5 px-3 flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
                 activeSubTab === t.id 
-                  ? 'bg-black text-white shadow-none translate-y-0.5' 
-                  : 'bg-white text-black hover:bg-gray-100'
+                  ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80' 
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/40'
               }`}
             >
               <span>{t.label}</span>
@@ -133,10 +133,10 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
       {activeSubTab === 'track' && (
         <div className="space-y-4">
           {/* Quick Locality Search Bar */}
-          <div className="nb-card p-4 bg-white border-3 border-black">
+          <div className="bg-white/85 backdrop-blur-md border border-slate-200/80 rounded-xl p-4 shadow-sm">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="sm:col-span-2 relative">
-                <Search className="w-4 h-4 absolute left-3 top-3 text-gray-500" />
+                <Search className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
                 <input
                   type="text"
                   placeholder="Enter your street or locality (e.g., Dadar, Sion, Andheri, Link Road)..."
@@ -163,7 +163,7 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
             </div>
 
             {/* Language filter for citizens */}
-            <div className="mt-3 flex items-center gap-1.5 overflow-x-auto text-xs font-mono font-bold text-gray-600">
+            <div className="mt-3 flex items-center gap-1.5 overflow-x-auto text-xs font-medium text-slate-600">
               <span>Language:</span>
               {[
                 { id: 'ALL', label: 'All' },
@@ -175,8 +175,8 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
                 <button
                   key={l.id}
                   onClick={() => setSelectedLanguage(l.id)}
-                  className={`nb-badge text-[10px] cursor-pointer ${
-                    selectedLanguage === l.id ? 'nb-badge-black text-white' : 'nb-badge-gray'
+                  className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition-all ${
+                    selectedLanguage === l.id ? 'bg-slate-900 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
                   {l.label}
@@ -187,25 +187,28 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
 
           {/* Citizen Cards List */}
           <div className="space-y-3">
-            <div className="text-xs font-mono font-bold text-gray-600 px-1 flex justify-between">
+            <div className="text-xs font-medium text-slate-500 px-1 flex justify-between">
               <span>Showing {filteredComplaints.length} Public Grievances</span>
-              <span className="text-green-700 font-bold">World Bank GEMS 3-Citizen Consensus Active</span>
+              <span className="text-emerald-700 font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                World Bank GEMS 3-Citizen Consensus Active
+              </span>
             </div>
 
             {/* Newly Submitted Citizen Relapses */}
             {liveRelapses.length > 0 && (
               <div className="space-y-2 mb-3">
                 {liveRelapses.map(lr => (
-                  <div key={lr.complaint_id} className="nb-card p-4 bg-[#FFF9E6] border-3 border-[#FF4757] shadow-nb">
+                  <div key={lr.complaint_id} className="bg-rose-50/70 border border-rose-200/90 rounded-xl p-4 shadow-sm">
                     <div className="flex items-center gap-2 mb-2 flex-wrap">
-                      <span className="nb-badge nb-badge-coral text-white font-mono text-[10px]">🚨 RECENTLY DISPATCHED BY YOU</span>
+                      <span className="nb-badge nb-badge-coral text-[10px]">🚨 RECENTLY DISPATCHED BY YOU</span>
                       <span className="nb-badge nb-badge-black font-mono text-[10px]">{lr.complaint_id}</span>
-                      <span className="nb-badge nb-badge-yellow text-black font-bold">Ward {lr.ward_code}</span>
-                      <span className="text-xs font-mono font-bold text-gray-500">Live Status: Forwarded to Ward Junior Engineer</span>
+                      <span className="nb-badge nb-badge-yellow text-[10px]">Ward {lr.ward_code}</span>
+                      <span className="text-xs text-slate-500 font-medium">Forwarded to Ward Junior Engineer</span>
                     </div>
-                    <div className="bg-white border-2 border-black p-2 rounded">
-                      <p className="font-extrabold text-black text-sm">"{lr.description}"</p>
-                      <p className="text-[11px] text-gray-600 mt-1 font-bold">📍 {lr.locality_text} • {lr.category_reported}</p>
+                    <div className="bg-white border border-rose-200/80 p-2.5 rounded-lg shadow-sm">
+                      <p className="font-bold text-slate-900 text-sm">"{lr.description}"</p>
+                      <p className="text-[11px] text-slate-600 mt-1 font-medium">📍 {lr.locality_text} • {lr.category_reported}</p>
                     </div>
                   </div>
                 ))}
@@ -216,38 +219,38 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
               const isVerified = verifiedComplaints[c.complaint_id];
 
               return (
-                <div key={c.complaint_id} className="nb-card p-4 bg-white border-3 border-black shadow-nb">
+                <div key={c.complaint_id} className="bg-white/85 backdrop-blur-md border border-slate-200/80 rounded-xl p-4 shadow-sm hover:shadow-md transition-all">
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-3">
                     <div className="space-y-1.5 flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="nb-badge nb-badge-black font-mono text-[10px]">{c.complaint_id}</span>
-                        <span className="nb-badge nb-badge-yellow text-black font-bold">Ward {c.ward_code}</span>
-                        <span className="nb-badge nb-badge-cyan text-black font-mono">{c.channel}</span>
-                        <span className="text-xs font-mono font-bold text-gray-500">{c.received_at}</span>
+                        <span className="nb-badge nb-badge-gray font-mono text-[10px]">{c.complaint_id}</span>
+                        <span className="nb-badge nb-badge-yellow font-medium">Ward {c.ward_code}</span>
+                        <span className="nb-badge nb-badge-cyan font-mono">{c.channel}</span>
+                        <span className="text-xs font-mono text-slate-400">{c.received_at}</span>
                         
                         {/* 3-Citizen Consensus Status */}
                         {isVerified ? (
-                          <span className="nb-badge nb-badge-mint text-black text-[9px] flex items-center gap-1">
-                            <CheckCircle2 className="w-3 h-3 text-green-700" /> Community Certified (3/3 Verified)
+                          <span className="nb-badge nb-badge-mint text-[9px] flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3 text-emerald-600" /> Community Certified (3/3 Verified)
                           </span>
                         ) : (
-                          <span className="nb-badge nb-badge-gray text-gray-700 text-[9px] flex items-center gap-1">
+                          <span className="nb-badge nb-badge-gray text-[9px] flex items-center gap-1">
                             Pending Community Check (2/3 Verified)
                           </span>
                         )}
                       </div>
 
-                      <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded text-xs font-medium">
-                        <div className="font-bold text-gray-500 uppercase text-[10px] mb-0.5">
+                      <div className="bg-slate-50/80 border border-slate-200/70 p-2.5 rounded-lg text-xs font-medium">
+                        <div className="font-semibold text-slate-500 uppercase text-[10px] mb-0.5">
                           {c.category_reported} • {c.locality_text}
                         </div>
-                        <p className="font-extrabold text-black text-sm">"{c.description}"</p>
+                        <p className="font-bold text-slate-900 text-sm">"{c.description}"</p>
                       </div>
 
                       {c.photo_description && (
-                        <div className="text-[11px] text-gray-600 flex items-center gap-1">
-                          <Camera className="w-3.5 h-3.5 text-gray-700" />
-                          <span><strong>Attached Photo Evidence:</strong> {c.photo_description}</span>
+                        <div className="text-[11px] text-slate-500 flex items-center gap-1">
+                          <Camera className="w-3.5 h-3.5 text-slate-600" />
+                          <span><strong>Attached Evidence:</strong> {c.photo_description}</span>
                         </div>
                       )}
 
@@ -257,7 +260,7 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
                         {!isVerified && c.status === 'Resolved' && (
                           <button
                             onClick={() => handleVerify(c.complaint_id)}
-                            className="nb-btn nb-btn-white text-[11px] py-1 px-2.5 font-mono font-bold hover:bg-[#FFE600]"
+                            className="nb-btn text-[11px] py-1 px-2.5 font-medium hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 transition-all"
                           >
                             ✓ Confirm Repair on Site (Cast 3rd Community Vote)
                           </button>
@@ -266,7 +269,7 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
                         {/* REFINEMENT 1: Contextual Report Relapse on This Spot for Ramesh */}
                         <button
                           onClick={() => handleReportRelapseOnSpot(c)}
-                          className="nb-btn nb-btn-danger text-[11px] py-1 px-2.5 font-mono font-bold flex items-center gap-1"
+                          className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 flex items-center gap-1 transition-all"
                         >
                           <Repeat className="w-3.5 h-3.5" />
                           <span>Pothole Is Back! (Report Relapse)</span>
@@ -274,11 +277,11 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
                       </div>
                     </div>
 
-                    {/* Public Money Trail Summary */}
-                    <div className="md:w-72 bg-[#FFFDF0] border-2 border-black p-3 rounded text-xs space-y-1.5">
-                      <div className="flex justify-between items-center border-b border-gray-300 pb-1">
-                        <span className="font-mono uppercase font-bold text-[10px] text-gray-500">Public Rupee Trail</span>
-                        <span className={`nb-badge text-[9px] ${c.status === 'Resolved' ? 'nb-badge-mint text-black' : 'nb-badge-yellow text-black'}`}>
+                    {/* Public Money Trail Summary (Stripe style) */}
+                    <div className="md:w-72 bg-slate-50/90 border border-slate-200/80 p-3 rounded-xl text-xs space-y-1.5 shadow-sm">
+                      <div className="flex justify-between items-center border-b border-slate-200 pb-1">
+                        <span className="font-mono uppercase font-semibold text-[10px] text-slate-500">Public Rupee Trail</span>
+                        <span className={`nb-badge text-[9px] ${c.status === 'Resolved' ? 'nb-badge-mint' : 'nb-badge-yellow'}`}>
                           {c.status}
                         </span>
                       </div>
@@ -291,7 +294,7 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
                           </div>
                           <div className="flex justify-between">
                             <span className="text-gray-600 font-bold">Tax Cost Paid:</span>
-                            <span className="font-mono font-black text-black">{formatINR(c.cost_inr)}</span>
+                            <span className="font-mono font-bold text-black">{formatINR(c.cost_inr)}</span>
                           </div>
                           <div className="flex justify-between">
                             <span className="text-gray-600 font-bold">Did Fix Last?:</span>
@@ -324,10 +327,10 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
       {/* SUB-TAB 3: SEARCH ROAD PASSPORTS (WITH WARD FILTER FOR RAMESH) */}
       {activeSubTab === 'passport' && (
         <div className="space-y-4">
-          <div className="nb-card p-4 bg-white border-3 border-black">
+          <div className="nb-card p-4 bg-white border border-slate-200/90">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
               <div>
-                <h3 className="font-mono font-black text-sm uppercase">
+                <h3 className="font-mono font-bold text-sm uppercase">
                   Search Any Road to Inspect its Public Asset Passport
                 </h3>
                 <p className="text-xs text-gray-600 font-bold">
@@ -359,7 +362,7 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {filteredRoads.slice(0, 18).map(road => (
-                <div key={road.road_id} className="nb-card p-3 bg-[#FAF8F5] border-2 border-black flex flex-col justify-between">
+                <div key={road.road_id} className="nb-card p-3 bg-[#F8FAFC] border border-slate-200/80 flex flex-col justify-between">
                   <div>
                     <div className="flex justify-between items-center mb-1">
                       <span className="nb-badge nb-badge-black font-mono text-[9px]">{road.road_id}</span>
@@ -374,7 +377,7 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
 
                   <button
                     onClick={() => onOpenRoadPassport(road)}
-                    className="nb-btn nb-btn-white text-xs font-mono font-bold py-1 mt-3 w-full flex items-center justify-center gap-1 hover:bg-[#FFE600]"
+                    className="nb-btn nb-btn-white text-xs font-mono font-bold py-1 mt-3 w-full flex items-center justify-center gap-1 hover:bg-[#F59E0B]"
                   >
                     <QrCode className="w-3.5 h-3.5" />
                     <span>View Road Passport</span>
@@ -389,9 +392,9 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
       {/* SUB-TAB 4: WHERE DID MY TAX GO? */}
       {activeSubTab === 'transparency' && (
         <div className="space-y-4">
-          <div className="nb-card p-5 bg-white border-3 border-black space-y-4">
+          <div className="nb-card p-5 bg-white border border-slate-200/90 space-y-4">
             <div>
-              <h3 className="font-mono font-black text-lg uppercase text-black">
+              <h3 className="font-mono font-bold text-lg uppercase text-black">
                 Where Did My Ward Tax Money Go This Monsoon?
               </h3>
               <p className="text-xs font-bold text-gray-600">
@@ -403,12 +406,12 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
               {wards.slice(0, 12).map(w => {
                 const wastedPct = ((w.wasted_spend_inr / w.total_spend_inr) * 100).toFixed(0);
                 return (
-                  <div key={w.ward_code} className="nb-card p-4 bg-[#FAF8F5] border-2 border-black space-y-2">
+                  <div key={w.ward_code} className="nb-card p-4 bg-[#F8FAFC] border border-slate-200/80 space-y-2">
                     <div className="flex justify-between items-center">
                       <span className="nb-badge nb-badge-black font-mono text-xs">Ward {w.ward_code}</span>
                       <span className="text-xs font-bold text-gray-600 font-mono">{w.zone}</span>
                     </div>
-                    <h4 className="font-black text-base text-black truncate">{w.ward_name}</h4>
+                    <h4 className="font-bold text-base text-black truncate">{w.ward_name}</h4>
                     
                     <div className="space-y-1 text-xs font-mono pt-1">
                       <div className="flex justify-between">
@@ -438,10 +441,10 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
       {/* Report Pothole / Relapse Modal */}
       {reportModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="nb-card w-full max-w-lg bg-white p-5 border-4 border-black shadow-nb-xl space-y-4">
+          <div className="nb-card w-full max-w-lg bg-white p-5 border border-slate-200/90 shadow-nb-xl space-y-4">
             <div className="flex justify-between items-center border-b-2 border-black pb-2">
               <div>
-                <h3 className="font-mono font-black text-base uppercase">Report Pothole / Relapse</h3>
+                <h3 className="font-mono font-bold text-base uppercase">Report Pothole / Relapse</h3>
                 {reportForm.referencedId && (
                   <span className="nb-badge nb-badge-coral text-[9px]">Follow-up on Ticket {reportForm.referencedId}</span>
                 )}
@@ -452,7 +455,7 @@ export default function CitizenPortalView({ complaints, roads, wards, onOpenRoad
             {reportedSuccess ? (
               <div className="bg-green-50 border-2 border-green-500 p-4 rounded text-center space-y-2">
                 <CheckCircle2 className="w-8 h-8 text-green-600 mx-auto" />
-                <h4 className="font-black text-sm text-green-900">Grievance Registered Successfully!</h4>
+                <h4 className="font-bold text-sm text-green-900">Grievance Registered Successfully!</h4>
                 <p className="text-xs text-green-800">
                   Tracking ID: <strong>BMC25-RELAPSE-{Math.floor(Math.random()*10000)}</strong>. Forwarded directly to Ward Executive Engineer for priority dispatch.
                 </p>

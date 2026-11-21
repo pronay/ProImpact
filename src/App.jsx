@@ -115,8 +115,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FDFBF7] text-[#121316]">
-      {/* Neo-brutalist Global Header with Role-Specific Navigation */}
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900 font-sans selection:bg-sky-500 selection:text-white">
+      {/* Cupertino Liquid Glass Global Header with Role-Specific Navigation */}
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}

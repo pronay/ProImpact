@@ -21,14 +21,14 @@ export default function WardTimelineView({ wards, weatherTimeline, onInspectWork
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="nb-card p-5 bg-[#FFE600] border-4 border-[#121316]">
+      <div className="nb-card p-5 bg-[#F59E0B] border border-slate-200/90">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
               <span className="nb-badge nb-badge-black text-xs">CHRONOLOGICAL MATRIX</span>
               <span className="nb-badge nb-badge-coral">WEATHER CORRELATION GANTT</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold uppercase mt-1">
               Ward Project Timeline & Weather Matrix
             </h2>
             <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
@@ -37,7 +37,7 @@ export default function WardTimelineView({ wards, weatherTimeline, onInspectWork
           </div>
 
           {/* Ward Switcher */}
-          <div className="flex items-center gap-2 bg-white border-2 border-black p-2 rounded shadow-nb-sm">
+          <div className="flex items-center gap-2 bg-white border border-slate-200/80 p-2 rounded shadow-nb-sm">
             <span className="text-xs font-mono font-bold text-gray-700">Select Ward:</span>
             <select
               value={selectedWardCode}
@@ -55,25 +55,25 @@ export default function WardTimelineView({ wards, weatherTimeline, onInspectWork
       </div>
 
       {/* Weather Telemetry Overview Strip */}
-      <div className="nb-card p-4 bg-white border-3 border-black">
-        <h3 className="text-xs font-mono font-black uppercase text-gray-700 mb-3 flex items-center justify-between">
+      <div className="nb-card p-4 bg-white border border-slate-200/90">
+        <h3 className="text-xs font-mono font-bold uppercase text-gray-700 mb-3 flex items-center justify-between">
           <span>Monsoon 2025 Climatic Telemetry (June – October)</span>
           <span className="text-gray-500 font-normal">122 Days Recorded</span>
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-          <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded">
+          <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded">
             <span className="text-[10px] text-gray-500 font-mono block">Extreme Rain Days (≥64.5mm)</span>
             <strong className="font-mono text-base text-[#FF4757]">{extremeRainDays.length} Days (Orange/Red)</strong>
           </div>
-          <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded">
+          <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded">
             <span className="text-[10px] text-gray-500 font-mono block">High Tide Lockouts (≥4.5m)</span>
             <strong className="font-mono text-base text-blue-900">{bigTideDays.length} Tidal Spikes</strong>
           </div>
-          <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded">
+          <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded">
             <span className="text-[10px] text-gray-500 font-mono block">Total Ward Repairs</span>
             <strong className="font-mono text-base text-black">{selectedWard.total_work_orders} Orders</strong>
           </div>
-          <div className="bg-[#FAF8F5] border-2 border-black p-2.5 rounded">
+          <div className="bg-[#F8FAFC] border border-slate-200/80 p-2.5 rounded">
             <span className="text-[10px] text-gray-500 font-mono block">30d Failure Relapse</span>
             <strong className="font-mono text-base text-[#FF8800]">{selectedWard.reopened_count} Relapses ({selectedWard.failure_rate_pct}%)</strong>
           </div>
@@ -81,10 +81,10 @@ export default function WardTimelineView({ wards, weatherTimeline, onInspectWork
       </div>
 
       {/* Ward Project Timeline List */}
-      <div className="nb-card p-5 bg-white border-3 border-black space-y-4">
+      <div className="nb-card p-5 bg-white border border-slate-200/90 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b-2 border-black">
           <div>
-            <h3 className="text-lg font-black font-mono uppercase">
+            <h3 className="text-lg font-bold font-mono uppercase">
               Chronological Repair Window Log — Ward {selectedWard.ward_code}
             </h3>
             <p className="text-xs font-bold text-gray-600">
@@ -98,7 +98,7 @@ export default function WardTimelineView({ wards, weatherTimeline, onInspectWork
                 type="checkbox"
                 checked={filterDelayOnly}
                 onChange={(e) => setFilterDelayOnly(e.target.checked)}
-                className="w-4 h-4 border-2 border-black rounded accent-[#FFE600]"
+                className="w-4 h-4 border border-slate-200/80 rounded accent-[#F59E0B]"
               />
               <span>Delayed Repairs Only</span>
             </label>
@@ -116,8 +116,8 @@ export default function WardTimelineView({ wards, weatherTimeline, onInspectWork
               <div
                 key={wo.work_order_id}
                 onClick={() => onInspectWorkOrder(wo)}
-                className={`border-3 border-black p-4 rounded-lg shadow-nb-sm transition-all hover:-translate-y-0.5 cursor-pointer ${
-                  hasReopened ? 'bg-[#FFF5F6]' : 'bg-[#FAF8F5]'
+                className={`border border-slate-200/90 p-4 rounded-lg shadow-nb-sm transition-all hover:-translate-y-0.5 cursor-pointer ${
+                  hasReopened ? 'bg-[#FFF5F6]' : 'bg-[#F8FAFC]'
                 }`}
               >
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
@@ -172,7 +172,7 @@ export default function WardTimelineView({ wards, weatherTimeline, onInspectWork
 
                     {/* Cost */}
                     <div className="text-right font-mono min-w-[100px]">
-                      <span className="font-black text-sm text-black block">{formatINR(wo.cost_inr)}</span>
+                      <span className="font-bold text-sm text-black block">{formatINR(wo.cost_inr)}</span>
                       <span className="text-[10px] text-gray-500">{wo.contractor_name.split(' ')[0]}</span>
                     </div>
                   </div>
