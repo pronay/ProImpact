@@ -28,14 +28,14 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
               <Building2 className="w-5 h-5 text-[#F59E0B] fill-black" />
               Ward Money Trail Explorer
             </h2>
-            <p className="text-xs font-bold text-gray-600">
+            <p className="text-xs font-bold text-slate-300">
               Select one of Mumbai's 24 municipal wards to inspect monsoon repair allocation, durability, and wasted funds.
             </p>
           </div>
 
           {/* Zone Filter Chips */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
-            <span className="text-xs font-mono font-bold text-gray-500 mr-1 flex items-center gap-1">
+            <span className="text-xs font-mono font-bold text-slate-400 mr-1 flex items-center gap-1">
               <Filter className="w-3.5 h-3.5" /> Zone:
             </span>
             {zones.map((z) => (
@@ -76,7 +76,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
                     <span className="w-2 h-2 rounded-full bg-[#FF4757]" title="High 30-day failure rate" />
                   )}
                 </div>
-                <div className="text-[10px] font-bold text-gray-600 truncate mt-1">
+                <div className="text-[10px] font-bold text-slate-300 truncate mt-1">
                   {w.zone}
                 </div>
                 <div className="text-[9px] font-mono text-gray-800 font-bold truncate">
@@ -89,38 +89,38 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
       </div>
 
       {/* Selected Ward Profile Header */}
-      <div className="nb-card p-5 bg-[#FFFDF7] border border-slate-200/90">
+      <div className="nb-card p-5 bg-[#FFFDF7] border border-white/10">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b-2 border-[#0F172A]">
           <div>
             <div className="flex items-center gap-2 flex-wrap">
               <span className="nb-badge nb-badge-black text-sm px-2 py-0.5">WARD {selectedWard.ward_code}</span>
               <span className="nb-badge nb-badge-yellow">{selectedWard.zone}</span>
-              <span className="text-xs font-bold text-gray-600 font-mono">
+              <span className="text-xs font-bold text-slate-300 font-mono">
                 {selectedWard.assistant_commissioner_office}
               </span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-bold uppercase mt-1">
               {selectedWard.ward_name}
             </h3>
-            <p className="text-xs font-bold text-gray-600 mt-0.5">
+            <p className="text-xs font-bold text-slate-300 mt-0.5">
               Localities: {selectedWard.localities.join(', ')}
             </p>
           </div>
 
           {/* Terrain & Vulnerability Badges */}
           <div className="flex flex-wrap items-center gap-2">
-            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded text-center">
-              <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Flood Prone Index</span>
-              <span className={`font-mono font-extrabold text-sm ${selectedWard.low_lying_index > 0.6 ? 'text-[#FF4757]' : 'text-gray-800'}`}>
+            <div className="bg-white border border-white/10 px-3 py-1.5 rounded text-center">
+              <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Flood Prone Index</span>
+              <span className={`font-mono font-extrabold text-sm ${selectedWard.low_lying_index > 0.6 ? 'text-rose-400' : 'text-gray-800'}`}>
                 {(selectedWard.low_lying_index * 100).toFixed(0)}% Vulnerable
               </span>
             </div>
-            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded text-center">
-              <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Hotspots</span>
+            <div className="bg-white border border-white/10 px-3 py-1.5 rounded text-center">
+              <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Hotspots</span>
               <span className="font-mono font-extrabold text-sm text-gray-800">{selectedWard.chronic_hotspots_count} Chronic</span>
             </div>
-            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded text-center">
-              <span className="text-[10px] font-mono font-bold text-gray-500 uppercase block">Crews / Day</span>
+            <div className="bg-white border border-white/10 px-3 py-1.5 rounded text-center">
+              <span className="text-[10px] font-mono font-bold text-slate-400 uppercase block">Crews / Day</span>
               <span className="font-mono font-extrabold text-sm text-gray-800">{selectedWard.engineering_crews} Teams</span>
             </div>
           </div>
@@ -131,41 +131,41 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
           {/* Card 1: Budget vs Spend */}
           <div className="nb-card p-4 bg-white">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-bold uppercase font-mono text-gray-600">Monsoon Budget</span>
+              <span className="text-xs font-bold uppercase font-mono text-slate-300">Monsoon Budget</span>
               <span className="nb-badge nb-badge-gray">{selectedWard.utilization_pct}% Used</span>
             </div>
             <div className="text-2xl font-bold font-mono">{formatLakh(selectedWard.budget_inr)}</div>
-            <div className="text-xs font-bold text-gray-600 mt-1">
-              Spent: <span className="font-mono font-extrabold text-black">{formatLakh(selectedWard.total_spend_inr)}</span>
+            <div className="text-xs font-bold text-slate-300 mt-1">
+              Spent: <span className="font-mono font-extrabold text-white">{formatLakh(selectedWard.total_spend_inr)}</span>
             </div>
             {/* Progress bar */}
-            <div className="w-full bg-gray-200 h-3 border border-slate-200/80 rounded-full overflow-hidden mt-3">
+            <div className="w-full bg-gray-200 h-3 border border-white/10 rounded-full overflow-hidden mt-3">
               <div 
                 className={`h-full ${selectedWard.utilization_pct > 100 ? 'bg-[#FF4757]' : 'bg-[#00E599]'}`}
                 style={{ width: `${Math.min(100, selectedWard.utilization_pct)}%` }}
               />
             </div>
-            <div className="text-[10px] font-mono text-gray-500 mt-1 flex justify-between">
+            <div className="text-[10px] font-mono text-slate-400 mt-1 flex justify-between">
               <span>Remaining</span>
-              <span className="font-bold text-black">{formatLakh(selectedWard.remaining_inr)}</span>
+              <span className="font-bold text-white">{formatLakh(selectedWard.remaining_inr)}</span>
             </div>
           </div>
 
           {/* Card 2: Wasted Money */}
-          <div className="nb-card p-4 bg-[#FFF0F2] border-[#FF4757]">
+          <div className="nb-card p-4 bg-rose-950/40 border border-rose-500/40 backdrop-blur-md border-[#FF4757]">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-bold uppercase font-mono text-[#FF4757] flex items-center gap-1">
+              <span className="text-xs font-bold uppercase font-mono text-rose-400 flex items-center gap-1">
                 <Flame className="w-3.5 h-3.5" /> Wasted Rupees
               </span>
               <span className="nb-badge nb-badge-coral">{selectedWard.failure_rate_pct}% Failed</span>
             </div>
-            <div className="text-2xl font-bold font-mono text-[#FF4757]">
+            <div className="text-2xl font-bold font-mono text-rose-400">
               {formatLakh(selectedWard.wasted_spend_inr)}
             </div>
-            <div className="text-xs font-bold text-gray-700 mt-1">
+            <div className="text-xs font-bold text-slate-300 mt-1">
               Failed within 30 days: <span className="font-mono font-extrabold">{selectedWard.reopened_count} of {selectedWard.total_work_orders} fixes</span>
             </div>
-            <p className="text-[10px] text-gray-600 mt-3 font-medium">
+            <p className="text-[10px] text-slate-300 mt-3 font-medium">
               Money paid for patches that broke down within a month of completion.
             </p>
           </div>
@@ -173,18 +173,18 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
           {/* Card 3: DLP Warranty Breaches */}
           <div className="nb-card p-4 bg-white">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-bold uppercase font-mono text-gray-600 flex items-center gap-1">
-                <ShieldAlert className="w-3.5 h-3.5 text-[#FF8800]" /> DLP Breach Cost
+              <span className="text-xs font-bold uppercase font-mono text-slate-300 flex items-center gap-1">
+                <ShieldAlert className="w-3.5 h-3.5 text-amber-400" /> DLP Breach Cost
               </span>
               <span className="nb-badge nb-badge-orange">Warranty</span>
             </div>
-            <div className="text-2xl font-bold font-mono text-[#FF8800]">
+            <div className="text-2xl font-bold font-mono text-amber-400">
               {formatLakh(selectedWard.dlp_violation_spend_inr)}
             </div>
-            <div className="text-xs font-bold text-gray-600 mt-1">
+            <div className="text-xs font-bold text-slate-300 mt-1">
               Overbilled Excess: <span className="font-mono font-bold">{formatLakh(selectedWard.overbilled_spend_inr)}</span>
             </div>
-            <p className="text-[10px] text-gray-600 mt-3 font-medium">
+            <p className="text-[10px] text-slate-300 mt-3 font-medium">
               Repairs on roads under active defect liability period that BMC paid for.
             </p>
           </div>
@@ -192,18 +192,18 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
           {/* Card 4: SLA Reliability */}
           <div className="nb-card p-4 bg-white">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-bold uppercase font-mono text-gray-600">SLA Speed Met</span>
+              <span className="text-xs font-bold uppercase font-mono text-slate-300">SLA Speed Met</span>
               <span className={`nb-badge ${selectedWard.sla_compliance_pct >= 60 ? 'nb-badge-mint' : 'nb-badge-yellow'}`}>
                 {selectedWard.sla_compliance_pct}% Met
               </span>
             </div>
-            <div className="text-2xl font-bold font-mono text-gray-900">
+            <div className="text-2xl font-bold font-mono text-white">
               {selectedWard.total_work_orders}
             </div>
-            <div className="text-xs font-bold text-gray-600 mt-1">
+            <div className="text-xs font-bold text-slate-300 mt-1">
               Total repair orders executed this monsoon season.
             </div>
-            <div className="mt-3 flex items-center gap-1.5 text-[10px] font-mono text-gray-500">
+            <div className="mt-3 flex items-center gap-1.5 text-[10px] font-mono text-slate-400">
               <span>Roads: {selectedWard.roads_count}</span> • 
               <span>Accidents: {selectedWard.accidents_count}</span>
             </div>
@@ -211,12 +211,12 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
         </div>
 
         {/* AI Plain-Language Audit Verdict */}
-        <div className="mt-5 bg-[#F59E0B] border border-slate-200/90 p-4 rounded-md shadow-nb-sm">
+        <div className="mt-5 bg-[#F59E0B] border border-white/10 p-4 rounded-md shadow-nb-sm">
           <div className="flex items-center gap-2 mb-1.5">
             <span className="nb-badge nb-badge-black text-[10px]">CLAUDE CIVIC AUDIT VERDICT</span>
             <span className="text-xs font-extrabold uppercase tracking-wide">PLAIN-LANGUAGE EXECUTIVE BRIEF</span>
           </div>
-          <p className="text-sm font-bold text-[#0F172A] leading-relaxed">
+          <p className="text-sm font-bold text-cyan-400 leading-relaxed">
             "{selectedWard.audit_verdict}"
           </p>
         </div>
@@ -238,7 +238,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
             <h3 className="font-extrabold font-mono text-base uppercase">
               Spend by Repair Method
             </h3>
-            <span className="text-xs font-mono font-bold text-gray-500">
+            <span className="text-xs font-mono font-bold text-slate-400">
               {selectedWard.spend_by_method.length} Methods Deployed
             </span>
           </div>
@@ -246,7 +246,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
             {selectedWard.spend_by_method.map((item, idx) => {
               const pct = ((item.amount / selectedWard.total_spend_inr) * 100).toFixed(1);
               return (
-                <div key={idx} className="border border-slate-200/80 p-2.5 rounded bg-[#F8FAFC]">
+                <div key={idx} className="border border-white/10 p-2.5 rounded liquid-glass-sub">
                   <div className="flex justify-between text-xs font-bold mb-1">
                     <span className="truncate pr-2">{item.method}</span>
                     <span className="font-mono text-right">{formatLakh(item.amount)} ({pct}%)</span>
@@ -269,7 +269,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
             <h3 className="font-extrabold font-mono text-base uppercase">
               Spend by Contractor
             </h3>
-            <span className="text-xs font-mono font-bold text-gray-500">
+            <span className="text-xs font-mono font-bold text-slate-400">
               {selectedWard.spend_by_contractor.length} Contractors
             </span>
           </div>
@@ -277,7 +277,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
             {selectedWard.spend_by_contractor.map((item, idx) => {
               const pct = ((item.amount / selectedWard.total_spend_inr) * 100).toFixed(1);
               return (
-                <div key={idx} className="border border-slate-200/80 p-2.5 rounded bg-[#F8FAFC]">
+                <div key={idx} className="border border-white/10 p-2.5 rounded liquid-glass-sub">
                   <div className="flex justify-between text-xs font-bold mb-1">
                     <span className="truncate pr-2">{item.contractor}</span>
                     <span className="font-mono text-right">{formatLakh(item.amount)} ({pct}%)</span>
@@ -297,7 +297,7 @@ export default function WardTrailView({ wards, onSelectWorkOrder, onNavigateToAu
 
       {/* Ward Action Footer */}
       <div className="nb-card p-4 bg-[#F8F5EE] flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div className="text-xs font-bold text-gray-700">
+        <div className="text-xs font-bold text-slate-300">
           Want to inspect flagged work orders for Ward <span className="font-mono font-bold">{selectedWard.ward_code}</span>?
         </div>
         <button

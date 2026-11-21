@@ -30,7 +30,7 @@ export default function RolePortalSwitcher({ activeRole, setActiveRole }) {
   ];
 
   return (
-    <div className="bg-slate-900/95 backdrop-blur-md text-white py-1.5 px-4 text-xs border-b border-slate-800">
+    <div className="bg-slate-950/75 backdrop-blur-2xl text-white py-1.5 px-4 text-xs border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.12)]">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
         <div className="flex items-center gap-2.5">
           <span className="text-slate-400 font-semibold text-[11px] tracking-wide flex items-center gap-1.5">
@@ -38,8 +38,8 @@ export default function RolePortalSwitcher({ activeRole, setActiveRole }) {
             Perspective:
           </span>
 
-          {/* Apple Segmented Control Pill Container */}
-          <div className="flex items-center bg-slate-800/80 p-0.5 rounded-xl border border-slate-700/60 shadow-inner">
+          {/* Apple Segmented Control Liquid Pill Container */}
+          <div className="flex items-center bg-white/10 backdrop-blur-xl p-0.5 rounded-xl border border-white/15 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]">
             {roles.map((r) => {
               const Icon = r.icon;
               const isActive = activeRole === r.id;
@@ -47,13 +47,13 @@ export default function RolePortalSwitcher({ activeRole, setActiveRole }) {
                 <button
                   key={r.id}
                   onClick={() => setActiveRole(r.id)}
-                  className={`px-3 py-1 rounded-lg flex items-center gap-1.5 text-xs font-medium transition-all duration-150 ${
+                  className={`px-3 py-1 rounded-lg flex items-center gap-1.5 text-xs font-semibold transition-all duration-200 ${
                     isActive
-                      ? r.activeClass
-                      : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
+                      ? 'bg-white/95 text-slate-950 shadow-md border border-white'
+                      : 'text-slate-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  <span className={`w-1.5 h-1.5 rounded-full ${r.dotColor} ${isActive ? 'opacity-100 ring-2 ring-slate-200/40' : 'opacity-40'}`}></span>
+                  <span className={`w-1.5 h-1.5 rounded-full ${r.dotColor} ${isActive ? 'opacity-100 ring-2 ring-slate-900/30' : 'opacity-40'}`}></span>
                   <Icon className="w-3.5 h-3.5" />
                   <span>{r.label}</span>
                 </button>

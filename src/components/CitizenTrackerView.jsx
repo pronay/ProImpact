@@ -46,7 +46,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="nb-card p-5 bg-[#F59E0B] border border-slate-200/90">
+      <div className="nb-card p-5 bg-[#F59E0B] border border-white/10">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
@@ -56,14 +56,14 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
             <h2 className="text-2xl sm:text-3xl font-bold uppercase mt-1">
               Citizen Complaint & Repair Tracker
             </h2>
-            <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
+            <p className="text-xs sm:text-sm font-bold text-white mt-0.5">
               Follow real Mumbai citizen complaints across MyBMC App, 1916 Helpline, Marathi and Hinglish logs directly to the public rupee spent.
             </p>
           </div>
 
-          <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded shadow-nb-sm text-center">
-            <span className="text-[10px] font-mono font-bold uppercase text-gray-600 block">Sample Batch</span>
-            <span className="font-mono font-bold text-base text-[#0F172A]">200 Monsoon Peak Logs</span>
+          <div className="bg-white border border-white/10 px-3 py-1.5 rounded shadow-nb-sm text-center">
+            <span className="text-[10px] font-mono font-bold uppercase text-slate-300 block">Sample Batch</span>
+            <span className="font-mono font-bold text-base text-cyan-400">200 Monsoon Peak Logs</span>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {/* Search Input */}
           <div className="relative">
-            <Search className="w-4 h-4 absolute left-3 top-3 text-gray-500" />
+            <Search className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
             <input
               type="text"
               placeholder="Search by locality, complaint text, ID..."
@@ -116,7 +116,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
 
         {/* Language Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1 scrollbar-none">
-          <span className="text-xs font-mono font-bold text-gray-500 mr-1 flex items-center gap-1">
+          <span className="text-xs font-mono font-bold text-slate-400 mr-1 flex items-center gap-1">
             <Filter className="w-3.5 h-3.5" /> Language:
           </span>
           {languages.map((l) => (
@@ -137,20 +137,20 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
 
       {/* Complaints List Cards */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between text-xs font-mono font-bold text-gray-700 px-1">
+        <div className="flex items-center justify-between text-xs font-mono font-bold text-slate-300 px-1">
           <span>Showing {filteredComplaints.length} citizen tickets</span>
           <span>Page {currentPage} of {totalPages}</span>
         </div>
 
         {paginatedComplaints.length === 0 ? (
-          <div className="nb-card p-8 text-center text-gray-500 font-bold bg-white">
+          <div className="nb-card p-8 text-center text-slate-400 font-bold bg-white">
             No complaints found matching current filters.
           </div>
         ) : (
           paginatedComplaints.map((c) => (
             <div 
               key={c.complaint_id}
-              className="nb-card p-4 sm:p-5 bg-white border border-slate-200/90 shadow-nb hover:shadow-nb-lg transition-all"
+              className="nb-card p-4 sm:p-5 bg-white border border-white/10 shadow-nb hover:shadow-nb-lg transition-all"
             >
               <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
                 {/* Left: Citizen Issue */}
@@ -161,7 +161,7 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
                     <span className="nb-badge nb-badge-yellow">Ward {c.ward_code}</span>
                     <span className="nb-badge nb-badge-gray">{c.channel}</span>
                     <span className="nb-badge nb-badge-cyan">{c.language}</span>
-                    <span className="text-gray-500 font-mono font-bold">{c.received_at}</span>
+                    <span className="text-slate-400 font-mono font-bold">{c.received_at}</span>
                     {c.upvotes > 0 && (
                       <span className="nb-badge nb-badge-coral flex items-center gap-1">
                         <ThumbsUp className="w-3 h-3" /> {c.upvotes} Citizens
@@ -170,30 +170,30 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
                   </div>
 
                   {/* Citizen Text */}
-                  <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded-md">
-                    <div className="text-xs font-bold text-gray-500 uppercase font-mono mb-1">
-                      Reported Issue: <span className="text-black">{c.category_reported}</span> • Locality: <span className="text-black">{c.locality_text}</span>
+                  <div className="liquid-glass-sub border border-white/10 p-3 rounded-md">
+                    <div className="text-xs font-bold text-slate-400 uppercase font-mono mb-1">
+                      Reported Issue: <span className="text-white">{c.category_reported}</span> • Locality: <span className="text-white">{c.locality_text}</span>
                     </div>
-                    <p className="text-sm font-extrabold text-[#0F172A] leading-relaxed">
+                    <p className="text-sm font-extrabold text-cyan-400 leading-relaxed">
                       "{c.description}"
                     </p>
                   </div>
 
                   {/* Photo Description (Computer Vision Stand-in) */}
                   {c.photo_description && (
-                    <div className="flex items-start gap-1.5 text-xs text-gray-600 bg-gray-50 p-2 rounded border border-gray-300">
-                      <Camera className="w-3.5 h-3.5 text-gray-700 flex-shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-1.5 text-xs text-slate-300 bg-gray-50 p-2 rounded border border-gray-300">
+                      <Camera className="w-3.5 h-3.5 text-slate-300 flex-shrink-0 mt-0.5" />
                       <div>
-                        <strong className="font-mono text-black">Visual Sensor Description:</strong> {c.photo_description}
+                        <strong className="font-mono text-white">Visual Sensor Description:</strong> {c.photo_description}
                       </div>
                     </div>
                   )}
                 </div>
 
                 {/* Right: The Rupee Trail (Linked Work Order) */}
-                <div className="lg:w-80 flex-shrink-0 bg-[#F8FAFC] border border-slate-200/80 p-3.5 rounded-md text-xs space-y-2">
+                <div className="lg:w-80 flex-shrink-0 liquid-glass-sub border border-white/10 p-3.5 rounded-md text-xs space-y-2">
                   <div className="flex items-center justify-between border-b border-gray-300 pb-1">
-                    <span className="font-extrabold uppercase font-mono text-[10px] text-gray-600">The Rupee Trail</span>
+                    <span className="font-extrabold uppercase font-mono text-[10px] text-slate-300">The Rupee Trail</span>
                     <span className={`nb-badge text-[10px] ${
                       c.status === 'Resolved' ? 'nb-badge-mint' : 'nb-badge-yellow'
                     }`}>
@@ -205,26 +205,26 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
                     <>
                       <div className="space-y-1">
                         <div className="flex justify-between">
-                          <span className="text-gray-600 font-bold">Linked Work Order:</span>
-                          <span className="font-mono font-bold text-black">{c.linked_work_order_id}</span>
+                          <span className="text-slate-300 font-bold">Linked Work Order:</span>
+                          <span className="font-mono font-bold text-white">{c.linked_work_order_id}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600 font-bold">Contractor:</span>
-                          <span className="font-bold text-gray-900 truncate max-w-[140px]">{c.contractor_name}</span>
+                          <span className="text-slate-300 font-bold">Contractor:</span>
+                          <span className="font-bold text-white truncate max-w-[140px]">{c.contractor_name}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600 font-bold">Repair Cost:</span>
-                          <span className="font-mono font-bold text-black">{formatINR(c.cost_inr)}</span>
+                          <span className="text-slate-300 font-bold">Repair Cost:</span>
+                          <span className="font-mono font-bold text-white">{formatINR(c.cost_inr)}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600 font-bold">SLA Turnaround:</span>
-                          <span className={`font-bold font-mono ${c.sla_met === 'Y' ? 'text-green-700' : 'text-[#FF4757]'}`}>
+                          <span className="text-slate-300 font-bold">SLA Turnaround:</span>
+                          <span className={`font-bold font-mono ${c.sla_met === 'Y' ? 'text-emerald-400' : 'text-rose-400'}`}>
                             {c.sla_met === 'Y' ? '✓ Met Target' : '✗ Breached'}
                           </span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600 font-bold">30d Fix Held Up?:</span>
-                          <span className={`font-bold font-mono ${c.reopened_within_30d === 'Y' ? 'text-[#FF4757]' : 'text-green-700'}`}>
+                          <span className="text-slate-300 font-bold">30d Fix Held Up?:</span>
+                          <span className={`font-bold font-mono ${c.reopened_within_30d === 'Y' ? 'text-rose-400' : 'text-emerald-400'}`}>
                             {c.reopened_within_30d === 'Y' ? 'FAILED / RELAPSED' : '✓ HELD UP'}
                           </span>
                         </div>
@@ -232,16 +232,16 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
 
                       <button
                         onClick={() => onInspectWorkOrderById(c.linked_work_order_id)}
-                        className="nb-btn nb-btn-white w-full text-xs py-1.5 mt-2 hover:bg-[#F59E0B] flex items-center justify-center gap-1 font-bold"
+                        className="nb-btn nb-btn w-full text-xs py-1.5 mt-2 hover:bg-[#F59E0B] flex items-center justify-center gap-1 font-bold"
                       >
                         <span>Audit Work Order</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </>
                   ) : (
-                    <div className="py-2 text-center text-gray-500 font-bold">
-                      <p className="text-xs text-[#FF4757]">No work order linked.</p>
-                      <span className="text-[10px] text-gray-600">Ticket was resolved through administrative routine or pending dispatch.</span>
+                    <div className="py-2 text-center text-slate-400 font-bold">
+                      <p className="text-xs text-rose-400">No work order linked.</p>
+                      <span className="text-[10px] text-slate-300">Ticket was resolved through administrative routine or pending dispatch.</span>
                     </div>
                   )}
                 </div>
@@ -252,21 +252,21 @@ export default function CitizenTrackerView({ complaints, onInspectWorkOrderById 
 
         {/* Pagination */}
         <div className="nb-card p-3 bg-[#F8F5EE] flex items-center justify-between">
-          <div className="text-xs font-mono font-bold text-gray-600">
+          <div className="text-xs font-mono font-bold text-slate-300">
             Page {currentPage} of {totalPages}
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="nb-btn nb-btn-white text-xs py-1 px-3 disabled:opacity-50"
+              className="nb-btn nb-btn text-xs py-1 px-3 disabled:opacity-50"
             >
               Prev
             </button>
             <button
               onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="nb-btn nb-btn-white text-xs py-1 px-3 disabled:opacity-50"
+              className="nb-btn nb-btn text-xs py-1 px-3 disabled:opacity-50"
             >
               Next
             </button>

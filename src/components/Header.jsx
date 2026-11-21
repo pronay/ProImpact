@@ -36,45 +36,45 @@ export default function Header({ activeTab, setActiveTab, activeRole, setActiveR
   const formatCr = (num) => `₹${(num / 10000000).toFixed(2)} Cr`;
 
   return (
-    <header className="backdrop-blur-xl bg-white/85 border-b border-slate-200/80 sticky top-0 z-40 shadow-sm transition-all">
+    <header className="backdrop-blur-3xl bg-slate-950/80 border-b border-white/10 sticky top-0 z-40 shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-all">
       {/* 3-Role Perspective Switcher Bar */}
       <RolePortalSwitcher activeRole={activeRole} setActiveRole={setActiveRole} />
 
-      {/* Executive Telemetry Ribbon (Stripe Precision Style) */}
-      <div className="bg-slate-50/90 border-b border-slate-200/60 py-1 px-4 overflow-hidden text-xs font-mono text-slate-600">
+      {/* Executive Telemetry Ribbon (Obsidian Liquid Glass) */}
+      <div className="bg-slate-900/50 backdrop-blur-xl border-b border-white/5 py-1.5 px-4 overflow-hidden text-xs font-mono text-slate-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-x-auto scrollbar-none">
-          <div className="flex items-center gap-1.5 flex-shrink-0 font-bold text-[11px] text-slate-800">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <div className="flex items-center gap-1.5 flex-shrink-0 font-bold text-[11px] text-cyan-400">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse ring-2 ring-cyan-500/30"></span>
             <span className="uppercase tracking-wider">Monsoon Telemetry:</span>
           </div>
 
-          <div className="flex items-center gap-3 text-[11px] font-medium whitespace-nowrap">
-            <div className="flex items-center gap-1.5 bg-white px-2 py-0.5 rounded-full border border-slate-200 shadow-sm">
+          <div className="flex items-center gap-2.5 text-[11px] font-medium whitespace-nowrap">
+            <div className="flex items-center gap-1.5 bg-white/5 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/10 shadow-sm">
               <span className="text-slate-400">Total Spend</span>
-              <span className="font-bold text-slate-900">{formatCr(kpis.total_spend_inr)}</span>
-              <span className="text-slate-400 text-[10px]">/ {formatCr(kpis.total_budget_inr)}</span>
+              <span className="font-bold text-white font-mono">{formatCr(kpis.total_spend_inr)}</span>
+              <span className="text-slate-500 text-[10px]">/ {formatCr(kpis.total_budget_inr)}</span>
             </div>
 
-            <div className="flex items-center gap-1.5 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200 text-rose-800 shadow-sm">
+            <div className="flex items-center gap-1.5 bg-rose-950/40 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-rose-500/30 text-rose-300 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
               <span>Relapse Waste</span>
-              <span className="font-bold">{formatCr(kpis.total_wasted_inr)}</span>
-              <span className="text-[10px] opacity-80">({kpis.overall_reopened_pct}%)</span>
+              <span className="font-bold font-mono text-rose-400">{formatCr(kpis.total_wasted_inr)}</span>
+              <span className="text-[10px] text-rose-400/70">({kpis.overall_reopened_pct}%)</span>
             </div>
 
-            <div className="flex items-center gap-1.5 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200 text-amber-800 shadow-sm">
-              <span>DLP Warranty Breaches</span>
-              <span className="font-bold">{formatCr(kpis.total_dlp_breach_inr)}</span>
+            <div className="flex items-center gap-1.5 bg-amber-950/40 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-amber-500/30 text-amber-300 shadow-sm">
+              <span>DLP Breaches</span>
+              <span className="font-bold font-mono text-amber-400">{formatCr(kpis.total_dlp_breach_inr)}</span>
             </div>
 
-            <div className="flex items-center gap-1.5 bg-sky-50 px-2 py-0.5 rounded-full border border-sky-200 text-sky-800 shadow-sm">
+            <div className="flex items-center gap-1.5 bg-cyan-950/40 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-cyan-500/30 text-cyan-300 shadow-sm">
               <span>City SLA Met</span>
-              <span className="font-bold">{kpis.overall_sla_met_pct}%</span>
+              <span className="font-bold font-mono text-cyan-400">{kpis.overall_sla_met_pct}%</span>
             </div>
 
-            <div className="flex items-center gap-1.5 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-300 text-slate-700 shadow-sm">
+            <div className="flex items-center gap-1.5 bg-white/5 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/10 text-slate-300 shadow-sm">
               <span>Watchlist</span>
-              <span className="font-bold text-slate-900">{kpis.contractors_on_watchlist} Firms</span>
+              <span className="font-bold font-mono text-white">{kpis.contractors_on_watchlist} Firms</span>
             </div>
           </div>
         </div>
@@ -83,16 +83,16 @@ export default function Header({ activeTab, setActiveTab, activeRole, setActiveR
       {/* Main Header Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          {/* Apple Squircle Rupee Logo */}
-          <div className="w-10 h-10 bg-slate-900 text-white rounded-xl shadow-md flex items-center justify-center font-sans font-bold text-xl ring-1 ring-white/20">
-            <span className="text-sky-400">₹</span>
+          {/* Apple Squircle Rupee Logo with Cyan Specular Glow */}
+          <div className="w-10 h-10 bg-gradient-to-br from-cyan-500/20 to-blue-600/30 text-white rounded-2xl shadow-[0_0_20px_rgba(6,182,212,0.25)] flex items-center justify-center font-sans font-bold text-xl border border-cyan-400/40">
+            <span className="text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]">₹</span>
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 font-display">
+              <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white font-display">
                 ProTrace
               </h1>
-              <span className="px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-mono font-bold border border-sky-200">
+              <span className="px-2 py-0.5 rounded-full bg-cyan-500/15 backdrop-blur text-cyan-300 text-[10px] font-mono font-bold border border-cyan-400/30">
                 v2.1
               </span>
               <span className={`nb-badge text-[10px] ${
@@ -102,7 +102,7 @@ export default function Header({ activeTab, setActiveTab, activeRole, setActiveR
                 {activeRole.toUpperCase()} CONSOLE
               </span>
             </div>
-            <p className="text-xs text-slate-500 font-medium">
+            <p className="text-xs text-slate-400 font-medium">
               {activeRole === 'citizen' && "Public civic road health, QR passport verification, and legal transparency"}
               {activeRole === 'officer' && "Municipal audit triage, rate card compliance, and DLP warranty recoveries"}
               {activeRole === 'contractor' && "Empanelled agency scorecard, right-of-response, and IMD force majeure proofs"}
@@ -110,26 +110,26 @@ export default function Header({ activeTab, setActiveTab, activeRole, setActiveR
           </div>
         </div>
 
-        {/* Global Stats Snapshot Pills */}
+        {/* Global Stats Snapshot Pills (VisionOS Obsidian Glass) */}
         <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-0.5">
-          <div className="bg-white/80 backdrop-blur border border-slate-200 shadow-sm px-3 py-1.5 rounded-xl flex flex-col">
-            <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">Total Monsoon Spend</span>
-            <span className="font-bold text-xs sm:text-sm font-mono text-slate-900">{formatCr(kpis.total_spend_inr)}</span>
+          <div className="liquid-glass-sub px-3 py-1.5 rounded-2xl flex flex-col">
+            <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Total Monsoon Spend</span>
+            <span className="font-bold text-xs sm:text-sm font-mono text-white">{formatCr(kpis.total_spend_inr)}</span>
           </div>
-          <div className="bg-rose-50/80 border border-rose-200 shadow-sm px-3 py-1.5 rounded-xl flex flex-col">
-            <span className="text-[10px] font-medium text-rose-600 uppercase tracking-wider">Relapse Drain</span>
-            <span className="font-bold text-xs sm:text-sm font-mono text-rose-700">{formatCr(kpis.total_wasted_inr)}</span>
+          <div className="bg-rose-950/40 backdrop-blur-xl border border-rose-500/30 shadow-[0_4px_16px_rgba(239,68,68,0.2),inset_0_1px_1px_rgba(255,255,255,0.15)] px-3 py-1.5 rounded-2xl flex flex-col">
+            <span className="text-[10px] font-medium text-rose-400 uppercase tracking-wider">Relapse Drain</span>
+            <span className="font-bold text-xs sm:text-sm font-mono text-rose-300">{formatCr(kpis.total_wasted_inr)}</span>
           </div>
-          <div className="bg-white/80 backdrop-blur border border-slate-200 shadow-sm px-3 py-1.5 rounded-xl flex flex-col">
-            <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">Audit Flags</span>
-            <span className="font-bold text-xs sm:text-sm font-mono text-amber-600">{kpis.total_flagged_work_orders}</span>
+          <div className="liquid-glass-sub px-3 py-1.5 rounded-2xl flex flex-col">
+            <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">Audit Flags</span>
+            <span className="font-bold text-xs sm:text-sm font-mono text-amber-400">{kpis.total_flagged_work_orders}</span>
           </div>
         </div>
       </div>
 
-      {/* Modern Cupertino Segmented Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-2">
-        <nav className="flex space-x-1 sm:space-x-1.5 overflow-x-auto pb-1 scrollbar-none bg-slate-100/70 p-1 rounded-xl border border-slate-200/60">
+      {/* VisionOS Segmented Navigation Dock */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-2.5">
+        <nav className="flex space-x-1 sm:space-x-1.5 overflow-x-auto pb-0.5 scrollbar-none bg-slate-900/60 backdrop-blur-3xl p-1.5 rounded-2xl border border-white/10 shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.15),0_12px_32px_rgba(0,0,0,0.5)]">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -137,17 +137,17 @@ export default function Header({ activeTab, setActiveTab, activeRole, setActiveR
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all duration-150 ${
+                className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
                   isActive
-                    ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                    ? 'bg-white/15 text-white shadow-lg border border-white/20 ring-1 ring-white/10'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-sky-600' : 'text-slate-400'}`} />
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-cyan-400' : 'text-slate-500'}`} />
                 <span>{tab.label}</span>
                 {tab.badge && (
-                  <span className={`text-[10px] font-medium px-1.5 py-0.2 rounded-full ${
-                    isActive ? 'bg-slate-100 text-slate-800' : 'bg-slate-200/60 text-slate-600'
+                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
+                    isActive ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-400/30' : 'bg-white/5 text-slate-400'
                   }`}>
                     {tab.badge}
                   </span>

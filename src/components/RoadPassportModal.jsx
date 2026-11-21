@@ -24,13 +24,13 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto animate-fade-in">
         <div 
-          className="w-full max-w-4xl bg-white/95 backdrop-blur-2xl rounded-3xl border border-slate-200/80 shadow-2xl my-6 relative max-h-[92vh] flex flex-col overflow-hidden"
+          className="w-full max-w-4xl liquid-glass backdrop-blur-2xl rounded-3xl border border-white/10 shadow-2xl my-6 relative max-h-[92vh] flex flex-col overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Passport Header (Cupertino Style) */}
           <div className="bg-slate-900 text-white p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800">
             <div className="flex items-center gap-3.5">
-              <div className="w-11 h-11 rounded-2xl bg-sky-500 text-white flex flex-col items-center justify-center font-mono font-bold shadow-md">
+              <div className="w-11 h-11 rounded-2xl bg-cyan-950/400 text-white flex flex-col items-center justify-center font-mono font-bold shadow-md">
                 <span className="text-[10px] uppercase opacity-80">ROAD</span>
                 <span className="text-sm font-bold leading-none">{road.road_id.substring(2)}</span>
               </div>
@@ -79,7 +79,7 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
           </div>
 
           {/* Passport Navigation Tabs (Apple Segmented Bar) */}
-          <div className="bg-slate-50 border-b border-slate-200 px-5 py-2 flex gap-1.5 overflow-x-auto">
+          <div className="liquid-glass-sub border-b border-white/10 px-5 py-2 flex gap-1.5 overflow-x-auto">
             {[
               { id: 'overview', label: 'Road Dossier & Wear' },
               { id: 'lifecycle', label: '4-Stage Lifecycle' },
@@ -92,8 +92,8 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
                 onClick={() => setActiveTab(t.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
                   activeTab === t.id 
-                    ? 'bg-white text-slate-900 shadow-sm border border-slate-200/90' 
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                    ? 'bg-white text-white shadow-sm border border-white/10' 
+                    : 'text-slate-300 hover:text-white hover:bg-white/50'
                 }`}
               >
                 <span>{t.label}</span>
@@ -109,68 +109,68 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
               <div className="space-y-5">
                 {/* Repair Cycle & Rework Header Counter (Stripe Style) */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div className="bg-white border border-slate-200/90 p-3.5 rounded-2xl shadow-sm">
+                  <div className="bg-white border border-white/10 p-3.5 rounded-2xl shadow-sm">
                     <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block">Monsoon Repair Frequency</span>
-                    <div className="text-xl font-bold font-mono text-slate-900 mt-0.5">
+                    <div className="text-xl font-bold font-mono text-white mt-0.5">
                       {road.total_repairs_count} Work Orders
                     </div>
-                    <span className="text-xs font-semibold text-rose-600 block mt-1">
+                    <span className="text-xs font-semibold text-rose-400 block mt-1">
                       {road.reopened_count} Reopened in &lt;30 days
                     </span>
                   </div>
 
-                  <div className="bg-rose-50/80 border border-rose-200/80 p-3.5 rounded-2xl shadow-sm">
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-rose-600 block">Direct Rework Spend ("Cost of To & Fro")</span>
-                    <div className="text-xl font-bold font-mono text-rose-700 mt-0.5">
+                  <div className="bg-rose-950/40 border border-rose-500/30 p-3.5 rounded-2xl shadow-sm">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-rose-400 block">Direct Rework Spend ("Cost of To & Fro")</span>
+                    <div className="text-xl font-bold font-mono text-rose-400 mt-0.5">
                       {formatINR(road.direct_rework_spend_inr)}
                     </div>
-                    <span className="text-xs font-medium text-rose-800/80 block mt-1">
+                    <span className="text-xs font-medium text-rose-400/80 block mt-1">
                       Total Spent: {formatINR(road.total_spent_inr)}
                     </span>
                   </div>
 
-                  <div className="bg-white border border-slate-200/90 p-3.5 rounded-2xl shadow-sm">
+                  <div className="bg-white border border-white/10 p-3.5 rounded-2xl shadow-sm">
                     <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block">Observed Durability Proxy</span>
-                    <div className="text-xl font-bold font-mono text-sky-700 mt-0.5">
+                    <div className="text-xl font-bold font-mono text-cyan-400 mt-0.5">
                       {road.durability_proxy_days} Days
                     </div>
-                    <span className="text-xs font-medium text-slate-500 block mt-1">
+                    <span className="text-xs font-medium text-slate-400 block mt-1">
                       Avg. time to next complaint
                     </span>
                   </div>
                 </div>
 
                 {/* Wear-and-Tear Strip */}
-                <div className="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 shadow-sm">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2.5 flex items-center gap-1.5">
+                <div className="liquid-glass-sub border border-white/10 rounded-2xl p-4 shadow-sm">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2.5 flex items-center gap-1.5">
                     <Car className="w-4 h-4 text-slate-700" />
                     Traffic Load & Environmental Wear-and-Tear Strip
                   </h4>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                    <div className="bg-white border border-slate-200/80 p-2.5 rounded-xl shadow-sm">
+                    <div className="bg-white border border-white/10 p-2.5 rounded-xl shadow-sm">
                       <span className="text-[10px] text-slate-400 font-medium block">Peak Traffic Volume</span>
                       <span className="font-mono font-bold text-sm text-slate-800">{road.traffic_peak_hour} veh/hr</span>
                     </div>
-                    <div className="bg-white border border-slate-200/80 p-2.5 rounded-xl shadow-sm">
+                    <div className="bg-white border border-white/10 p-2.5 rounded-xl shadow-sm">
                       <span className="text-[10px] text-slate-400 font-medium block">Congestion Index</span>
                       <span className="font-mono font-bold text-sm text-slate-800">{road.congestion_index} / 10</span>
                     </div>
-                    <div className="bg-white border border-slate-200/80 p-2.5 rounded-xl shadow-sm">
+                    <div className="bg-white border border-white/10 p-2.5 rounded-xl shadow-sm">
                       <span className="text-[10px] text-slate-400 font-medium block">Surface & Lanes</span>
                       <span className="font-mono font-semibold text-xs text-slate-800">{road.surface} • {road.lanes} Lanes</span>
                     </div>
-                    <div className="bg-white border border-slate-200/80 p-2.5 rounded-xl shadow-sm">
+                    <div className="bg-white border border-white/10 p-2.5 rounded-xl shadow-sm">
                       <span className="text-[10px] text-slate-400 font-medium block">Past Accidents</span>
-                      <span className="font-mono font-bold text-sm text-rose-600">{road.accidents_count} Casualties</span>
+                      <span className="font-mono font-bold text-sm text-rose-400">{road.accidents_count} Casualties</span>
                     </div>
                   </div>
 
                   {/* Facilities Lifeline Warning */}
                   {road.facilities_nearby.length > 0 && (
-                    <div className="mt-3 bg-blue-50 border-2 border-blue-400 p-2.5 rounded text-xs flex items-center gap-2">
+                    <div className="mt-3 bg-cyan-950/40 border-2 border-cyan-500/40 p-2.5 rounded text-xs flex items-center gap-2">
                       <Hospital className="w-4 h-4 text-blue-700 flex-shrink-0" />
                       <div>
-                        <strong className="text-blue-900">Critical Lifeline Corridor:</strong>{' '}
+                        <strong className="text-cyan-400">Critical Lifeline Corridor:</strong>{' '}
                         <span className="text-blue-800">{road.facilities_nearby.join(', ')}</span>
                       </div>
                     </div>
@@ -178,20 +178,20 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
                 </div>
 
                 {/* Smart Repair Recommendation */}
-                <div className="nb-card p-4 bg-[#F8FAFC] border border-slate-200/90">
+                <div className="nb-card p-4 liquid-glass-sub border border-white/10">
                   <div className="flex justify-between items-center mb-1">
                     <span className="nb-badge nb-badge-black text-[10px]">ENGINEERING RECOMMENDATION</span>
-                    <span className="font-mono font-bold text-sm text-[#0F172A]">Est: {formatINR(road.estimated_cost_inr)}</span>
+                    <span className="font-mono font-bold text-sm text-cyan-400">Est: {formatINR(road.estimated_cost_inr)}</span>
                   </div>
-                  <h4 className="text-base font-extrabold text-black mt-1">
+                  <h4 className="text-base font-extrabold text-white mt-1">
                     {road.recommended_method}
                   </h4>
                   <p className="text-xs text-gray-800 font-medium mt-1 leading-relaxed">
                     "{road.recommendation_reason}"
                   </p>
-                  <div className="mt-2 text-xs font-mono font-bold text-green-800 flex items-center gap-1">
+                  <div className="mt-2 text-xs font-mono font-bold text-emerald-300 flex items-center gap-1">
                     <span>Expected Durability:</span>
-                    <span className="bg-[#00E599] text-black px-1.5 py-0.5 rounded border border-black">
+                    <span className="bg-[#00E599] text-white px-1.5 py-0.5 rounded border border-black">
                       {road.durability_rating}
                     </span>
                   </div>
@@ -210,15 +210,15 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
                 {/* 4-Stage Ribbon */}
                 <div className="space-y-3">
                   {/* Stage 1: Start */}
-                  <div className="border border-slate-200/90 p-3.5 rounded-lg bg-[#F8FAFC] relative">
+                  <div className="border border-white/10 p-3.5 rounded-lg liquid-glass-sub relative">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-[#F59E0B] text-black border border-slate-200/80 flex items-center justify-center font-mono font-bold text-xs">1</span>
+                        <span className="w-6 h-6 rounded-full bg-[#F59E0B] text-white border border-white/10 flex items-center justify-center font-mono font-bold text-xs">1</span>
                         <h4 className="font-extrabold text-sm uppercase">STAGE 1: START (Citizen Intake)</h4>
                       </div>
                       <span className="nb-badge nb-badge-mint text-[10px]">{road.lifecycle.start.evidence_label}</span>
                     </div>
-                    <p className="text-xs text-gray-700 mt-2">
+                    <p className="text-xs text-slate-300 mt-2">
                       Complaints routed from MyBMC App, 1916 Helpline and Ward Walk-ins. Average intake-to-dispatch lag: <strong>{road.lifecycle.start.intake_lag_days} days</strong>.
                     </p>
                   </div>
@@ -227,62 +227,62 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
                   <div className="border-3 border-dashed border-gray-400 p-3.5 rounded-lg bg-gray-50 opacity-90 relative">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-gray-300 text-gray-700 border-2 border-gray-500 flex items-center justify-center font-mono font-bold text-xs">2</span>
-                        <h4 className="font-extrabold text-sm uppercase text-gray-600">STAGE 2: TENDER & PROCUREMENT</h4>
+                        <span className="w-6 h-6 rounded-full bg-gray-300 text-slate-300 border-2 border-gray-500 flex items-center justify-center font-mono font-bold text-xs">2</span>
+                        <h4 className="font-extrabold text-sm uppercase text-slate-300">STAGE 2: TENDER & PROCUREMENT</h4>
                       </div>
-                      <span className="nb-badge nb-badge-gray text-[10px] text-gray-700">
+                      <span className="nb-badge nb-badge-gray text-[10px] text-slate-300">
                         Unavailable in Supplied Dataset
                       </span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-2 italic">
+                    <p className="text-xs text-slate-400 mt-2 italic">
                       ⚠️ {road.lifecycle.tender.note} (Pre-award RFPs, bid evaluation minutes, and material itemization splits will link here in production).
                     </p>
                   </div>
 
                   {/* Stage 3: Build */}
-                  <div className="border border-slate-200/90 p-3.5 rounded-lg bg-[#F8FAFC] relative">
+                  <div className="border border-white/10 p-3.5 rounded-lg liquid-glass-sub relative">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-[#00F0FF] text-black border border-slate-200/80 flex items-center justify-center font-mono font-bold text-xs">3</span>
+                        <span className="w-6 h-6 rounded-full bg-[#00F0FF] text-white border border-white/10 flex items-center justify-center font-mono font-bold text-xs">3</span>
                         <h4 className="font-extrabold text-sm uppercase">STAGE 3: BUILD & EXECUTION</h4>
                       </div>
                       <span className="nb-badge nb-badge-mint text-[10px]">{road.lifecycle.build.evidence_label}</span>
                     </div>
-                    <p className="text-xs text-gray-700 mt-2">
+                    <p className="text-xs text-slate-300 mt-2">
                       Contractors: <strong>{road.lifecycle.build.active_contractors.join(', ') || 'N/A'}</strong>. Methods: <strong>{road.lifecycle.build.methods_used.join(', ') || 'N/A'}</strong>. Benchmarked against official BMC rate card.
                     </p>
                   </div>
 
                   {/* Stage 4: Complete */}
-                  <div className="border border-slate-200/90 p-3.5 rounded-lg bg-[#F8FAFC] relative">
+                  <div className="border border-white/10 p-3.5 rounded-lg liquid-glass-sub relative">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-[#00E599] text-black border border-slate-200/80 flex items-center justify-center font-mono font-bold text-xs">4</span>
+                        <span className="w-6 h-6 rounded-full bg-[#00E599] text-white border border-white/10 flex items-center justify-center font-mono font-bold text-xs">4</span>
                         <h4 className="font-extrabold text-sm uppercase">STAGE 4: COMPLETE & SIGNOFF</h4>
                       </div>
                       <span className="nb-badge nb-badge-mint text-[10px]">{road.lifecycle.complete.evidence_label}</span>
                     </div>
-                    <p className="text-xs text-gray-700 mt-2">
+                    <p className="text-xs text-slate-300 mt-2">
                       Completed work orders: <strong>{road.lifecycle.complete.total_work_orders}</strong>. SLAs met: <strong>{road.lifecycle.complete.sla_met_count} of {road.lifecycle.complete.total_work_orders}</strong>.
                     </p>
                   </div>
 
                   {/* Stage 5: Durability (After the End) */}
-                  <div className={`border border-slate-200/90 p-3.5 rounded-lg relative ${road.reopened_count > 0 ? 'bg-[#FFF0F2] border-[#FF4757]' : 'bg-[#E6FBF2]'}`}>
+                  <div className={`border border-white/10 p-3.5 rounded-lg relative ${road.reopened_count > 0 ? 'bg-rose-950/40 border border-rose-500/40 backdrop-blur-md border-[#FF4757]' : 'bg-[#E6FBF2]'}`}>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-[#FF4757] text-white border border-slate-200/80 flex items-center justify-center font-mono font-bold text-xs">5</span>
+                        <span className="w-6 h-6 rounded-full bg-[#FF4757] text-white border border-white/10 flex items-center justify-center font-mono font-bold text-xs">5</span>
                         <h4 className="font-extrabold text-sm uppercase">STAGE 5: POST-COMPLETION DURABILITY</h4>
                       </div>
                       <span className="nb-badge nb-badge-coral text-[10px]">{road.lifecycle.durability.evidence_label}</span>
                     </div>
                     <p className="text-xs text-gray-800 mt-2 font-medium">
                       {road.reopened_count > 0 ? (
-                        <span className="text-[#FF4757] font-bold">
+                        <span className="text-rose-400 font-bold">
                           ⚠️ High Durability Failure: {road.reopened_count} patches broke down in &lt;30 days. Attributed to {road.lifecycle.durability.wear_attribution}.
                         </span>
                       ) : (
-                        <span className="text-green-800 font-bold">
+                        <span className="text-emerald-300 font-bold">
                           ✓ Repairs maintained durability across monsoon season. Observed durability proxy: {road.durability_proxy_days} days.
                         </span>
                       )}
@@ -295,45 +295,45 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
             {/* TAB 3: VISUAL MONEY TRACE GRAPH */}
             {activeTab === 'graph' && (
               <div className="space-y-4">
-                <div className="text-xs font-mono font-bold text-gray-600 mb-2">
+                <div className="text-xs font-mono font-bold text-slate-300 mb-2">
                   Bounded Node-Edge Rupee Trace with Environmental Context Nodes:
                 </div>
 
-                <div className="bg-[#F8FAFC] border border-slate-200/90 p-4 rounded-lg overflow-x-auto">
+                <div className="liquid-glass-sub border border-white/10 p-4 rounded-lg overflow-x-auto">
                   <div className="flex items-center justify-between gap-3 min-w-[700px] text-xs font-mono font-bold">
-                    <div className="nb-card p-3 bg-[#F59E0B] text-center border border-slate-200/80 w-32 shadow-nb-sm">
-                      <span className="text-[9px] uppercase text-gray-700 block">Source</span>
+                    <div className="nb-card p-3 bg-[#F59E0B] text-center border border-white/10 w-32 shadow-nb-sm">
+                      <span className="text-[9px] uppercase text-slate-300 block">Source</span>
                       <span className="font-bold text-sm">Ward {road.ward_code}</span>
                       <span className="text-[10px] text-gray-800 block">Monsoon Budget</span>
                     </div>
 
-                    <ArrowRight className="w-5 h-5 text-gray-600 flex-shrink-0" />
+                    <ArrowRight className="w-5 h-5 text-slate-300 flex-shrink-0" />
 
-                    <div className="nb-card p-3 bg-white text-center border border-slate-200/80 w-36 shadow-nb-sm">
-                      <span className="text-[9px] uppercase text-gray-500 block">Asset</span>
-                      <span className="font-bold text-sm text-black">{road.road_id}</span>
-                      <span className="text-[10px] text-gray-600 truncate block">{road.road_name.split(' ')[0]}</span>
+                    <div className="nb-card p-3 bg-white text-center border border-white/10 w-36 shadow-nb-sm">
+                      <span className="text-[9px] uppercase text-slate-400 block">Asset</span>
+                      <span className="font-bold text-sm text-white">{road.road_id}</span>
+                      <span className="text-[10px] text-slate-300 truncate block">{road.road_name.split(' ')[0]}</span>
                     </div>
 
-                    <ArrowRight className="w-5 h-5 text-gray-600 flex-shrink-0" />
+                    <ArrowRight className="w-5 h-5 text-slate-300 flex-shrink-0" />
 
-                    <div className="nb-card p-3 bg-white text-center border border-slate-200/80 w-36 shadow-nb-sm">
-                      <span className="text-[9px] uppercase text-gray-500 block">Jobs Executed</span>
-                      <span className="font-bold text-sm text-black">{road.total_repairs_count} Orders</span>
-                      <span className="text-[10px] text-gray-600 block">{road.surface}</span>
+                    <div className="nb-card p-3 bg-white text-center border border-white/10 w-36 shadow-nb-sm">
+                      <span className="text-[9px] uppercase text-slate-400 block">Jobs Executed</span>
+                      <span className="font-bold text-sm text-white">{road.total_repairs_count} Orders</span>
+                      <span className="text-[10px] text-slate-300 block">{road.surface}</span>
                     </div>
 
-                    <ArrowRight className="w-5 h-5 text-gray-600 flex-shrink-0" />
+                    <ArrowRight className="w-5 h-5 text-slate-300 flex-shrink-0" />
 
-                    <div className="nb-card p-3 bg-[#00F0FF] text-center border border-slate-200/80 w-36 shadow-nb-sm">
-                      <span className="text-[9px] uppercase text-gray-700 block">Billed Spend</span>
-                      <span className="font-bold text-sm text-black">{formatINR(road.total_spent_inr)}</span>
+                    <div className="nb-card p-3 bg-[#00F0FF] text-center border border-white/10 w-36 shadow-nb-sm">
+                      <span className="text-[9px] uppercase text-slate-300 block">Billed Spend</span>
+                      <span className="font-bold text-sm text-white">{formatINR(road.total_spent_inr)}</span>
                       <span className="text-[10px] text-gray-800 block">Recorded Cost</span>
                     </div>
 
-                    <ArrowRight className="w-5 h-5 text-gray-600 flex-shrink-0" />
+                    <ArrowRight className="w-5 h-5 text-slate-300 flex-shrink-0" />
 
-                    <div className={`nb-card p-3 text-center border border-slate-200/80 w-36 shadow-nb-sm ${road.reopened_count > 0 ? 'bg-[#FF4757] text-white' : 'bg-[#00E599] text-black'}`}>
+                    <div className={`nb-card p-3 text-center border border-white/10 w-36 shadow-nb-sm ${road.reopened_count > 0 ? 'bg-[#FF4757] text-white' : 'bg-[#00E599] text-white'}`}>
                       <span className="text-[9px] uppercase block opacity-80">Durability</span>
                       <span className="font-bold text-sm">{road.reopened_count > 0 ? 'Relapsed' : 'Durable'}</span>
                       <span className="text-[10px] block">{road.reopened_count > 0 ? `${formatINR(road.direct_rework_spend_inr)} Wasted` : 'Held Up'}</span>
@@ -359,7 +359,7 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
               <div className="space-y-3">
                 {road.work_orders && road.work_orders.length > 0 ? (
                   road.work_orders.map((wo) => (
-                    <div key={wo.work_order_id} className="nb-card p-3.5 bg-white border border-slate-200/80">
+                    <div key={wo.work_order_id} className="nb-card p-3.5 bg-white border border-white/10">
                       <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-2">
                           <span className="nb-badge nb-badge-black font-mono text-[10px]">{wo.work_order_id}</span>
@@ -368,24 +368,24 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => handleOpenRti(wo)}
-                            className="nb-btn nb-btn-white text-[10px] font-mono py-0.5 px-2 flex items-center gap-1 hover:bg-[#F59E0B]"
+                            className="nb-btn nb-btn text-[10px] font-mono py-0.5 px-2 flex items-center gap-1 hover:bg-[#F59E0B]"
                           >
-                            <Scale className="w-3 h-3 text-[#FF4757]" />
+                            <Scale className="w-3 h-3 text-rose-400" />
                             <span>RTI Brief</span>
                           </button>
                           <span className="font-mono font-bold text-sm">{formatINR(wo.cost_inr)}</span>
                         </div>
                       </div>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs text-gray-700 font-mono">
-                        <div>Contractor: <strong className="text-black">{wo.contractor_name}</strong></div>
-                        <div>Completed: <strong className="text-black">{wo.completed_at?.split(' ')[0]}</strong></div>
-                        <div>SLA: <strong className={wo.sla_met === 'Y' ? 'text-green-700' : 'text-[#FF4757]'}>{wo.sla_met === 'Y' ? '✓ Met' : '✗ Breached'}</strong></div>
-                        <div>Durability: <strong className={wo.reopened_within_30d === 'Y' ? 'text-[#FF4757]' : 'text-green-700'}>{wo.reopened_within_30d === 'Y' ? 'Failed <30d' : 'Held Up'}</strong></div>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs text-slate-300 font-mono">
+                        <div>Contractor: <strong className="text-white">{wo.contractor_name}</strong></div>
+                        <div>Completed: <strong className="text-white">{wo.completed_at?.split(' ')[0]}</strong></div>
+                        <div>SLA: <strong className={wo.sla_met === 'Y' ? 'text-emerald-400' : 'text-rose-400'}>{wo.sla_met === 'Y' ? '✓ Met' : '✗ Breached'}</strong></div>
+                        <div>Durability: <strong className={wo.reopened_within_30d === 'Y' ? 'text-rose-400' : 'text-emerald-400'}>{wo.reopened_within_30d === 'Y' ? 'Failed <30d' : 'Held Up'}</strong></div>
                       </div>
                     </div>
                   ))
                 ) : (
-                  <div className="p-8 text-center text-gray-500 font-bold">
+                  <div className="p-8 text-center text-slate-400 font-bold">
                     No repair records logged for this segment during the monsoon.
                   </div>
                 )}
@@ -394,11 +394,11 @@ export default function RoadPassportModal({ road, onClose, onInspectWorkOrder })
           </div>
 
           {/* Modal Footer */}
-          <div className="bg-[#F8FAFC] border-t-2 border-black p-3 flex justify-between items-center text-xs font-mono">
-            <span className="text-gray-600 font-bold">Evidence Standard: Bounded Public Road Dossier v2.1</span>
+          <div className="liquid-glass-sub border-t-2 border-black p-3 flex justify-between items-center text-xs font-mono">
+            <span className="text-slate-300 font-bold">Evidence Standard: Bounded Public Road Dossier v2.1</span>
             <button 
               onClick={onClose}
-              className="nb-btn nb-btn-white text-xs font-bold py-1.5 px-4"
+              className="nb-btn nb-btn text-xs font-bold py-1.5 px-4"
             >
               Close Passport
             </button>

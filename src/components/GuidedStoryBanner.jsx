@@ -4,10 +4,10 @@ import { Play, ArrowRight, User, Shield, HardHat, Compass, X, Sparkles } from 'l
 export default function GuidedStoryBanner({ currentStep, setTourStep, activeRole, setActiveRole, setActiveTab }) {
   if (currentStep === 0) {
     return (
-      <div className="bg-gradient-to-r from-sky-950/95 via-slate-900/95 to-slate-950/95 backdrop-blur-md text-white py-2 px-4 border-b border-sky-800/40">
+      <div className="backdrop-blur-2xl bg-slate-950/80 border-b border-white/10 text-white py-2 px-4 shadow-[0_4px_24px_rgba(0,0,0,0.15)]">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
           <div className="flex items-center gap-2">
-            <span className="bg-sky-500/20 text-sky-300 border border-sky-400/30 px-2 py-0.5 rounded-full font-semibold text-[10px] tracking-wide flex items-center gap-1">
+            <span className="bg-sky-500/20 text-sky-300 border border-sky-400/30 px-2.5 py-0.5 rounded-full font-semibold text-[10px] tracking-wide flex items-center gap-1 shadow-[0_0_12px_rgba(56,189,248,0.3)]">
               <Sparkles className="w-3 h-3 text-sky-400" />
               GUIDED WALKTHROUGH
             </span>
@@ -18,7 +18,7 @@ export default function GuidedStoryBanner({ currentStep, setTourStep, activeRole
 
           <button
             onClick={() => setTourStep(1)}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-sky-500 hover:bg-sky-400 text-white shadow-sm transition-all duration-150"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-semibold bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-400 hover:to-indigo-400 text-white shadow-md transition-all duration-150 border border-white/20"
           >
             <Play className="w-3 h-3 fill-white" />
             <span>Start 4-Step Interactive Story</span>
@@ -86,7 +86,7 @@ export default function GuidedStoryBanner({ currentStep, setTourStep, activeRole
   };
 
   return (
-    <div className="backdrop-blur-xl bg-sky-50/90 border-b border-sky-200/80 p-3.5 shadow-sm sticky top-[110px] z-30 transition-all">
+    <div className="backdrop-blur-3xl bg-slate-900/80 border-b border-white/10 p-3.5 shadow-[0_16px_36px_rgba(0,0,0,0.5)] sticky top-[115px] z-30 transition-all text-white">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div className="space-y-1">
           <div className="flex items-center gap-2 flex-wrap">
@@ -97,26 +97,26 @@ export default function GuidedStoryBanner({ currentStep, setTourStep, activeRole
                   key={s}
                   className={`w-2 h-2 rounded-full transition-all ${
                     s === currentStep
-                      ? 'bg-sky-600 ring-4 ring-sky-200 w-4'
+                      ? 'bg-cyan-400 ring-4 ring-cyan-500/30 w-4 shadow-[0_0_8px_rgba(6,182,212,0.8)]'
                       : s < currentStep
-                      ? 'bg-sky-400'
-                      : 'bg-slate-300'
+                      ? 'bg-cyan-500/60'
+                      : 'bg-white/15'
                   }`}
                 />
               ))}
             </div>
 
-            <span className="bg-sky-600 text-white px-2 py-0.5 rounded-md font-mono font-bold text-[10px]">
+            <span className="bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 px-2 py-0.5 rounded-md font-mono font-bold text-[10px]">
               STEP {currentStep} OF 4
             </span>
-            <span className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 text-[10px] font-semibold">
+            <span className="px-2 py-0.5 rounded-md bg-white/10 border border-white/15 text-slate-200 text-[10px] font-semibold">
               {activeStepData.role.toUpperCase()} PERSPECTIVE
             </span>
-            <span className="font-bold text-sm text-slate-900">
+            <span className="font-bold text-sm text-white">
               {activeStepData.title}
             </span>
           </div>
-          <p className="text-xs text-slate-600 font-medium max-w-3xl">
+          <p className="text-xs text-slate-300 font-medium max-w-3xl">
             {activeStepData.desc}
           </p>
         </div>
@@ -125,7 +125,7 @@ export default function GuidedStoryBanner({ currentStep, setTourStep, activeRole
           {currentStep > 1 && (
             <button
               onClick={handlePrevStep}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all shadow-sm"
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 border border-white/15 text-slate-200 hover:bg-white/20 transition-all shadow-sm"
             >
               ← Prev
             </button>
@@ -133,7 +133,7 @@ export default function GuidedStoryBanner({ currentStep, setTourStep, activeRole
 
           <button
             onClick={handleNextStep}
-            className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-sm flex items-center gap-1.5"
+            className="px-4 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white transition-all shadow-md flex items-center gap-1.5 border border-white/20"
           >
             <span>{activeStepData.actionLabel}</span>
           </button>
@@ -141,7 +141,7 @@ export default function GuidedStoryBanner({ currentStep, setTourStep, activeRole
           <button
             onClick={() => setTourStep(0)}
             title="Exit Walkthrough"
-            className="w-7 h-7 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-50 shadow-sm"
+            className="w-7 h-7 bg-white/10 border border-white/15 rounded-lg flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/20 shadow-sm"
           >
             <X className="w-3.5 h-3.5" />
           </button>

@@ -68,7 +68,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
   return (
     <div className="space-y-6">
       {/* Top Audit Banner */}
-      <div className="nb-card p-5 bg-[#F59E0B] border border-slate-200/90">
+      <div className="nb-card p-5 bg-[#F59E0B] border border-white/10">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
@@ -78,24 +78,24 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
             <h2 className="text-2xl sm:text-3xl font-bold uppercase mt-1">
               Monsoon Repair Auditor
             </h2>
-            <p className="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">
+            <p className="text-xs sm:text-sm font-bold text-white mt-0.5">
               Automated cross-check of 2,499 work orders against official rate cards, road warranty periods (DLP), and 30-day durability logs.
             </p>
           </div>
 
           {/* Quick Counter Chips */}
           <div className="flex flex-wrap gap-2">
-            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded shadow-nb-sm">
-              <span className="text-[10px] font-mono font-bold uppercase text-gray-600 block">DLP Road Breaches</span>
-              <span className="font-mono font-bold text-base text-[#FF4757]">{flagCounts.dlp} Jobs</span>
+            <div className="bg-white border border-white/10 px-3 py-1.5 rounded shadow-nb-sm">
+              <span className="text-[10px] font-mono font-bold uppercase text-slate-300 block">DLP Road Breaches</span>
+              <span className="font-mono font-bold text-base text-rose-400">{flagCounts.dlp} Jobs</span>
             </div>
-            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded shadow-nb-sm">
-              <span className="text-[10px] font-mono font-bold uppercase text-gray-600 block">Rate Card Overcharges</span>
-              <span className="font-mono font-bold text-base text-[#FF8800]">{flagCounts.overcharge} Jobs</span>
+            <div className="bg-white border border-white/10 px-3 py-1.5 rounded shadow-nb-sm">
+              <span className="text-[10px] font-mono font-bold uppercase text-slate-300 block">Rate Card Overcharges</span>
+              <span className="font-mono font-bold text-base text-amber-400">{flagCounts.overcharge} Jobs</span>
             </div>
-            <div className="bg-white border border-slate-200/80 px-3 py-1.5 rounded shadow-nb-sm">
-              <span className="text-[10px] font-mono font-bold uppercase text-gray-600 block">Failed in &lt;30 Days</span>
-              <span className="font-mono font-bold text-base text-[#0F172A]">{flagCounts.failed} Jobs</span>
+            <div className="bg-white border border-white/10 px-3 py-1.5 rounded shadow-nb-sm">
+              <span className="text-[10px] font-mono font-bold uppercase text-slate-300 block">Failed in &lt;30 Days</span>
+              <span className="font-mono font-bold text-base text-cyan-400">{flagCounts.failed} Jobs</span>
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
         {/* Search & Selectors Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <div className="relative">
-            <Search className="w-4 h-4 absolute left-3 top-3 text-gray-500" />
+            <Search className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
             <input
               type="text"
               placeholder="Search WO ID, Road, Contractor..."
@@ -162,7 +162,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
 
         {/* Flag Filter Pills */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1 scrollbar-none">
-          <span className="text-xs font-mono font-bold text-gray-500 mr-1 flex items-center gap-1">
+          <span className="text-xs font-mono font-bold text-slate-400 mr-1 flex items-center gap-1">
             <Filter className="w-3.5 h-3.5" /> Flag:
           </span>
           {[
@@ -192,12 +192,12 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
       </div>
 
       {/* Results Header Count */}
-      <div className="flex items-center justify-between text-xs font-mono font-bold text-gray-700 px-1">
+      <div className="flex items-center justify-between text-xs font-mono font-bold text-slate-300 px-1">
         <span>Showing {filteredAudits.length} matching work orders (Page {currentPage} of {totalPages})</span>
         {selectedWard !== 'ALL' && (
           <button 
             onClick={() => setSelectedWard('ALL')}
-            className="text-[#FF4757] hover:underline"
+            className="text-rose-400 hover:underline"
           >
             Clear Ward filter
           </button>
@@ -222,7 +222,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
             <tbody className="divide-y-2 divide-gray-200">
               {paginatedAudits.length === 0 ? (
                 <tr>
-                  <td colSpan="7" className="p-8 text-center text-gray-500 font-bold">
+                  <td colSpan="7" className="p-8 text-center text-slate-400 font-bold">
                     No work orders found matching the filter criteria.
                   </td>
                 </tr>
@@ -235,50 +235,50 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
                   return (
                     <tr 
                       key={wo.work_order_id}
-                      className={`hover:bg-[#F8FAFC] transition-colors cursor-pointer ${
-                        hasCritical ? 'bg-[#FFF5F6]' : ''
+                      className={`hover:liquid-glass-sub transition-colors cursor-pointer ${
+                        hasCritical ? 'bg-rose-950/30 border border-rose-500/30' : ''
                       }`}
                       onClick={() => onInspectWorkOrder(wo)}
                     >
                       {/* ID */}
                       <td className="p-3 border-r border-gray-200 font-mono font-bold whitespace-nowrap">
                         <div className="flex items-center gap-1.5">
-                          <span className="text-[#0F172A]">{wo.work_order_id}</span>
+                          <span className="text-cyan-400">{wo.work_order_id}</span>
                           {wo.under_dlp === 'Y' && (
                             <span className="nb-badge nb-badge-coral text-[9px] px-1 py-0">DLP</span>
                           )}
                         </div>
-                        <span className="text-[10px] text-gray-500 font-normal block">{wo.completed_at?.split(' ')[0]}</span>
+                        <span className="text-[10px] text-slate-400 font-normal block">{wo.completed_at?.split(' ')[0]}</span>
                       </td>
 
                       {/* Ward & Road */}
                       <td className="p-3 border-r border-gray-200">
-                        <div className="font-extrabold text-gray-900 flex items-center gap-1">
+                        <div className="font-extrabold text-white flex items-center gap-1">
                           <span className="nb-badge nb-badge-yellow text-[9px] px-1 py-0">{wo.ward_code}</span>
                           <span className="truncate max-w-[150px]">{wo.road_name}</span>
                         </div>
-                        <span className="text-[10px] text-gray-500 font-mono">{wo.road_id} ({wo.road_surface})</span>
+                        <span className="text-[10px] text-slate-400 font-mono">{wo.road_id} ({wo.road_surface})</span>
                       </td>
 
                       {/* Method & Area */}
                       <td className="p-3 border-r border-gray-200">
                         <div className="font-bold text-gray-800">{wo.repair_method}</div>
-                        <span className="text-[10px] text-gray-500 font-mono">{wo.area_sqm} sq.m</span>
+                        <span className="text-[10px] text-slate-400 font-mono">{wo.area_sqm} sq.m</span>
                       </td>
 
                       {/* Contractor */}
                       <td className="p-3 border-r border-gray-200">
                         <div className="font-bold truncate max-w-[140px] text-gray-800">{wo.contractor_name}</div>
-                        <span className="text-[10px] text-gray-500 font-mono">{wo.contractor_id}</span>
+                        <span className="text-[10px] text-slate-400 font-mono">{wo.contractor_id}</span>
                       </td>
 
                       {/* Billed / Expected Rate */}
                       <td className="p-3 border-r border-gray-200 text-right whitespace-nowrap">
-                        <div className="font-mono font-bold text-gray-900">{formatINR(wo.cost_inr)}</div>
-                        <div className="text-[10px] font-mono text-gray-500">
+                        <div className="font-mono font-bold text-white">{formatINR(wo.cost_inr)}</div>
+                        <div className="text-[10px] font-mono text-slate-400">
                           std: {formatINR(wo.expected_cost)}
                           {wo.variance_pct > 20 && (
-                            <span className="text-[#FF4757] font-bold ml-1">+{wo.variance_pct}%</span>
+                            <span className="text-rose-400 font-bold ml-1">+{wo.variance_pct}%</span>
                           )}
                         </div>
                       </td>
@@ -288,7 +288,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
                         {escalationInfo ? (
                           <div className="mb-1">
                             <span className="nb-badge nb-badge-orange text-[9px] px-1.5 py-0.5 font-bold flex items-center gap-1">
-                              <Scale className="w-3 h-3 text-black" />
+                              <Scale className="w-3 h-3 text-white" />
                               <span>{escalationInfo.tier}: {escalationInfo.action}</span>
                             </span>
                           </div>
@@ -330,7 +330,7 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
 
                           <button
                             onClick={(e) => { e.stopPropagation(); onInspectWorkOrder(wo); }}
-                            className="nb-btn nb-btn-white text-[10px] font-mono py-1 px-2 hover:bg-[#F59E0B]"
+                            className="nb-btn nb-btn text-[10px] font-mono py-1 px-2 hover:bg-[#F59E0B]"
                           >
                             Dossier
                           </button>
@@ -346,21 +346,21 @@ export default function RepairAuditorView({ audits, wards, contractors, onInspec
 
         {/* Pagination */}
         <div className="p-3 bg-[#F8F5EE] border-t-2 border-[#0F172A] flex items-center justify-between">
-          <div className="text-xs font-mono font-bold text-gray-600">
+          <div className="text-xs font-mono font-bold text-slate-300">
             Page {currentPage} of {totalPages}
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="nb-btn nb-btn-white text-xs py-1 px-3 disabled:opacity-50"
+              className="nb-btn nb-btn text-xs py-1 px-3 disabled:opacity-50"
             >
               <ChevronLeft className="w-4 h-4" /> Prev
             </button>
             <button
               onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="nb-btn nb-btn-white text-xs py-1 px-3 disabled:opacity-50"
+              className="nb-btn nb-btn text-xs py-1 px-3 disabled:opacity-50"
             >
               Next <ChevronRight className="w-4 h-4" />
             </button>

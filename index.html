@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ProTrace — Civic-Finance & Monsoon Infrastructure Intelligence</title>
     
-    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <!-- Google Fonts: Inter & JetBrains Mono & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -20,43 +20,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
-              sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Plus Jakarta Sans"', 'sans-serif'],
+              sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', 'sans-serif'],
               display: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
               mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
             },
             colors: {
               slate: {
-                850: '#151E2E',
+                850: '#111827',
+                925: '#0B1120',
                 950: '#070B14'
               },
-              brand: {
-                50: '#F0F9FF',
-                100: '#E0F2FE',
-                500: '#0284C7',
-                600: '#0369A1',
-                900: '#0C4A6E'
+              cyan: {
+                450: '#00F0FF',
               }
-            },
-            boxShadow: {
-              'glass': '0 8px 32px 0 rgba(15, 23, 42, 0.06)',
-              'glass-hover': '0 12px 40px -4px rgba(15, 23, 42, 0.1)',
-              'glass-sm': '0 2px 10px 0 rgba(15, 23, 42, 0.04)',
-              'glass-lg': '0 24px 60px -12px rgba(15, 23, 42, 0.14)',
-              'nb-sm': '0 1px 3px rgba(15, 23, 42, 0.06)',
-              'nb': '0 4px 16px -2px rgba(15, 23, 42, 0.06)',
-              'nb-md': '0 8px 24px -4px rgba(15, 23, 42, 0.08)',
-              'nb-lg': '0 16px 36px -6px rgba(15, 23, 42, 0.10)',
-              'nb-xl': '0 24px 50px -10px rgba(15, 23, 42, 0.14)',
             }
           }
         }
       }
     </script>
   </head>
-  <body class="bg-[#F8FAFC] text-slate-900 font-sans antialiased selection:bg-sky-500 selection:text-white min-h-screen">
+  <body class="bg-[#070B14] text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-white min-h-screen">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

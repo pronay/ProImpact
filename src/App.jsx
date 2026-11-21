@@ -115,28 +115,40 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-slate-900 font-sans selection:bg-sky-500 selection:text-white">
-      {/* Cupertino Liquid Glass Global Header with Role-Specific Navigation */}
-      <Header
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        activeRole={activeRole}
-        setActiveRole={handleRoleChange}
-        kpis={db.kpis}
-        totalFlagged={db.kpis.total_flagged_work_orders}
-      />
+    <div className="min-h-screen flex flex-col relative overflow-hidden font-sans selection:bg-cyan-500 selection:text-white bg-[#070B14] text-slate-100">
+      {/* Ambient Fluid Glass Caustics (Luminous Atmospheric Background) */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute -top-32 -left-32 w-[650px] h-[650px] bg-cyan-500/18 rounded-full blur-[140px] animate-fluid-1"></div>
+        <div className="absolute top-1/4 -right-32 w-[700px] h-[700px] bg-indigo-600/22 rounded-full blur-[160px] animate-fluid-2"></div>
+        <div className="absolute bottom-10 left-1/4 w-[750px] h-[750px] bg-blue-600/18 rounded-full blur-[150px] animate-fluid-1"></div>
+        <div className="absolute top-2/3 -left-20 w-[550px] h-[550px] bg-purple-600/16 rounded-full blur-[130px] animate-fluid-2"></div>
+        <div className="absolute -bottom-20 right-1/4 w-[600px] h-[600px] bg-emerald-500/14 rounded-full blur-[140px] animate-fluid-pulse"></div>
+      </div>
 
-      {/* 4-Minute Interactive Guided Investigation Tour */}
-      <GuidedStoryBanner
-        currentStep={tourStep}
-        setTourStep={setTourStep}
-        activeRole={activeRole}
-        setActiveRole={handleRoleChange}
-        setActiveTab={setActiveTab}
-      />
+      {/* Floating Header */}
+      <div className="relative z-40">
+        {/* VisionOS Obsidian Liquid Glass Global Header with Role-Specific Navigation */}
+        <Header
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          activeRole={activeRole}
+          setActiveRole={handleRoleChange}
+          kpis={db.kpis}
+          totalFlagged={db.kpis.total_flagged_work_orders}
+        />
 
-      {/* Main Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {/* 4-Minute Interactive Guided Investigation Tour */}
+        <GuidedStoryBanner
+          currentStep={tourStep}
+          setTourStep={setTourStep}
+          activeRole={activeRole}
+          setActiveRole={handleRoleChange}
+          setActiveTab={setActiveTab}
+        />
+      </div>
+
+      {/* Main Container with Butter-Smooth Flow In Transition */}
+      <main key={activeTab} className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10 animate-flow-in">
         {/* ROLE 1: CITIZEN PORTAL */}
         {activeTab === 'citizen-portal' && (
           <CitizenPortalView

@@ -22,13 +22,13 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto animate-fade-in">
         <div 
-          className="w-full max-w-2xl bg-white/95 backdrop-blur-2xl rounded-3xl border border-slate-200/90 shadow-2xl my-8 relative max-h-[90vh] flex flex-col overflow-hidden"
+          className="w-full max-w-2xl liquid-glass backdrop-blur-2xl rounded-3xl border border-white/10 shadow-2xl my-8 relative max-h-[90vh] flex flex-col overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Modal Header (Cupertino Style) */}
           <div className="bg-slate-900 text-white p-5 flex items-center justify-between border-b border-slate-800">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-sky-500 text-white flex items-center justify-center font-mono font-bold text-xs shadow-md">
+              <div className="w-9 h-9 rounded-xl bg-cyan-950/400 text-white flex items-center justify-center font-mono font-bold text-xs shadow-md">
                 WO
               </div>
               <div>
@@ -64,15 +64,15 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
           {/* Modal Body */}
           <div className="p-4 sm:p-6 overflow-y-auto space-y-5">
             {/* World Bank GEMS 3-Citizen Consensus Verification Banner */}
-            <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded-md flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div className="liquid-glass-sub border border-white/10 p-3 rounded-md flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
               <div>
                 <div className="flex items-center gap-1.5">
                   <span className="nb-badge nb-badge-black text-[9px]">WORLD BANK GEMS MODEL</span>
-                  <span className="font-mono font-bold text-gray-600">3-Citizen Consensus Field Check</span>
+                  <span className="font-mono font-bold text-slate-300">3-Citizen Consensus Field Check</span>
                 </div>
-                <div className="font-bold text-sm text-black mt-1 flex items-center gap-1.5">
+                <div className="font-bold text-sm text-white mt-1 flex items-center gap-1.5">
                   {citizenVotes >= 3 ? (
-                    <span className="text-green-700 flex items-center gap-1">
+                    <span className="text-emerald-400 flex items-center gap-1">
                       <CheckCircle2 className="w-4 h-4" /> Community Certified ({citizenVotes}/3 Citizens Verified)
                     </span>
                   ) : (
@@ -95,8 +95,8 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
 
             {/* Audit Flags Banner */}
             {workOrder.flags && workOrder.flags.length > 0 ? (
-              <div className="bg-[#FFF0F2] border-3 border-[#FF4757] p-3 rounded-md shadow-nb-sm">
-                <div className="flex items-center justify-between text-[#FF4757] font-extrabold text-sm uppercase mb-2">
+              <div className="bg-rose-950/40 border border-rose-500/40 backdrop-blur-md border border-rose-500/40 p-3 rounded-md shadow-nb-sm">
+                <div className="flex items-center justify-between text-rose-400 font-extrabold text-sm uppercase mb-2">
                   <span className="flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4" />
                     Forensic Findings ({workOrder.flags.length} Flagged)
@@ -110,7 +110,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
                 </div>
                 <div className="space-y-2">
                   {workOrder.flags.map((flag, idx) => (
-                    <div key={idx} className="bg-white border border-slate-200/80 p-2.5 rounded text-xs">
+                    <div key={idx} className="bg-white border border-white/10 p-2.5 rounded text-xs">
                       <div className="flex items-center justify-between mb-1">
                         <span className={`nb-badge ${
                           flag.severity === 'CRITICAL' ? 'nb-badge-coral' :
@@ -120,7 +120,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
                           {flag.title}
                         </span>
                         {flag.excess_inr > 0 && (
-                          <span className="font-mono font-bold text-[#FF4757]">
+                          <span className="font-mono font-bold text-rose-400">
                             Impact: {formatINR(flag.excess_inr)}
                           </span>
                         )}
@@ -133,7 +133,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
             ) : (
               <div className="bg-[#E6FBF2] border-3 border-[#00E599] p-3 rounded-md shadow-nb-sm flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-[#00E599]" />
-                <span className="font-bold text-sm text-green-900">
+                <span className="font-bold text-sm text-emerald-300">
                   Audit Status: Clean — Billed within rate card and complied with SLA guidelines.
                 </span>
               </div>
@@ -141,63 +141,63 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
 
             {/* Quick Metrics Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-              <div className="bg-[#F8F5EE] border border-slate-200/80 p-2.5 rounded">
-                <span className="text-[10px] uppercase font-bold text-gray-500 font-mono">Billed Cost</span>
-                <p className="text-base font-extrabold font-mono text-[#0F172A]">{formatINR(workOrder.cost_inr)}</p>
+              <div className="bg-[#F8F5EE] border border-white/10 p-2.5 rounded">
+                <span className="text-[10px] uppercase font-bold text-slate-400 font-mono">Billed Cost</span>
+                <p className="text-base font-extrabold font-mono text-cyan-400">{formatINR(workOrder.cost_inr)}</p>
               </div>
-              <div className="bg-[#F8F5EE] border border-slate-200/80 p-2.5 rounded">
-                <span className="text-[10px] uppercase font-bold text-gray-500 font-mono">Rate Card Benchmark</span>
-                <p className="text-base font-extrabold font-mono text-gray-700">{formatINR(workOrder.expected_cost)}</p>
+              <div className="bg-[#F8F5EE] border border-white/10 p-2.5 rounded">
+                <span className="text-[10px] uppercase font-bold text-slate-400 font-mono">Rate Card Benchmark</span>
+                <p className="text-base font-extrabold font-mono text-slate-300">{formatINR(workOrder.expected_cost)}</p>
               </div>
-              <div className="bg-[#F8F5EE] border border-slate-200/80 p-2.5 rounded">
-                <span className="text-[10px] uppercase font-bold text-gray-500 font-mono">SLA Target</span>
+              <div className="bg-[#F8F5EE] border border-white/10 p-2.5 rounded">
+                <span className="text-[10px] uppercase font-bold text-slate-400 font-mono">SLA Target</span>
                 <p className="text-base font-extrabold font-mono flex items-center gap-1">
                   {workOrder.sla_hours}h
                   {workOrder.sla_met === 'Y' ? (
                     <span className="text-[#00E599] text-xs">✓ Met</span>
                   ) : (
-                    <span className="text-[#FF4757] text-xs">✗ Breached</span>
+                    <span className="text-rose-400 text-xs">✗ Breached</span>
                   )}
                 </p>
               </div>
-              <div className="bg-[#F8F5EE] border border-slate-200/80 p-2.5 rounded">
-                <span className="text-[10px] uppercase font-bold text-gray-500 font-mono">30-Day Durability</span>
+              <div className="bg-[#F8F5EE] border border-white/10 p-2.5 rounded">
+                <span className="text-[10px] uppercase font-bold text-slate-400 font-mono">30-Day Durability</span>
                 <p className="text-base font-extrabold font-mono">
                   {workOrder.reopened_within_30d === 'Y' ? (
-                    <span className="text-[#FF4757]">FAILED (Relapsed)</span>
+                    <span className="text-rose-400">FAILED (Relapsed)</span>
                   ) : (
-                    <span className="text-green-700">HELD UP</span>
+                    <span className="text-emerald-400">HELD UP</span>
                   )}
                 </p>
               </div>
             </div>
 
             {/* Technical Specs */}
-            <div className="border border-slate-200/80 rounded-md p-3.5 space-y-2 text-xs">
-              <h4 className="font-extrabold uppercase font-mono tracking-wider text-gray-600 mb-2">Repair Specifications</h4>
+            <div className="border border-white/10 rounded-md p-3.5 space-y-2 text-xs">
+              <h4 className="font-extrabold uppercase font-mono tracking-wider text-slate-300 mb-2">Repair Specifications</h4>
               <div className="grid grid-cols-2 gap-y-2">
                 <div>
-                  <span className="text-gray-500 font-bold">Repair Method:</span>{' '}
+                  <span className="text-slate-400 font-bold">Repair Method:</span>{' '}
                   <span className="font-extrabold">{workOrder.repair_method}</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 font-bold">Work Category:</span>{' '}
+                  <span className="text-slate-400 font-bold">Work Category:</span>{' '}
                   <span className="font-extrabold">{workOrder.work_type}</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 font-bold">Contractor:</span>{' '}
+                  <span className="text-slate-400 font-bold">Contractor:</span>{' '}
                   <span className="font-extrabold">{workOrder.contractor_name}</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 font-bold">Area Patched:</span>{' '}
+                  <span className="text-slate-400 font-bold">Area Patched:</span>{' '}
                   <span className="font-extrabold">{workOrder.area_sqm} sq.m</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 font-bold">Road Surface:</span>{' '}
+                  <span className="text-slate-400 font-bold">Road Surface:</span>{' '}
                   <span className="font-extrabold">{workOrder.road_surface}</span>
                 </div>
                 <div>
-                  <span className="text-gray-500 font-bold">Under Warranty (DLP):</span>{' '}
+                  <span className="text-slate-400 font-bold">Under Warranty (DLP):</span>{' '}
                   <span className={`font-bold font-mono px-1 rounded ${workOrder.under_dlp === 'Y' ? 'bg-[#FF4757] text-white' : 'bg-gray-200'}`}>
                     {workOrder.under_dlp === 'Y' ? 'YES (Breach)' : 'NO'}
                   </span>
@@ -206,14 +206,14 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
             </div>
 
             {/* Engineer Remark */}
-            <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded-md text-xs">
-              <span className="font-bold text-gray-500 uppercase font-mono block mb-1">Site Engineer Log / Remark</span>
+            <div className="liquid-glass-sub border border-white/10 p-3 rounded-md text-xs">
+              <span className="font-bold text-slate-400 uppercase font-mono block mb-1">Site Engineer Log / Remark</span>
               <p className="italic text-gray-800 font-medium">"{workOrder.engineer_remark}"</p>
             </div>
 
             {/* Linked Complaints */}
             <div>
-              <h4 className="font-extrabold uppercase font-mono text-xs tracking-wider text-gray-600 mb-2">
+              <h4 className="font-extrabold uppercase font-mono text-xs tracking-wider text-slate-300 mb-2">
                 Linked Citizen Complaints ({workOrder.linked_complaint_ids.length})
               </h4>
               {workOrder.linked_complaint_ids.length > 0 ? (
@@ -230,7 +230,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
                   ))}
                 </div>
               ) : (
-                <p className="text-xs text-[#FF4757] font-bold">
+                <p className="text-xs text-rose-400 font-bold">
                   ⚠️ No citizen complaints linked. Initiated without public ticket trace.
                 </p>
               )}
@@ -248,7 +248,7 @@ export default function WorkOrderModal({ workOrder, onClose, onInspectComplaint 
             </button>
             <button 
               onClick={onClose}
-              className="nb-btn nb-btn-white text-xs font-bold py-1.5 px-4"
+              className="nb-btn nb-btn text-xs font-bold py-1.5 px-4"
             >
               Close Dossier
             </button>

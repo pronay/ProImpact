@@ -13,13 +13,13 @@ export default function RTIBriefModal({ workOrder, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto animate-fade-in">
       <div 
-        className="w-full max-w-3xl bg-white rounded-3xl border border-slate-200/90 shadow-2xl my-6 relative max-h-[92vh] flex flex-col overflow-hidden"
+        className="w-full max-w-3xl bg-white rounded-3xl border border-white/10 shadow-2xl my-6 relative max-h-[92vh] flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header (Cupertino Style) */}
         <div className="bg-slate-900 text-white p-5 flex items-center justify-between border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-sky-500 text-white flex items-center justify-center font-bold text-lg shadow-md">
+            <div className="w-10 h-10 rounded-2xl bg-cyan-950/400 text-white flex items-center justify-center font-bold text-lg shadow-md">
               <Scale className="w-5 h-5" />
             </div>
             <div>
@@ -51,29 +51,29 @@ export default function RTIBriefModal({ workOrder, onClose }) {
         </div>
 
         {/* Printable Legal RTI Form Body */}
-        <div className="p-6 overflow-y-auto space-y-5 text-xs text-gray-900 font-sans leading-relaxed">
+        <div className="p-6 overflow-y-auto space-y-5 text-xs text-white font-sans leading-relaxed">
           {/* Official Letterhead */}
-          <div className="text-center border-b-2 border-black pb-4 space-y-1">
+          <div className="text-center border-b border-white/15 pb-4 space-y-1">
             <h4 className="text-sm font-bold uppercase tracking-wider">
               FORM A — APPLICATION FOR OBTAINING INFORMATION UNDER THE RIGHT TO INFORMATION ACT, 2005
             </h4>
-            <p className="text-[11px] font-mono text-gray-600 font-bold">
+            <p className="text-[11px] font-mono text-slate-300 font-bold">
               Before the Public Information Officer (PIO) & Assistant Municipal Commissioner, Ward {workOrder.ward_code}, Municipal Corporation of Greater Mumbai (MCGM / BMC)
             </p>
           </div>
 
           {/* Applicant & Subject Reference */}
-          <div className="bg-[#F8FAFC] border border-slate-200/80 p-3 rounded font-mono space-y-1">
+          <div className="liquid-glass-sub border border-white/10 p-3 rounded font-mono space-y-1">
             <div><strong>SUBJECT:</strong> Information regarding public expenditure, rate card benchmark deviation, and warranty status for monsoon road repair order <strong>{workOrder.work_order_id}</strong> on <strong>{workOrder.road_name} ({workOrder.road_id})</strong>.</div>
             <div><strong>COMPLAINT LINKAGE:</strong> {workOrder.linked_complaint_ids?.length > 0 ? workOrder.linked_complaint_ids.join(', ') : 'Unsolicited Order (No public complaint ticket)'}.</div>
           </div>
 
           {/* Forensic Audit Evidence Schedule */}
           <div>
-            <h5 className="font-extrabold uppercase font-mono text-xs text-black mb-2">
+            <h5 className="font-extrabold uppercase font-mono text-xs text-white mb-2">
               SCHEDULE OF RECORDED AUDIT EVIDENCE & DISCREPANCIES
             </h5>
-            <div className="border border-slate-200/80 rounded overflow-hidden">
+            <div className="border border-white/10 rounded overflow-hidden">
               <table className="w-full text-left border-collapse text-xs font-mono">
                 <tbody>
                   <tr className="border-b border-black bg-gray-100">
@@ -94,15 +94,15 @@ export default function RTIBriefModal({ workOrder, onClose }) {
                   </tr>
                   <tr className="border-b border-black bg-gray-50">
                     <td className="p-2 font-bold border-r border-black">Billed Cost (Recorded)</td>
-                    <td className="p-2 font-bold text-[#FF4757]">{formatINR(workOrder.cost_inr)}</td>
+                    <td className="p-2 font-bold text-rose-400">{formatINR(workOrder.cost_inr)}</td>
                   </tr>
                   <tr className="border-b border-black">
                     <td className="p-2 font-bold border-r border-black">Standard Rate Card Benchmark</td>
-                    <td className="p-2 font-bold text-gray-700">{formatINR(workOrder.expected_cost)}</td>
+                    <td className="p-2 font-bold text-slate-300">{formatINR(workOrder.expected_cost)}</td>
                   </tr>
                   <tr className="border-b border-black bg-gray-50">
                     <td className="p-2 font-bold border-r border-black">Variance / Potential Overcharge</td>
-                    <td className="p-2 font-bold text-red-700">
+                    <td className="p-2 font-bold text-rose-400">
                       +{workOrder.variance_pct}% ({formatINR(Math.max(0, workOrder.cost_inr - workOrder.expected_cost))})
                     </td>
                   </tr>
@@ -110,7 +110,7 @@ export default function RTIBriefModal({ workOrder, onClose }) {
                     <td className="p-2 font-bold border-r border-black">Defect Liability Period (DLP)</td>
                     <td className="p-2 font-bold">
                       {workOrder.under_dlp === 'Y' ? (
-                        <span className="text-[#FF4757]">CRITICAL BREACH: Road under active warranty; contractor was obligated to repair at ₹0 cost.</span>
+                        <span className="text-rose-400">CRITICAL BREACH: Road under active warranty; contractor was obligated to repair at ₹0 cost.</span>
                       ) : 'Normal Maintenance Asset'}
                     </td>
                   </tr>
@@ -131,7 +131,7 @@ export default function RTIBriefModal({ workOrder, onClose }) {
 
           {/* Specific Information Demanded */}
           <div className="space-y-2">
-            <h5 className="font-extrabold uppercase font-mono text-xs text-black">
+            <h5 className="font-extrabold uppercase font-mono text-xs text-white">
               PARTICULARS OF INFORMATION REQUIRED UNDER RTI ACT SEC 6(1):
             </h5>
             <ol className="list-decimal pl-5 space-y-1 font-mono text-[11px] text-gray-800">
@@ -148,7 +148,7 @@ export default function RTIBriefModal({ workOrder, onClose }) {
           <div className="pt-3 border-t-2 border-black flex justify-between items-end text-[11px] font-mono">
             <div>
               <span>Generated via: <strong>ProTrace v2.1 Evidence Standard</strong></span>
-              <div className="text-gray-500 text-[10px]">Independent Assurance & Open Contracting Standards (CoST & IDB Framework)</div>
+              <div className="text-slate-400 text-[10px]">Independent Assurance & Open Contracting Standards (CoST & IDB Framework)</div>
             </div>
             <div className="text-right">
               <div className="w-32 border-b border-black mb-1"></div>
@@ -158,11 +158,11 @@ export default function RTIBriefModal({ workOrder, onClose }) {
         </div>
 
         {/* Modal Footer */}
-        <div className="bg-[#F8FAFC] border-t-2 border-black p-3 flex justify-between items-center text-xs font-mono">
-          <span className="text-gray-600 font-bold">Statutory Brief Ready for Legal Filing</span>
+        <div className="liquid-glass-sub border-t-2 border-black p-3 flex justify-between items-center text-xs font-mono">
+          <span className="text-slate-300 font-bold">Statutory Brief Ready for Legal Filing</span>
           <button 
             onClick={onClose}
-            className="nb-btn nb-btn-white text-xs font-bold py-1.5 px-4"
+            className="nb-btn nb-btn text-xs font-bold py-1.5 px-4"
           >
             Close RTI Brief
           </button>
